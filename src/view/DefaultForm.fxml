@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="949.0" prefWidth="1591.0" style="-fx-background-color: #b2bec3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DefaultFormController">
+   <children>
+      <Label layoutX="135.0" layoutY="43.0" prefHeight="87.0" prefWidth="583.0" text="Home">
+         <font>
+            <Font name="MV Boli" size="46.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_CENTER" layoutX="124.0" layoutY="315.0" prefHeight="214.0" prefWidth="394.0" style="-fx-background-color: #0c2461;">
+         <font>
+            <Font name="Harlow Solid Italic" size="61.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#0f78ff" />
+                  <Stop color="#0f78ff" offset="0.10514350667803353" />
+                  <Stop color="#0fffe6" offset="0.9019607843137255" />
+                  <Stop color="#0fffe6" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="lblClient" alignment="CENTER" layoutX="291.0" layoutY="422.0" prefHeight="66.0" prefWidth="227.0" text="0">
+         <font>
+            <Font name="Forte" size="77.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ffcf00" />
+                  <Stop color="#ffcf00" offset="0.007246376811594203" />
+                  <Stop color="#eb0707" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="208.0" layoutY="287.0" prefHeight="66.0" prefWidth="299.0" text="Clients">
+         <font>
+            <Font name="Harlow Solid Italic" size="71.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerY="0.3640776699029126" radius="0.5">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.10514350667803353" />
+                  <Stop color="#ff500f" offset="0.9019607843137255" />
+                  <Stop color="#ff500f" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="193.0" fitWidth="156.0" layoutX="135.0" layoutY="326.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/icons8_customer_96px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_CENTER" layoutX="623.0" layoutY="314.0" prefHeight="214.0" prefWidth="394.0" style="-fx-background-color: #0c2461;">
+         <font>
+            <Font name="Harlow Solid Italic" size="61.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#0f78ff" />
+                  <Stop color="#0f78ff" offset="0.10514350667803353" />
+                  <Stop color="#0fffe6" offset="0.9019607843137255" />
+                  <Stop color="#0fffe6" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="lblOrders" alignment="CENTER" layoutX="790.0" layoutY="421.0" prefHeight="66.0" prefWidth="227.0" text="0">
+         <font>
+            <Font name="Forte" size="77.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ffcf00" />
+                  <Stop color="#ffcf00" offset="0.007246376811594203" />
+                  <Stop color="#eb0707" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="707.0" layoutY="286.0" prefHeight="66.0" prefWidth="299.0" text="Orders">
+         <font>
+            <Font name="Harlow Solid Italic" size="71.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerY="0.3640776699029126" radius="0.5">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.10514350667803353" />
+                  <Stop color="#ff500f" offset="0.9019607843137255" />
+                  <Stop color="#ff500f" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="193.0" fitWidth="156.0" layoutX="634.0" layoutY="325.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/icons8_create_order_96px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_CENTER" layoutX="1127.0" layoutY="314.0" prefHeight="214.0" prefWidth="394.0" style="-fx-background-color: #0c2461;">
+         <font>
+            <Font name="Harlow Solid Italic" size="61.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#0f78ff" />
+                  <Stop color="#0f78ff" offset="0.10514350667803353" />
+                  <Stop color="#0fffe6" offset="0.9019607843137255" />
+                  <Stop color="#0fffe6" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="lblSeafood" alignment="CENTER" layoutX="1294.0" layoutY="421.0" prefHeight="66.0" prefWidth="227.0" text="0">
+         <font>
+            <Font name="Forte" size="77.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ffcf00" />
+                  <Stop color="#ffcf00" offset="0.007246376811594203" />
+                  <Stop color="#eb0707" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="193.0" fitWidth="156.0" layoutX="1138.0" layoutY="325.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/icons8_crab_96px_1.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_CENTER" layoutX="124.0" layoutY="633.0" prefHeight="214.0" prefWidth="394.0" style="-fx-background-color: #0c2461;">
+         <font>
+            <Font name="Harlow Solid Italic" size="61.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#0f78ff" />
+                  <Stop color="#0f78ff" offset="0.10514350667803353" />
+                  <Stop color="#0fffe6" offset="0.9019607843137255" />
+                  <Stop color="#0fffe6" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="lblBoats" alignment="CENTER" layoutX="291.0" layoutY="741.0" prefHeight="66.0" prefWidth="227.0" text="0">
+         <font>
+            <Font name="Forte" size="77.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ffcf00" />
+                  <Stop color="#ffcf00" offset="0.007246376811594203" />
+                  <Stop color="#eb0707" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="208.0" layoutY="606.0" prefHeight="66.0" prefWidth="299.0" text="Boats">
+         <font>
+            <Font name="Harlow Solid Italic" size="71.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerY="0.3640776699029126" radius="0.5">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.10514350667803353" />
+                  <Stop color="#ff500f" offset="0.9019607843137255" />
+                  <Stop color="#ff500f" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="193.0" fitWidth="156.0" layoutX="135.0" layoutY="645.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/icons8_water_transportation_96px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_CENTER" layoutX="623.0" layoutY="633.0" prefHeight="214.0" prefWidth="394.0" style="-fx-background-color: #0c2461;">
+         <font>
+            <Font name="Harlow Solid Italic" size="61.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#0f78ff" />
+                  <Stop color="#0f78ff" offset="0.10514350667803353" />
+                  <Stop color="#0fffe6" offset="0.9019607843137255" />
+                  <Stop color="#0fffe6" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="lblPurchase" alignment="CENTER" layoutX="790.0" layoutY="740.0" prefHeight="66.0" prefWidth="227.0" text="0">
+         <font>
+            <Font name="Forte" size="77.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ffcf00" />
+                  <Stop color="#ffcf00" offset="0.007246376811594203" />
+                  <Stop color="#eb0707" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="193.0" fitWidth="156.0" layoutX="634.0" layoutY="644.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/icons8_purchase_order_96px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_CENTER" layoutX="1127.0" layoutY="633.0" prefHeight="214.0" prefWidth="394.0" style="-fx-background-color: #0c2461;">
+         <font>
+            <Font name="Harlow Solid Italic" size="61.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#0f78ff" />
+                  <Stop color="#0f78ff" offset="0.10514350667803353" />
+                  <Stop color="#0fffe6" offset="0.9019607843137255" />
+                  <Stop color="#0fffe6" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="lblDelivery" alignment="CENTER" layoutX="1294.0" layoutY="740.0" prefHeight="66.0" prefWidth="227.0" text="0">
+         <font>
+            <Font name="Forte" size="77.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ffcf00" />
+                  <Stop color="#ffcf00" offset="0.007246376811594203" />
+                  <Stop color="#eb0707" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="193.0" fitWidth="156.0" layoutX="1138.0" layoutY="644.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/icons8_Delivery_100px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_RIGHT" layoutX="1217.0" layoutY="296.0" prefHeight="120.0" prefWidth="290.0" text="SeaFood">
+         <font>
+            <Font name="Harlow Solid Italic" size="68.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerY="0.3640776699029126" radius="0.5">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.10514350667803353" />
+                  <Stop color="#ff500f" offset="0.9019607843137255" />
+                  <Stop color="#ff500f" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="708.0" layoutY="615.0" prefHeight="66.0" prefWidth="299.0" text="Purchases">
+         <font>
+            <Font name="Harlow Solid Italic" size="64.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerY="0.3640776699029126" radius="0.5">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.10514350667803353" />
+                  <Stop color="#ff500f" offset="0.9019607843137255" />
+                  <Stop color="#ff500f" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="1217.0" layoutY="614.0" prefHeight="66.0" prefWidth="299.0" text="Deliverys">
+         <font>
+            <Font name="Harlow Solid Italic" size="71.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerY="0.3640776699029126" radius="0.5">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.10514350667803353" />
+                  <Stop color="#ff500f" offset="0.9019607843137255" />
+                  <Stop color="#ff500f" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label alignment="CENTER" layoutX="199.0" layoutY="161.0" prefHeight="87.0" prefWidth="1225.0" text="WelCome to New Ocean SeaFood Delivery System">
+         <font>
+            <Font name="Elephant" size="48.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.47572815533980584" startX="0.20388349514563106" startY="0.33980582524271846">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.10514350667803353" />
+                  <Stop color="BLACK" offset="0.9019607843137255" />
+                  <Stop color="BLACK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="87.0" fitWidth="90.0" layoutX="34.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/icons8_Home_48px.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

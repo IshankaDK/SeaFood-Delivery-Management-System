@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="961.0" prefWidth="1591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientFormController">
+   <children>
+      <AnchorPane fx:id="root" layoutX="20.0" layoutY="20.0" prefHeight="979.0" prefWidth="1611.0" style="-fx-background-color: #b2bec3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="135.0" layoutY="43.0" prefHeight="87.0" prefWidth="583.0" text="Client Form">
+               <font>
+                  <Font name="MV Boli" size="46.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="87.0" fitWidth="90.0" layoutX="34.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/icons8_Customer_40px.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tblClient" layoutX="636.0" layoutY="187.0" prefHeight="619.0" prefWidth="907.0">
+              <columns>
+                <TableColumn prefWidth="123.0" text="Client ID" />
+                <TableColumn prefWidth="198.0" text="Name" />
+                  <TableColumn prefWidth="190.0" text="Address" />
+                  <TableColumn minWidth="0.0" prefWidth="162.0" text="Contact" />
+                  <TableColumn minWidth="0.0" prefWidth="142.0" text="Type" />
+              </columns>
+            </TableView>
+            <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField layoutX="108.0" layoutY="360.0" prefHeight="41.0" prefWidth="442.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField layoutX="109.0" layoutY="475.0" prefHeight="41.0" prefWidth="442.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField layoutX="109.0" layoutY="593.0" prefHeight="41.0" prefWidth="442.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <JFXComboBox labelFloat="true" layoutX="105.0" layoutY="710.0" prefHeight="54.0" prefWidth="198.0" promptText="Client Type" visibleRowCount="5" />
+            <JFXButton layoutX="415.0" layoutY="717.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" style="-fx-background-color: #10ac84;" text="+ Add">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="108.0" layoutY="212.0" prefHeight="47.0" prefWidth="442.0" text="Client Id " textFill="#041272">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="107.0" layoutY="319.0" prefHeight="47.0" prefWidth="442.0" text="Client Name" textFill="#041272">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="108.0" layoutY="434.0" prefHeight="47.0" prefWidth="442.0" text="Client Address" textFill="#041272">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="108.0" layoutY="550.0" prefHeight="47.0" prefWidth="442.0" text="Client Contact" textFill="#041272">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
+               <image>
+                  <Image url="@../assert/back.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
