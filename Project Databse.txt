@@ -1,0 +1,94 @@
+DROP DATABASE IF EXISTS newocean;
+CREATE DATABASE newocean;
+USE newocean;
+
+CREATE TABLE Client (
+	clientId VARCHAR(10) NOT NULL,
+	clientName VARCHAR(30),
+	clientAddress VARCHAR(60),
+	clientContact VARCHAR(15),
+	clientType VARCHAR(20),
+	CONSTRAINT PRIMARY KEY(clientId)
+);
+
+CREATE TABLE Driver(
+	driverId VARCHAR(6) NOT NULL,
+	driverName VARCHAR(20),
+	driverAddress VARCHAR(30),
+	driverContact VARCHAR(15),
+	CONSTRAINT PRIMARY KEY (driverId)
+);
+
+CREATE TABLE DeliveryOrder(
+	doId VARCHAR(6) NOT NULL,
+	driverId VARCHAR(6) NOT NULL,
+	dipartureTime DATETIME,
+	arrivalTime DATETIME,
+	status VARCHAR(20),
+	CONSTRAINT PRIMARY KEY (doId),
+	CONSTRAINT FOREIGN KEY(driverId) REFERENCES Driver(driverId) on Delete Cascade on Update Cascade
+);
+
+CREATE TABLE _Order(
+	orderId VARCHAR(6) NOT NULL,
+	doId VARCHAR(6) NOT NULL,
+	date DATETIME,
+	clientId VARCHAR(6) NOT NULL,
+	paymentStatus VARCHAR(20),
+	CONSTRAINT PRIMARY KEY (orderId),
+	CONSTRAINT FOREIGN KEY(clientId) REFERENCES Client(clientId) on Delete Cascade on Update Cascade,
+	CONSTRAINT FOREIGN KEY(doId) REFERENCES DeliveryOrder(doId) on Delete Cascade on Update Cascade
+);
+
+CREATE TABLE Seafood(
+	itemCode VARCHAR(6) NOT NULL,
+	description VARCHAR(50),
+	qtyOnHand INT(5),
+	purchasedPrice DECIMAL(8,2),
+	sellingPrice DECIMAL(8,2),
+	CONSTRAINT PRIMARY KEY (itemCode)
+);
+
+CREATE TABLE OrderDetail(
+	orderId VARCHAR(6) NOT NULL,
+	itemCode VARCHAR(6) NOT NULL,
+	qty INT(11),
+	unitPrice DECIMAL(8,2),
+	discount DECIMAL(8,2),
+	CONSTRAINT PRIMARY KEY (orderId,itemCode),
+	CONSTRAINT FOREIGN KEY (orderId) REFERENCES _Order(orderId) on Delete Cascade on Update Cascade,
+	CONSTRAINT FOREIGN KEY (itemCode) REFERENCES Seafood(itemCode) on Delete Cascade on Update Cascade
+);
+
+CREATE TABLE Boat(
+	boatId VARCHAR(10) NOT NULL,
+	ownerName VARCHAR(30),
+	ownerContact VARCHAR(15),
+	CONSTRAINT PRIMARY KEY(boatId)
+);
+
+CREATE TABLE Purchased(
+	purchasedId VARCHAR(6) NOT NULL,
+	date DATETIME,
+	boatId VARCHAR(6) NOT NULL,
+	CONSTRAINT PRIMARY KEY (purchasedId),
+	CONSTRAINT FOREIGN KEY(boatId) REFERENCES Boat(boatId) on Delete Cascade on Update Cascade
+);
+
+CREATE TABLE PurchaseDetail(
+	purchasedId VARCHAR(6) NOT NULL,
+	itemCode VARCHAR(6) NOT NULL,
+	qty INT(11),
+	purchasedPrice DECIMAL(8,2),
+	CONSTRAINT PRIMARY KEY (purchasedId,itemCode),
+	CONSTRAINT FOREIGN KEY (purchasedId) REFERENCES Purchased(purchasedId) on Delete Cascade on Update Cascade,
+	CONSTRAINT FOREIGN KEY (itemCode) REFERENCES Seafood(itemCode) on Delete Cascade on Update Cascade
+);
+
+CREATE TABLE Login(
+	name VARCHAR(20) NOT NULL,
+	role  VARCHAR(20) NOT NULL,
+	userName  VARCHAR(20) NOT NULL,
+	password VARCHAR(20),
+	CONSTRAINT PRIMARY KEY (userName)
+);
