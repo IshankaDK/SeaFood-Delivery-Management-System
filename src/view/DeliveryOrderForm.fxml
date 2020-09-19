@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="949.0" prefWidth="1591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeliveryOrderFormController">
+   <children>
+      <AnchorPane fx:id="root" layoutX="80.0" layoutY="80.0" prefHeight="1309.0" prefWidth="1941.0" style="-fx-background-color: #b2bec3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="135.0" layoutY="43.0" prefHeight="87.0" prefWidth="583.0" text="Delivery Orders Form">
+               <font>
+                  <Font name="MV Boli" size="46.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="87.0" fitWidth="90.0" layoutX="34.0" layoutY="42.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assert/icons8_Deliver_Food_48px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
+               <image>
+                  <Image url="@../assert/back.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <JFXComboBox layoutX="107.0" layoutY="198.0" prefHeight="63.0" prefWidth="367.0" promptText="Driver Id" />
+            <JFXTextField labelFloat="true" layoutX="512.0" layoutY="198.0" prefHeight="63.0" prefWidth="367.0" promptText="Driver Name">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField labelFloat="true" layoutX="918.0" layoutY="198.0" prefHeight="63.0" prefWidth="367.0" promptText="Driver Contact">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField labelFloat="true" layoutX="107.0" layoutY="302.0" prefHeight="63.0" prefWidth="367.0" promptText="Order Id">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField labelFloat="true" layoutX="512.0" layoutY="302.0" prefHeight="63.0" prefWidth="367.0" promptText="Delivery Order Id">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField labelFloat="true" layoutX="918.0" layoutY="302.0" prefHeight="63.0" prefWidth="367.0" promptText="Client Id">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <TextField alignment="CENTER" layoutX="107.0" layoutY="468.0" prefHeight="63.0" prefWidth="367.0" text="00:00:00">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" layoutX="512.0" layoutY="468.0" prefHeight="63.0" prefWidth="367.0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" layoutX="918.0" layoutY="468.0" prefHeight="63.0" prefWidth="367.0" text="In Progress">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="107.0" layoutY="388.0" prefHeight="63.0" prefWidth="367.0" text="Departure Time">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="512.0" layoutY="388.0" prefHeight="63.0" prefWidth="367.0" text="Arrival Time">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="918.0" layoutY="388.0" prefHeight="63.0" prefWidth="367.0" text="Deliver Status">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <TableView layoutX="107.0" layoutY="572.0" prefHeight="317.0" prefWidth="1182.0">
+              <columns>
+                <TableColumn prefWidth="151.00003051757812" text="Delivery Order Id" />
+                <TableColumn minWidth="0.0" prefWidth="156.0" text="Order Id" />
+                  <TableColumn minWidth="0.0" prefWidth="153.0" text="Client Id" />
+                  <TableColumn minWidth="0.0" prefWidth="183.0" text="Departure Time" />
+                  <TableColumn minWidth="0.0" prefWidth="206.0" text="Arrival Time" />
+                  <TableColumn minWidth="0.0" prefWidth="169.0" text="Status" />
+                  <TableColumn minWidth="0.0" prefWidth="169.0" text="Remove" />
+              </columns>
+            </TableView>
+            <JFXButton layoutX="1329.0" layoutY="468.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #38ada9;" text="+ Add to Table">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="1329.0" layoutY="682.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #eb2f06;" text="Save All" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="1329.0" layoutY="790.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #f6b93b;" text="Print All">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="1329.0" layoutY="572.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #1e3799;" text="Save &amp; Print " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

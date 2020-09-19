@@ -26,13 +26,15 @@
                   <Image url="@../assert/icons8_Customer_40px.png" />
                </image>
             </ImageView>
-            <TableView fx:id="tblClient" layoutX="636.0" layoutY="187.0" prefHeight="619.0" prefWidth="907.0">
+            <TableView fx:id="tblClient" layoutX="583.0" layoutY="187.0" prefHeight="619.0" prefWidth="997.0">
               <columns>
-                <TableColumn prefWidth="123.0" text="Client ID" />
-                <TableColumn prefWidth="198.0" text="Name" />
-                  <TableColumn prefWidth="190.0" text="Address" />
-                  <TableColumn minWidth="0.0" prefWidth="162.0" text="Contact" />
-                  <TableColumn minWidth="0.0" prefWidth="142.0" text="Type" />
+                <TableColumn prefWidth="120.0" text="Client ID" />
+                <TableColumn prefWidth="191.0" text="Name" />
+                  <TableColumn prefWidth="220.0" text="Address" />
+                  <TableColumn minWidth="0.0" prefWidth="122.0" text="Contact" />
+                  <TableColumn minWidth="0.0" prefWidth="126.0" text="Type" />
+                  <TableColumn minWidth="0.0" prefWidth="105.0" text="Delete" />
+                  <TableColumn minWidth="0.0" prefWidth="112.0" text="Update" />
               </columns>
             </TableView>
             <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">

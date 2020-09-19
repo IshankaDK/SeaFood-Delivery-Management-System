@@ -32,9 +32,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="177.0" layoutY="11.0" onMouseReleased="#imgOrderOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="177.0" layoutY="11.0" onMouseReleased="#imgSeaFoodOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assert/icons8_Purchase_Order_40px.png" />
+                  <Image url="@../assert/icons8_Crab_48px.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -48,15 +48,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="334.0" layoutY="11.0" onMouseReleased="#imgPurchaseOnAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assert/icons8_Buy_52px_1.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="407.0" layoutY="11.0" onMouseReleased="#imgDOrderOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="338.0" layoutY="11.0" onMouseReleased="#imgDOrderOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/icons8_Deliver_Food_48px.png" />
                </image>
@@ -107,7 +99,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="487.0" layoutY="14.0" onMouseReleased="#imgDriverOnAction" pickOnBounds="true">
+            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="418.0" layoutY="14.0" onMouseReleased="#imgDriverOnAction" pickOnBounds="true">
                <image>
                   <Image url="@../assert/2481723.png" />
                </image>
@@ -134,7 +126,7 @@
                   <Image url="@../assert/icons8_customer_96px.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />
@@ -156,7 +148,7 @@
                   <Image url="@../assert/icons8_crab_96px_1.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />
@@ -178,7 +170,7 @@
                   <Image url="@../assert/icons8_create_order_96px.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />
@@ -200,13 +192,13 @@
                   <Image url="@../assert/icons8_purchase_order_96px.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />
                </effect>
             </ImageView>
-            <JFXButton alignment="CENTER_RIGHT" layoutX="26.0" layoutY="928.0" onAction="#btnReportOnAction" opacity="0.92" prefHeight="81.0" prefWidth="267.0" style="-fx-background-color: rgba(30, 144, 255,1.0);" text="Reports" textFill="WHITE">
+            <JFXButton alignment="CENTER_RIGHT" layoutX="26.0" layoutY="924.0" onAction="#btnReportOnAction" opacity="0.92" prefHeight="81.0" prefWidth="267.0" style="-fx-background-color: rgba(30, 144, 255,1.0);" text="Reports" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -217,12 +209,12 @@
                   <Glow />
                </effect>
             </JFXButton>
-            <ImageView fitHeight="81.0" fitWidth="90.0" layoutX="34.0" layoutY="920.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="81.0" fitWidth="90.0" layoutX="34.0" layoutY="916.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/icons8_Report_Card_100px.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />
@@ -244,7 +236,7 @@
                   <Image url="@../assert/icons8_Delivery_100px.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />
@@ -266,7 +258,7 @@
                   <Image url="@../assert/icons8_water_transportation_96px.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />
@@ -288,7 +280,7 @@
                   <Image url="@../assert/driver.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <effect>
                   <Blend mode="ADD" />

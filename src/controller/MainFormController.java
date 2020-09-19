@@ -50,38 +50,39 @@ public class MainFormController {
         initUI("ClientForm.fxml");
     }
 
-    public void imgOrderOnAction(MouseEvent mouseEvent) {
+    public void imgBoatOnAction(MouseEvent mouseEvent) throws IOException {
+        initUI("BoatForm.fxml");
     }
 
-    public void imgBoatOnAction(MouseEvent mouseEvent) {
-    }
-
-    public void imgPurchaseOnAction(MouseEvent mouseEvent) {
-    }
-
-    public void imgDOrderOnAction(MouseEvent mouseEvent) {
+    public void imgDOrderOnAction(MouseEvent mouseEvent) throws IOException {
+        initUI("DeliveryOrderForm.fxml");
     }
 
     public void btnClientOnAction(ActionEvent actionEvent) throws IOException {
         initUI("ClientForm.fxml");
     }
 
-    public void btnItemOnAction(ActionEvent actionEvent) {
+    public void btnItemOnAction(ActionEvent actionEvent) throws IOException {
+        initUI("SeaFoodForm.fxml");
     }
 
-    public void btnOrderOnAction(ActionEvent actionEvent) {
+    public void btnOrderOnAction(ActionEvent actionEvent) throws IOException {
+        initUI("OrderForm.fxml");
     }
 
-    public void btnPurchaseOnAction(ActionEvent actionEvent) {
+    public void btnPurchaseOnAction(ActionEvent actionEvent) throws IOException {
+        initUI("PurchaseForm.fxml");
     }
 
     public void btnReportOnAction(ActionEvent actionEvent) {
     }
 
-    public void btnDOrderOnAction(ActionEvent actionEvent) {
+    public void btnDOrderOnAction(ActionEvent actionEvent) throws IOException {
+        initUI("DeliveryOrderForm.fxml");
     }
 
-    public void btnBoatOnAction(ActionEvent actionEvent) {
+    public void btnBoatOnAction(ActionEvent actionEvent) throws IOException {
+        initUI("BoatForm.fxml");
     }
 
     public void imgExitOnAction(MouseEvent mouseEvent) {
@@ -94,5 +95,9 @@ public class MainFormController {
 
     public void imgDriverOnAction(MouseEvent mouseEvent) throws IOException {
         initUI("DriverForm.fxml");
+    }
+
+    public void imgSeaFoodOnAction(MouseEvent mouseEvent) throws IOException {
+        initUI("SeaFoodForm.fxml");
     }
 }
