@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="949.0" prefWidth="1591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportFormController">
+   <children>
+      <AnchorPane fx:id="root" layoutX="40.0" layoutY="40.0" prefHeight="1049.0" prefWidth="1681.0" style="-fx-background-color: #b2bec3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="135.0" layoutY="43.0" prefHeight="87.0" prefWidth="583.0" text="Report Form">
+               <font>
+                  <Font name="MV Boli" size="46.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="87.0" fitWidth="90.0" layoutX="34.0" layoutY="42.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assert/call-report-icon-3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
+               <image>
+                  <Image url="@../assert/icons8_Home_48px.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="76.0" layoutY="177.0" prefHeight="73.0" prefWidth="379.0" style="-fx-background-color: #25CCF7;" text="Total Income">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutX="409.0" layoutY="177.0" prefHeight="73.0" prefWidth="379.0" style="-fx-background-color: #1B9CFC;" text="0.00">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="811.0" layoutY="177.0" prefHeight="73.0" prefWidth="379.0" style="-fx-background-color: #26de81;" text="Total Paid Cost">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="1158.0" layoutY="177.0" prefHeight="73.0" prefWidth="379.0" style="-fx-background-color: #20bf6b;" text="0.00">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="56.0" layoutY="282.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
+            <Label alignment="CENTER" layoutX="76.0" layoutY="294.0" prefHeight="73.0" prefWidth="719.0" style="-fx-background-color: #0fb9b1;" text="Most Moveable SeaFood Items" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblMostItem" layoutX="75.0" layoutY="389.0" prefHeight="198.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
+              <columns>
+                <TableColumn prefWidth="97.00003051757812" text="Item Code" />
+                <TableColumn prefWidth="157.0" text="Description" />
+                  <TableColumn prefWidth="157.0" text="Qty On Hand ( Kg )" />
+                  <TableColumn prefWidth="150.0" text="Purchased Price" />
+                  <TableColumn prefWidth="154.0" text="Selling Price" />
+              </columns>
+            </TableView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="809.0" layoutY="283.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
+            <Label alignment="CENTER" layoutX="821.0" layoutY="294.0" prefHeight="73.0" prefWidth="719.0" style="-fx-background-color: #eb3b5a;" text="Least Moveable SeaFood Items" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblLeastItem" layoutX="825.0" layoutY="388.0" prefHeight="200.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
+               <columns>
+                  <TableColumn prefWidth="97.00003051757812" text="Item Code" />
+                  <TableColumn prefWidth="157.0" text="Description" />
+                  <TableColumn prefWidth="157.0" text="Qty On Hand ( Kg )" />
+                  <TableColumn prefWidth="150.0" text="Purchased Price" />
+                  <TableColumn prefWidth="154.0" text="Selling Price" />
+               </columns>
+            </TableView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="249.0" layoutX="76.0" layoutY="646.0" stroke="BLACK" strokeType="INSIDE" width="1458.0" />
+            <Label alignment="CENTER" layoutX="88.0" layoutY="618.0" prefHeight="27.0" prefWidth="408.0" style="-fx-background-color: #3867d6;" text="Client wise Income" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <JFXComboBox layoutX="140.0" layoutY="688.0" prefHeight="73.0" prefWidth="294.0" promptText="Client Id" />
+            <Label alignment="CENTER" layoutX="138.0" layoutY="788.0" prefHeight="73.0" prefWidth="294.0" style="-fx-background-color: #2bcbba;" text="Client Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="460.0" layoutY="788.0" prefHeight="73.0" prefWidth="379.0" style="-fx-background-color: #2bcbba;" text="Client Address" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="870.0" layoutY="788.0" prefHeight="73.0" prefWidth="315.0" style="-fx-background-color: #2bcbba;" text="Client Contact" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="912.0" layoutY="690.0" prefHeight="73.0" prefWidth="90.0" style="-fx-background-color: #26de81;" text="Rs." textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="1216.0" layoutY="788.0" prefHeight="73.0" prefWidth="294.0" style="-fx-background-color: #2bcbba;" text="Client Type" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="1002.0" layoutY="690.0" prefHeight="73.0" prefWidth="379.0" style="-fx-background-color: #4b6584;" text="0.00" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

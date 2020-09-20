@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="949.0" prefWidth="1591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PurchaseFormController">
    <children>
       <AnchorPane fx:id="root" layoutX="70.0" layoutY="70.0" prefHeight="1229.0" prefWidth="1861.0" style="-fx-background-color: #b2bec3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -30,7 +29,7 @@
             </ImageView>
             <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
                <image>
-                  <Image url="@../assert/back.png" />
+                  <Image url="@../assert/icons8_Home_48px.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

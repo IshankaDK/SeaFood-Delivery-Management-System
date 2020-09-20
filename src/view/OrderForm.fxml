@@ -29,7 +29,7 @@
             </ImageView>
             <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
                <image>
-                  <Image url="@../assert/back.png" />
+                  <Image url="@../assert/icons8_Home_48px.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -52,11 +52,6 @@
                </font>
             </JFXTextField>
             <JFXTextField labelFloat="true" layoutX="433.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Order Date">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="796.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="DO Id">
                <font>
                   <Font size="24.0" />
                </font>

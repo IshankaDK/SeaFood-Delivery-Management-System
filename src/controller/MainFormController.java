@@ -11,9 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainFormController {
 
@@ -27,7 +30,14 @@ public class MainFormController {
     }
 
     private void generateDateTime() {
-        lblDate.setText(LocalDate.now().toString());
+        /*lblDate.setText(LocalDate.now().toString());*/
+        Date date = Calendar.getInstance().getTime(); // OR new Date()
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
+
+        String formatStr = dateFormat.format(date);
+
+        lblDate.setText(formatStr);
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
@@ -74,7 +84,8 @@ public class MainFormController {
         initUI("PurchaseForm.fxml");
     }
 
-    public void btnReportOnAction(ActionEvent actionEvent) {
+    public void btnReportOnAction(ActionEvent actionEvent) throws IOException {
+        initUI("ReportForm.fxml");
     }
 
     public void btnDOrderOnAction(ActionEvent actionEvent) throws IOException {

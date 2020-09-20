@@ -56,9 +56,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="lblDate" alignment="CENTER" layoutX="719.0" layoutY="11.0" prefHeight="59.0" prefWidth="274.0" text="2020-01-01">
+            <Label fx:id="lblDate" alignment="CENTER" layoutX="617.0" layoutY="11.0" prefHeight="59.0" prefWidth="502.0" text="Wednseday, January 01,2020">
                <font>
-                  <Font name="Broadway" size="40.0" />
+                  <Font name="Broadway" size="31.0" />
                </font>
                <textFill>
                   <LinearGradient endX="0.29611650485436897" endY="0.8495145631067962" startX="0.6504854368932039" startY="0.8446601941747572">
@@ -69,7 +69,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="lblTime" alignment="CENTER_RIGHT" layoutX="1122.0" layoutY="10.0" prefHeight="59.0" prefWidth="274.0" text="00:00:00">
+            <Label fx:id="lblTime" alignment="CENTER_RIGHT" layoutX="1164.0" layoutY="10.0" prefHeight="59.0" prefWidth="274.0" text="00:00:00">
                <font>
                   <Font name="Broadway" size="40.0" />
                </font>
@@ -83,7 +83,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="1064.0" layoutY="11.0" onMouseReleased="#imgDOrderOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="1119.0" layoutY="11.0" onMouseReleased="#imgDOrderOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/icons8_Clock_64px.png" />
                </image>
@@ -91,7 +91,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="646.0" layoutY="10.0" onMouseReleased="#imgDOrderOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="547.0" layoutY="10.0" onMouseReleased="#imgDOrderOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/icons8_Calendar_50px.png" />
                </image>
@@ -209,7 +209,7 @@
                   <Glow />
                </effect>
             </JFXButton>
-            <ImageView fitHeight="81.0" fitWidth="90.0" layoutX="34.0" layoutY="916.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="81.0" fitWidth="90.0" layoutX="34.0" layoutY="922.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/icons8_Report_Card_100px.png" />
                </image>

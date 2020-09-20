@@ -85,7 +85,7 @@
             </Label>
             <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
                <image>
-                  <Image url="@../assert/back.png" />
+                  <Image url="@../assert/icons8_Home_48px.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
