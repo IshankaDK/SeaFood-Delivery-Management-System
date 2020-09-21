@@ -14,5 +14,5 @@ public class ReportFormController {
         this.root.getChildren().clear();
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
     }
-
+    public String a = "s";
 }
