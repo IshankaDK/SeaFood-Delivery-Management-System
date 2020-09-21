@@ -5,9 +5,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -23,6 +26,7 @@ public class MainFormController {
     public Label lblTime;
     public Label lblDate;
     public AnchorPane root;
+    public ImageView minIcon;
 
     public void initialize() throws IOException {
         initUI("DefaultForm.fxml");
@@ -84,9 +88,6 @@ public class MainFormController {
         initUI("PurchaseForm.fxml");
     }
 
-    public void btnReportOnAction(ActionEvent actionEvent) throws IOException {
-        initUI("ReportForm.fxml");
-    }
 
     public void btnDOrderOnAction(ActionEvent actionEvent) throws IOException {
         initUI("DeliveryOrderForm.fxml");
@@ -96,19 +97,28 @@ public class MainFormController {
         initUI("BoatForm.fxml");
     }
 
-    public void imgExitOnAction(MouseEvent mouseEvent) {
-        System.exit(0);
+    public void imgExitOnAction(MouseEvent mouseEvent) { System.exit(0);
     }
 
     public void btnDriverOnAction(ActionEvent actionEvent) throws IOException {
         initUI("DriverForm.fxml");
     }
 
-    public void imgDriverOnAction(MouseEvent mouseEvent) throws IOException {
-        initUI("DriverForm.fxml");
-    }
-
     public void imgSeaFoodOnAction(MouseEvent mouseEvent) throws IOException {
         initUI("SeaFoodForm.fxml");
     }
+
+    public void btnQuickOrderOnAction(ActionEvent actionEvent) throws IOException {
+        initUI("QuickOrderForm.fxml");
+    }
+
+    public void imgQuickOrderOnAction(MouseEvent mouseEvent) throws IOException {
+        initUI("QuickOrderForm.fxml");
+    }
+
+    public void imgMinimizeOnAction(MouseEvent mouseEvent) {
+        Stage s = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        s.setIconified(true);
+    }
+
 }

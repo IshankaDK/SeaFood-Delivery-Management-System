@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="949.0" prefWidth="1591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BoatFormController">
@@ -34,6 +35,7 @@
                   <TableColumn minWidth="0.0" prefWidth="160.0" text="Update" />
                </columns>
             </TableView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="619.0" layoutX="57.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="554.0" />
             <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
@@ -49,7 +51,7 @@
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnAdd" layoutX="415.0" layoutY="648.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="415.0" layoutY="648.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#f7fc02" style="-fx-background-color: #10ac84;" text="+ Add">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>

@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="961.0" prefWidth="1591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientFormController">
@@ -26,7 +27,7 @@
                   <Image url="@../assert/icons8_Customer_40px.png" />
                </image>
             </ImageView>
-            <TableView fx:id="tblClient" layoutX="583.0" layoutY="187.0" prefHeight="619.0" prefWidth="997.0">
+            <TableView fx:id="tblClient" layoutX="593.0" layoutY="187.0" prefHeight="619.0" prefWidth="987.0">
               <columns>
                 <TableColumn prefWidth="120.0" text="Client ID" />
                 <TableColumn prefWidth="191.0" text="Name" />
@@ -37,6 +38,7 @@
                   <TableColumn minWidth="0.0" prefWidth="112.0" text="Update" />
               </columns>
             </TableView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="619.0" layoutX="26.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="554.0" />
             <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
@@ -58,7 +60,7 @@
                </font>
             </JFXTextField>
             <JFXComboBox labelFloat="true" layoutX="105.0" layoutY="710.0" prefHeight="54.0" prefWidth="198.0" promptText="Client Type" visibleRowCount="5" />
-            <JFXButton layoutX="415.0" layoutY="717.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="717.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#e5ff00" style="-fx-background-color: #10ac84;" text="+ Add">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>

@@ -11,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="949.0" prefWidth="1591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeliveryOrderFormController">
@@ -35,6 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="403.0" layoutX="67.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1252.0" />
             <JFXComboBox layoutX="107.0" layoutY="198.0" prefHeight="63.0" prefWidth="367.0" promptText="Driver Id" />
             <JFXTextField labelFloat="true" layoutX="512.0" layoutY="198.0" prefHeight="63.0" prefWidth="367.0" promptText="Driver Name">
                <font>
@@ -91,7 +93,7 @@
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <TableView layoutX="107.0" layoutY="572.0" prefHeight="317.0" prefWidth="1182.0">
+            <TableView layoutX="103.0" layoutY="579.0" prefHeight="317.0" prefWidth="1182.0">
               <columns>
                 <TableColumn prefWidth="151.00003051757812" text="Delivery Order Id" />
                 <TableColumn minWidth="0.0" prefWidth="156.0" text="Order Id" />
@@ -102,25 +104,37 @@
                   <TableColumn minWidth="0.0" prefWidth="169.0" text="Remove" />
               </columns>
             </TableView>
-            <JFXButton layoutX="1329.0" layoutY="468.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #38ada9;" text="+ Add to Table">
+            <JFXButton buttonType="RAISED" layoutX="1334.0" layoutY="169.0" prefHeight="63.0" prefWidth="243.0" ripplerFill="#def50e" style="-fx-background-color: #38ada9;" text="+ Add to Table">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
-            <JFXButton layoutX="1329.0" layoutY="682.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #eb2f06;" text="Save All" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="1334.0" layoutY="383.0" prefHeight="63.0" prefWidth="243.0" ripplerFill="#ad0ff5" style="-fx-background-color: #eb2f06;" text="Save All" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
-            <JFXButton layoutX="1329.0" layoutY="790.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #f6b93b;" text="Print All">
+            <JFXButton buttonType="RAISED" layoutX="1334.0" layoutY="491.0" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #f6b93b;" text="Print All">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
-            <JFXButton layoutX="1329.0" layoutY="572.0" prefHeight="63.0" prefWidth="243.0" style="-fx-background-color: #1e3799;" text="Save &amp; Print " textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="1334.0" layoutY="273.0" prefHeight="63.0" prefWidth="243.0" ripplerFill="#0fcaf5" style="-fx-background-color: #1e3799;" text="Save &amp; Print " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
          </children>
       </AnchorPane>
