@@ -111,32 +111,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1290.0" layoutY="581.0" prefHeight="87.0" prefWidth="226.0" ripplerFill="#0d38ff" style="-fx-background-color: #0abde3;" text="Save">
+            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1290.0" layoutY="627.0" prefHeight="70.0" prefWidth="197.0" ripplerFill="#0d38ff" style="-fx-background-color: #0abde3;" text="Save">
                <font>
-                  <Font name="Dubai Bold" size="36.0" />
+                  <Font name="Dubai Bold" size="28.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <ImageView fitHeight="73.0" fitWidth="58.0" pickOnBounds="true">
+                  <ImageView fitHeight="42.0" fitWidth="39.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assert/save.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1290.0" layoutY="728.0" prefHeight="87.0" prefWidth="226.0" ripplerFill="#0d38ff" style="-fx-background-color: #0abde3;" text="Print">
-               <font>
-                  <Font name="Dubai Bold" size="36.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="73.0" fitWidth="58.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../assert/print-131964753156480777.png" />
                      </image>
                   </ImageView>
                </graphic>

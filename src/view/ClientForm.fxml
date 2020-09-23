@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,40 +28,40 @@
                   <Image url="@../assert/icons8_Customer_40px.png" />
                </image>
             </ImageView>
-            <TableView fx:id="tblClient" layoutX="593.0" layoutY="187.0" prefHeight="619.0" prefWidth="987.0">
+            <TableView fx:id="tblClient" editable="true" layoutX="595.0" layoutY="262.0" prefHeight="544.0" prefWidth="966.0">
               <columns>
-                <TableColumn prefWidth="120.0" text="Client ID" />
-                <TableColumn prefWidth="191.0" text="Name" />
-                  <TableColumn prefWidth="220.0" text="Address" />
-                  <TableColumn minWidth="0.0" prefWidth="122.0" text="Contact" />
-                  <TableColumn minWidth="0.0" prefWidth="126.0" text="Type" />
-                  <TableColumn minWidth="0.0" prefWidth="105.0" text="Delete" />
-                  <TableColumn minWidth="0.0" prefWidth="112.0" text="Update" />
+                <TableColumn fx:id="colClientId" prefWidth="113.0" text="Client ID" />
+                <TableColumn fx:id="colClientName" prefWidth="198.0" text="Name" />
+                  <TableColumn fx:id="colClientAddress" prefWidth="220.0" text="Address" />
+                  <TableColumn fx:id="colClientContact" minWidth="0.0" prefWidth="122.0" text="Contact" />
+                  <TableColumn fx:id="colClientType" minWidth="0.0" prefWidth="108.0" text="Type" />
+                  <TableColumn fx:id="colDeleteButton" minWidth="0.0" prefWidth="99.0" text="Delete" />
+                  <TableColumn fx:id="colUpdateButton" minWidth="0.0" prefWidth="102.0" text="Update" />
               </columns>
             </TableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="619.0" layoutX="26.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="554.0" />
-            <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientId" layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="108.0" layoutY="360.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientName" layoutX="108.0" layoutY="360.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="109.0" layoutY="475.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientAddress" layoutX="109.0" layoutY="475.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="109.0" layoutY="593.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientContact" layoutX="109.0" layoutY="593.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXComboBox labelFloat="true" layoutX="105.0" layoutY="710.0" prefHeight="54.0" prefWidth="198.0" promptText="Client Type" visibleRowCount="5" />
-            <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="717.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#e5ff00" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXComboBox fx:id="cmbClientType" labelFloat="true" layoutX="105.0" layoutY="710.0" prefHeight="54.0" prefWidth="198.0" promptText="Client Type" style="-fx-font-size: 24;" visibleRowCount="5" />
+            <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="717.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#e5ff00" style="-fx-background-color: #10ac84;" text="+ Add">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
@@ -93,6 +94,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <TextField fx:id="txtSearch" layoutX="1119.0" layoutY="187.0" onAction="#txtSearchOnAction" prefHeight="63.0" prefWidth="442.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" layoutX="971.0" layoutY="187.0" prefHeight="63.0" prefWidth="134.0" text="Search">
+               <font>
+                  <Font name="System Bold" size="42.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

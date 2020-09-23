@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -18,29 +17,13 @@
             <Font name="MV Boli" size="46.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00e676" height="105.0" layoutX="199.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="1241.0" />
-      <Label alignment="CENTER" layoutX="206.0" layoutY="169.0" prefHeight="87.0" prefWidth="1225.0" text="WelCome to New Ocean SeaFood Delivery System">
-         <font>
-            <Font name="Elephant" size="48.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="0.47572815533980584" endY="0.7718446601941749" startX="0.47572815533980584" startY="0.5242718446601942">
-               <stops>
-                  <Stop color="#dd0404" />
-                  <Stop color="#dd0404" offset="0.007246376811594203" />
-                  <Stop color="BLACK" offset="0.9019607843137255" />
-                  <Stop color="BLACK" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
       <ImageView fitHeight="87.0" fitWidth="90.0" layoutX="34.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assert/icons8_Home_48px.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="38.0" layoutY="599.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
-      <TableView fx:id="tblMostItem" layoutX="53.0" layoutY="711.0" prefHeight="198.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="38.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
+      <TableView fx:id="tblMostItem" layoutX="53.0" layoutY="630.0" prefHeight="198.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
          <columns>
             <TableColumn prefWidth="97.00003051757812" text="Item Code" />
             <TableColumn prefWidth="157.0" text="Description" />
@@ -49,8 +32,8 @@
             <TableColumn prefWidth="154.0" text="Selling Price" />
          </columns>
       </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="820.0" layoutY="599.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
-      <TableView fx:id="tblLeastItem" layoutX="835.0" layoutY="710.0" prefHeight="200.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="820.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
+      <TableView fx:id="tblLeastItem" layoutX="835.0" layoutY="629.0" prefHeight="200.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
          <columns>
             <TableColumn prefWidth="97.00003051757812" text="Item Code" />
             <TableColumn prefWidth="157.0" text="Description" />
@@ -59,119 +42,120 @@
             <TableColumn prefWidth="154.0" text="Selling Price" />
          </columns>
       </TableView>
-      <Label alignment="CENTER" layoutX="53.0" layoutY="618.0" prefHeight="73.0" prefWidth="719.0" style="-fx-background-color: #0fb9b1;" text="Most Moveable SeaFood Items" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="53.0" layoutY="543.0" prefHeight="73.0" prefWidth="719.0" style="-fx-background-color: #0fb9b1;" text="Most Moveable SeaFood Items" textFill="WHITE">
          <font>
             <Font name="System Bold" size="39.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="835.0" layoutY="618.0" prefHeight="73.0" prefWidth="719.0" style="-fx-background-color: #eb3b5a;" text="Least Moveable SeaFood Items" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="835.0" layoutY="543.0" prefHeight="73.0" prefWidth="719.0" style="-fx-background-color: #eb3b5a;" text="Least Moveable SeaFood Items" textFill="WHITE">
          <font>
             <Font name="System Bold" size="39.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="311.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #009432;" />
-      <ImageView fitHeight="150.0" fitWidth="182.0" layoutX="224.0" layoutY="333.0" opacity="0.33" pickOnBounds="true">
+      <Label layoutX="41.0" layoutY="204.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #009432;" />
+      <ImageView fitHeight="150.0" fitWidth="182.0" layoutX="224.0" layoutY="226.0" opacity="0.33" pickOnBounds="true">
          <image>
             <Image url="@../assert/orderfordashboard.png" />
          </image>
       </ImageView>
-      <Label layoutX="55.0" layoutY="341.0" prefHeight="61.0" prefWidth="252.0" text="Total Order:" textFill="WHITE">
+      <Label layoutX="55.0" layoutY="234.0" prefHeight="61.0" prefWidth="252.0" text="Total Order:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="55.0" layoutY="408.0" prefHeight="61.0" prefWidth="252.0" text="Total Orders Today:" textFill="WHITE">
+      <Label layoutX="55.0" layoutY="301.0" prefHeight="61.0" prefWidth="252.0" text="Total Orders Today:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="210.0" layoutY="344.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label layoutX="210.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="290.0" layoutY="411.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label layoutX="290.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="427.0" layoutY="311.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #B71C1C;" />
-      <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="615.0" layoutY="333.0" opacity="0.33" pickOnBounds="true">
+      <Label layoutX="427.0" layoutY="204.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #B71C1C;" />
+      <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="615.0" layoutY="226.0" opacity="0.33" pickOnBounds="true">
          <image>
             <Image url="@../assert/clientfordashboard.png" />
          </image>
       </ImageView>
-      <Label layoutX="441.0" layoutY="341.0" prefHeight="61.0" prefWidth="252.0" text="Total Clients:" textFill="WHITE">
+      <Label layoutX="441.0" layoutY="234.0" prefHeight="61.0" prefWidth="252.0" text="Total Clients:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="441.0" layoutY="408.0" prefHeight="61.0" prefWidth="252.0" text="Total Clients Today:" textFill="WHITE">
+      <Label layoutX="441.0" layoutY="301.0" prefHeight="61.0" prefWidth="252.0" text="Total Clients Today:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="596.0" layoutY="344.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label layoutX="596.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="674.0" layoutY="411.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label layoutX="674.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="813.0" layoutY="311.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #673AB7;" />
-      <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="1001.0" layoutY="333.0" opacity="0.33" pickOnBounds="true">
+      <Label layoutX="813.0" layoutY="204.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #673AB7;" />
+      <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="1001.0" layoutY="226.0" opacity="0.33" pickOnBounds="true">
          <image>
             <Image url="@../assert/boatfordash.png" />
          </image>
       </ImageView>
-      <Label layoutX="827.0" layoutY="341.0" prefHeight="61.0" prefWidth="252.0" text="Total Boats:" textFill="WHITE">
+      <Label layoutX="827.0" layoutY="234.0" prefHeight="61.0" prefWidth="252.0" text="Total Boats:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="827.0" layoutY="408.0" prefHeight="61.0" prefWidth="252.0" text="Total Boats Today:" textFill="WHITE">
+      <Label layoutX="827.0" layoutY="301.0" prefHeight="61.0" prefWidth="252.0" text="Total Boats Today:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="982.0" layoutY="344.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label layoutX="982.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1050.0" layoutY="411.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label layoutX="1050.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1201.0" layoutY="310.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #F79F1F;" />
-      <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="1389.0" layoutY="332.0" opacity="0.33" pickOnBounds="true">
+      <Label layoutX="1201.0" layoutY="203.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #F79F1F;" />
+      <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="1389.0" layoutY="225.0" opacity="0.33" pickOnBounds="true">
          <image>
             <Image url="@../assert/crabfordash.png" />
          </image>
       </ImageView>
-      <Label layoutX="1215.0" layoutY="341.0" prefHeight="61.0" prefWidth="252.0" text="Total SeaFoods:" textFill="WHITE">
+      <Label layoutX="1215.0" layoutY="234.0" prefHeight="61.0" prefWidth="252.0" text="Total SeaFoods:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1215.0" layoutY="407.0" prefHeight="61.0" prefWidth="263.0" text="Total SeaFoods Today:" textFill="WHITE">
+      <Label layoutX="1215.0" layoutY="300.0" prefHeight="61.0" prefWidth="263.0" text="Total SeaFoods Today:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1401.0" layoutY="343.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label layoutX="1401.0" layoutY="236.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1477.0" layoutY="410.0" prefHeight="61.0" prefWidth="70.0" text="0" textFill="WHITE">
+      <Label layoutX="1477.0" layoutY="303.0" prefHeight="61.0" prefWidth="70.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
+      <Separator layoutX="14.0" layoutY="463.0" opacity="0.53" prefHeight="3.0" prefWidth="1572.0" />
    </children>
 </AnchorPane>

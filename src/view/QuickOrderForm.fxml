@@ -122,7 +122,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutX="1333.0" layoutY="610.0" prefHeight="93.0" prefWidth="248.0" ripplerFill="#1207ee" style="-fx-background-color: #0abde3;" text="Place Order">
+            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutX="1333.0" layoutY="586.0" prefHeight="73.0" prefWidth="248.0" ripplerFill="#1207ee" style="-fx-background-color: #0abde3;" text="Place Order">
                <font>
                   <Font name="Dubai Regular" size="30.0" />
                </font>
@@ -130,14 +130,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <ImageView fitHeight="73.0" fitWidth="58.0" pickOnBounds="true">
+                  <ImageView fitHeight="55.0" fitWidth="58.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assert/complete-icon-png-22.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1333.0" layoutY="757.0" prefHeight="93.0" prefWidth="248.0" ripplerFill="#1207ee" style="-fx-background-color: #0abde3;" text="Print Bill">
+            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1333.0" layoutY="720.0" prefHeight="73.0" prefWidth="248.0" ripplerFill="#1207ee" style="-fx-background-color: #0abde3;" text="Print Bill">
                <font>
                   <Font name="Dubai Regular" size="30.0" />
                </font>
@@ -145,7 +145,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <ImageView fitHeight="73.0" fitWidth="58.0" pickOnBounds="true">
+                  <ImageView fitHeight="56.0" fitWidth="58.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assert/print-131964753156480777.png" />
                      </image>

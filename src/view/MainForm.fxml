@@ -8,8 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1030.0" prefWidth="1862.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
@@ -24,72 +22,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="97.0" layoutY="11.0" onMouseReleased="#imgClientOnAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assert/ClientX.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="177.0" layoutY="11.0" onMouseReleased="#imgSeaFoodOnAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assert/fishX.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="258.0" layoutY="10.0" onMouseReleased="#imgBoatOnAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assert/boatX.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="338.0" layoutY="11.0" onMouseReleased="#imgDOrderOnAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assert/deliveryX.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <Label fx:id="lblDate" alignment="CENTER" layoutX="528.0" layoutY="10.0" prefHeight="59.0" prefWidth="537.0" text="Wednseday, January 01,2020">
+            <Label fx:id="lblTime" layoutX="1119.0" layoutY="9.0" prefHeight="59.0" prefWidth="274.0" text="00:00:00" textFill="WHITE">
                <font>
-                  <Font name="Broadway" size="31.0" />
+                  <Font name="Arial" size="38.0" />
                </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="0.7815533980582524" startX="0.21844660194174756" startY="0.22815533980582525">
-                     <stops>
-                        <Stop color="#ddc1c1" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
             </Label>
-            <Label fx:id="lblTime" layoutX="1066.0" layoutY="9.0" prefHeight="59.0" prefWidth="274.0" text="00:00:00">
+            <Label fx:id="lblDate" layoutX="34.0" layoutY="11.0" prefHeight="59.0" prefWidth="677.0" text="Wednseday, January 01,2020" textFill="WHITE">
                <font>
-                  <Font name="Broadway" size="38.0" />
+                  <Font name="Arial" size="31.0" />
                </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="0.7815533980582524" startX="0.35922330097087374" startY="0.49514563106796117">
-                     <stops>
-                        <Stop color="#b5a8a8" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
             </Label>
-            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="418.0" layoutY="14.0" onMouseReleased="#imgQuickOrderOnAction" pickOnBounds="true">
-               <image>
-                  <Image url="@../assert/quickorderX.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
             <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="1426.0" layoutY="10.0" onMouseReleased="#imgMinimizeOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/minimize.png" />
@@ -101,40 +43,17 @@
          </children></AnchorPane>
       <AnchorPane layoutY="-4.0" prefHeight="305.0" prefWidth="321.0" style="-fx-background-color: #1A237E;">
          <children>
-            <ImageView fitHeight="194.0" fitWidth="268.0" layoutX="21.0" layoutY="87.0" opacity="0.88" pickOnBounds="true" smooth="false">
+            <ImageView fitHeight="203.0" fitWidth="282.0" layoutX="17.0" layoutY="46.0" pickOnBounds="true">
                <image>
-                  <Image url="@../assert/customLogo.png" />
+                  <Image url="@../assert/logo.png" />
                </image>
-               <effect>
-                  <Glow />
-               </effect>
             </ImageView>
-            <Label alignment="TOP_CENTER" graphicTextGap="20.0" layoutX="21.0" layoutY="14.0" prefHeight="59.0" prefWidth="268.0" text="ADMIN" textFill="#ffea00">
-               <font>
-                  <Font name="System Bold" size="42.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../assert/admin.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="336.0" layoutY="12.0" onMouseReleased="#imgHomeOnAction" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assert/homeX.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <AnchorPane fx:id="root" layoutX="321.0" layoutY="81.0" prefHeight="949.0" prefWidth="1591.0" style="-fx-background-color: #6a89cc;" />
-      <VBox layoutX="-6.0" layoutY="299.0" prefHeight="731.0" prefWidth="327.0" style="-fx-background-color: #1A237E;">
+      <AnchorPane fx:id="root" layoutX="321.0" layoutY="80.0" prefHeight="949.0" prefWidth="1591.0" style="-fx-background-color: #6a89cc;" />
+      <VBox alignment="TOP_CENTER" layoutX="-6.0" layoutY="299.0" prefHeight="731.0" prefWidth="327.0" style="-fx-background-color: #1A237E;">
          <children>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnClientOnAction" opacity="0.92" prefHeight="71.0" prefWidth="328.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Clients" textFill="WHITE">
+            <JFXButton fx:id="btnClient" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnClientOnAction" opacity="0.92" prefHeight="79.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Client" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -152,7 +71,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnItemOnAction" opacity="0.92" prefHeight="58.0" prefWidth="328.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Items" textFill="WHITE">
+            <JFXButton fx:id="btnSeaFood" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnItemOnAction" opacity="0.92" prefHeight="81.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="SeaFood" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -170,7 +89,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnPurchaseOnAction" opacity="0.92" prefHeight="46.0" prefWidth="328.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Purchase" textFill="WHITE">
+            <JFXButton fx:id="btnPurchase" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnPurchaseOnAction" opacity="0.92" prefHeight="83.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Purchase" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -188,7 +107,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnOrderOnAction" opacity="0.92" prefHeight="71.0" prefWidth="323.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Orders" textFill="WHITE">
+            <JFXButton fx:id="btnOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnOrderOnAction" opacity="0.92" prefHeight="83.0" prefWidth="323.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -206,7 +125,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnQuickOrderOnAction" opacity="0.92" prefHeight="58.0" prefWidth="328.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Quick Order" textFill="WHITE">
+            <JFXButton fx:id="btnQuickOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnQuickOrderOnAction" opacity="0.92" prefHeight="82.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Quick Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -224,7 +143,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDOrderOnAction" opacity="0.92" prefHeight="75.0" prefWidth="328.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Delivery Order" textFill="WHITE">
+            <JFXButton fx:id="btnDeliveryOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDOrderOnAction" opacity="0.92" prefHeight="82.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Delivery Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="32.0" />
                </font>
@@ -242,7 +161,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnBoatOnAction" opacity="0.92" prefHeight="62.0" prefWidth="328.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Boats" textFill="WHITE">
+            <JFXButton fx:id="btnBoat" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnBoatOnAction" opacity="0.92" prefHeight="84.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Boat" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -260,7 +179,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDriverOnAction" opacity="0.92" prefHeight="75.0" prefWidth="328.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Drivers" textFill="WHITE">
+            <JFXButton fx:id="btnDriver" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDriverOnAction" opacity="0.92" prefHeight="85.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Driver" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>

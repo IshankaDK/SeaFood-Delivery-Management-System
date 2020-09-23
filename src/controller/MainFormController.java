@@ -1,12 +1,15 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +30,14 @@ public class MainFormController {
     public Label lblDate;
     public AnchorPane root;
     public ImageView minIcon;
+    public JFXButton btnClient;
+    public JFXButton btnSeaFood;
+    public JFXButton btnPurchase;
+    public JFXButton btnOrder;
+    public JFXButton btnQuickOrder;
+    public JFXButton btnDeliveryOrder;
+    public JFXButton btnBoat;
+    public JFXButton btnDriver;
 
     public void initialize() throws IOException {
         initUI("DefaultForm.fxml");
@@ -55,46 +66,54 @@ public class MainFormController {
         this.root.getChildren().clear();
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/"+location)));
     }
-
-    public void imgHomeOnAction(MouseEvent mouseEvent) throws IOException {
-        initUI("DefaultForm.fxml");
-    }
-
-    public void imgClientOnAction(MouseEvent mouseEvent) throws IOException {
-        initUI("ClientForm.fxml");
-    }
-
-    public void imgBoatOnAction(MouseEvent mouseEvent) throws IOException {
-        initUI("BoatForm.fxml");
-    }
-
-    public void imgDOrderOnAction(MouseEvent mouseEvent) throws IOException {
-        initUI("DeliveryOrderForm.fxml");
-    }
+    
 
     public void btnClientOnAction(ActionEvent actionEvent) throws IOException {
         initUI("ClientForm.fxml");
+        DropShadow shadow = new DropShadow();
+        btnClient.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        btnClient.setEffect(shadow);
+                    }
+                });
+
+        btnClient.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        btnClient.setEffect(null);
+                    }
+                });
+        btnClient.requestFocus();
     }
 
     public void btnItemOnAction(ActionEvent actionEvent) throws IOException {
         initUI("SeaFoodForm.fxml");
+        btnSeaFood.requestFocus();
     }
 
     public void btnOrderOnAction(ActionEvent actionEvent) throws IOException {
         initUI("OrderForm.fxml");
+        btnOrder.requestFocus();
     }
 
     public void btnPurchaseOnAction(ActionEvent actionEvent) throws IOException {
         initUI("PurchaseForm.fxml");
+        btnPurchase.requestFocus();
     }
 
 
     public void btnDOrderOnAction(ActionEvent actionEvent) throws IOException {
         initUI("DeliveryOrderForm.fxml");
+        btnDeliveryOrder.requestFocus();
     }
 
     public void btnBoatOnAction(ActionEvent actionEvent) throws IOException {
         initUI("BoatForm.fxml");
+        btnBoat.requestFocus();
+
     }
 
     public void imgExitOnAction(MouseEvent mouseEvent) { System.exit(0);
@@ -102,18 +121,12 @@ public class MainFormController {
 
     public void btnDriverOnAction(ActionEvent actionEvent) throws IOException {
         initUI("DriverForm.fxml");
-    }
-
-    public void imgSeaFoodOnAction(MouseEvent mouseEvent) throws IOException {
-        initUI("SeaFoodForm.fxml");
+        btnDriver.requestFocus();
     }
 
     public void btnQuickOrderOnAction(ActionEvent actionEvent) throws IOException {
         initUI("QuickOrderForm.fxml");
-    }
-
-    public void imgQuickOrderOnAction(MouseEvent mouseEvent) throws IOException {
-        initUI("QuickOrderForm.fxml");
+        btnQuickOrder.requestFocus();
     }
 
     public void imgMinimizeOnAction(MouseEvent mouseEvent) {
