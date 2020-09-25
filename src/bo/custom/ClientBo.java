@@ -8,6 +8,8 @@ public interface ClientBo {
     public boolean saveClient(ClientDTO dto) throws Exception;
     public boolean deleteClient(String id) throws Exception;
     public boolean updateClient(ClientDTO dto) throws Exception;
+    public ClientDTO getClient(String id) throws Exception;
     public ArrayList<ClientDTO> getAllClient() throws  Exception;
+    public String getClientID() throws  Exception;
 
 }

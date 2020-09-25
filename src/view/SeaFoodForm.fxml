@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,37 +27,40 @@
                   <Image url="@../assert/icons8_Crab_48px_1.png" />
                </image>
             </ImageView>
-            <TableView fx:id="tblSeaFood" layoutX="575.0" layoutY="187.0" prefHeight="678.0" prefWidth="1002.0">
+            <TableView fx:id="tblSeaFood" layoutX="575.0" layoutY="289.0" prefHeight="576.0" prefWidth="1002.0">
                <columns>
-                  <TableColumn prefWidth="119.0" text="Item Code" />
-                  <TableColumn prefWidth="249.0" text="Description" />
-                  <TableColumn minWidth="0.0" prefWidth="161.0" text="Qty On Hand ( Kg )" />
-                  <TableColumn minWidth="0.0" prefWidth="147.0" text="Purchased Price" />
-                  <TableColumn minWidth="0.0" prefWidth="122.0" text="Selling Price" />
-                  <TableColumn minWidth="0.0" prefWidth="97.0" text="Delete" />
-                  <TableColumn minWidth="0.0" prefWidth="106.0" text="Update" />
+                  <TableColumn fx:id="colCode" prefWidth="119.0" text="Item Code" />
+                  <TableColumn fx:id="colDescription" prefWidth="249.0" text="Description" />
+                  <TableColumn fx:id="colQtyOnHand" minWidth="0.0" prefWidth="161.0" text="Qty On Hand ( Kg )" />
+                  <TableColumn fx:id="colPurchasePrice" minWidth="0.0" prefWidth="147.0" text="Purchased Price" />
+                  <TableColumn fx:id="colSellingPrice" minWidth="0.0" prefWidth="122.0" text="Selling Price" />
+                  <TableColumn fx:id="colDeleteButton" minWidth="0.0" prefWidth="97.0" text="Delete" />
+                  <TableColumn fx:id="colUpdateButton" minWidth="0.0" prefWidth="106.0" text="Update" />
                </columns>
             </TableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="678.0" layoutX="14.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="554.0" />
-            <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtCode" layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="108.0" layoutY="358.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtDescription" layoutX="108.0" layoutY="358.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="107.0" layoutY="466.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtQtyOnHand" layoutX="107.0" layoutY="466.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="416.0" layoutY="779.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#deff07" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="416.0" layoutY="779.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#deff07" style="-fx-background-color: #10ac84;" text="+ Add">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <Label layoutX="108.0" layoutY="212.0" prefHeight="47.0" prefWidth="442.0" text="Item Code" textFill="#041272">
                <font>
@@ -81,7 +85,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXTextField layoutX="106.0" layoutY="575.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtPurchasePrice" layoutX="106.0" layoutY="575.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -91,7 +95,7 @@
                   <Font name="Century Schoolbook" size="24.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="105.0" layoutY="680.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtSellPrice" layoutX="105.0" layoutY="680.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -101,6 +105,16 @@
                   <Font name="Century Schoolbook" size="24.0" />
                </font>
             </Label>
+            <TextField fx:id="txtSearch" layoutX="1164.0" layoutY="187.0" onAction="#txtSearchOnAction" prefHeight="63.0" prefWidth="398.0" promptText="Search">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="63.0" fitWidth="84.0" layoutX="1058.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/searchimage.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

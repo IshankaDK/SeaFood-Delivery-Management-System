@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,38 +27,38 @@
                   <Image url="@../assert/2481723.png" />
                </image>
             </ImageView>
-            <TableView fx:id="tblClient" layoutX="636.0" layoutY="187.0" prefHeight="619.0" prefWidth="907.0">
+            <TableView fx:id="tblDriver" layoutX="636.0" layoutY="277.0" prefHeight="529.0" prefWidth="907.0">
                <columns>
-                  <TableColumn prefWidth="123.0" text="Driver Id" />
-                  <TableColumn prefWidth="198.0" text="Driver Name" />
-                  <TableColumn prefWidth="190.0" text="Driver Address" />
-                  <TableColumn minWidth="0.0" prefWidth="162.0" text="Driver Contact" />
-                  <TableColumn minWidth="0.0" prefWidth="127.0" text="Delete" />
-                  <TableColumn minWidth="0.0" prefWidth="106.0" text="Update" />
+                  <TableColumn fx:id="colDriverId" prefWidth="123.0" text="Driver Id" />
+                  <TableColumn fx:id="colDriverName" prefWidth="198.0" text="Driver Name" />
+                  <TableColumn fx:id="colDriverAddress" prefWidth="200.0" text="Driver Address" />
+                  <TableColumn fx:id="colDriverContact" minWidth="0.0" prefWidth="169.0" text="Driver Contact" />
+                  <TableColumn fx:id="colDeleteButton" minWidth="0.0" prefWidth="111.0" text="Delete" />
+                  <TableColumn fx:id="colUpdateButton" minWidth="0.0" prefWidth="105.0" text="Update" />
                </columns>
             </TableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="619.0" layoutX="34.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="554.0" />
-            <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtDriverId" layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="108.0" layoutY="360.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtDriverName" layoutX="108.0" layoutY="360.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="109.0" layoutY="475.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtDriverAddress" layoutX="109.0" layoutY="475.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="109.0" layoutY="593.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtDriverContact" layoutX="109.0" layoutY="593.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="690.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#ddff01" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="690.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#ddff01" style="-fx-background-color: #10ac84;" text="+ Add">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
@@ -93,6 +94,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <TextField fx:id="txtSearch" layoutX="1124.0" layoutY="187.0" onAction="#txtSearchOnAction" prefHeight="73.0" prefWidth="414.0" promptText="Search">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>

@@ -13,6 +13,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -70,22 +71,6 @@ public class MainFormController {
 
     public void btnClientOnAction(ActionEvent actionEvent) throws IOException {
         initUI("ClientForm.fxml");
-        DropShadow shadow = new DropShadow();
-        btnClient.addEventHandler(MouseEvent.MOUSE_ENTERED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        btnClient.setEffect(shadow);
-                    }
-                });
-
-        btnClient.addEventHandler(MouseEvent.MOUSE_EXITED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        btnClient.setEffect(null);
-                    }
-                });
         btnClient.requestFocus();
     }
 

@@ -36,59 +36,53 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <TableView layoutX="83.0" layoutY="500.0" prefHeight="394.0" prefWidth="1106.0">
+            <TableView fx:id="tblPurchase" layoutX="109.0" layoutY="500.0" prefHeight="394.0" prefWidth="1032.0">
                <columns>
-                  <TableColumn prefWidth="131.0" text="Item Code" />
-                  <TableColumn prefWidth="291.9999694824219" text="Description" />
-                  <TableColumn prefWidth="186.0" text="Qty ( Kg )" />
-                  <TableColumn prefWidth="191.0" text="Buying Price ( per Kg )" />
-                  <TableColumn prefWidth="176.0" text="Total Price" />
-                  <TableColumn prefWidth="127.0" text="Remove" />
+                  <TableColumn fx:id="colCode" prefWidth="160.0" text="Item Code" />
+                  <TableColumn fx:id="colDescription" prefWidth="310.0" text="Description" />
+                  <TableColumn fx:id="colQty" prefWidth="178.0" text="Qty ( Kg )" />
+                  <TableColumn fx:id="colPurchasedPrice" prefWidth="197.0" text="Purchased Price ( per Kg )" />
+                  <TableColumn fx:id="colTotal" prefWidth="180.0" text="Total Price" />
                </columns>
             </TableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="361.0" layoutX="17.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1557.0" />
-            <JFXTextField labelFloat="true" layoutX="84.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Purchase ID">
+            <JFXTextField fx:id="txtPurchaseId" labelFloat="true" layoutX="84.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Purchase ID">
                <font>
-                  <Font size="24.0" />
+                  <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="433.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Purchase Date">
+            <JFXTextField fx:id="txtPurchaseDate" labelFloat="true" layoutX="433.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Purchase Date">
                <font>
-                  <Font size="24.0" />
+                  <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXComboBox labelFloat="true" layoutX="81.0" layoutY="257.0" prefHeight="51.0" prefWidth="300.0" promptText="Boat Id" />
-            <JFXTextField labelFloat="true" layoutX="434.0" layoutY="255.0" prefHeight="51.0" prefWidth="300.0" promptText="Owners' Name">
+            <JFXComboBox fx:id="cmbBoatId" labelFloat="true" layoutX="789.0" layoutY="165.0" onAction="#cmbBoatIdOnAction" prefHeight="51.0" prefWidth="300.0" promptText="Boat Id" style="-fx-font-size: 25;" />
+            <JFXTextField fx:id="txtOwnerName" editable="false" labelFloat="true" layoutX="434.0" layoutY="255.0" prefHeight="51.0" prefWidth="300.0" promptText="Owners' Name">
                <font>
-                  <Font size="24.0" />
+                  <Font size="25.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="434.0" layoutY="346.0" prefHeight="51.0" prefWidth="300.0" text="Description">
+            <Label alignment="CENTER" layoutX="417.0" layoutY="360.0" prefHeight="51.0" prefWidth="416.0" text="Description">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="766.0" layoutY="346.0" prefHeight="51.0" prefWidth="173.0" text="Qty On Hand">
+            <Label alignment="CENTER" layoutX="846.0" layoutY="360.0" prefHeight="51.0" prefWidth="173.0" text="Qty On Hand">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="959.0" layoutY="346.0" prefHeight="51.0" prefWidth="173.0" text="Buying Price">
+            <Label alignment="CENTER" layoutX="1033.0" layoutY="360.0" prefHeight="51.0" prefWidth="173.0" text="Purchased Price">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="1404.0" layoutY="360.0" prefHeight="51.0" prefWidth="148.0" text="Qty ( Kg )">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="81.0" layoutY="346.0" prefHeight="51.0" prefWidth="300.0" text="Item Code">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="1157.0" layoutY="346.0" prefHeight="51.0" prefWidth="173.0" text="Qty ( Kg )">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-            <TextField alignment="CENTER" layoutX="1162.0" layoutY="407.0" prefHeight="51.0" prefWidth="173.0">
+            <TextField fx:id="txtQTY" alignment="CENTER" layoutX="1404.0" layoutY="421.0" prefHeight="54.0" prefWidth="148.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -103,7 +97,7 @@
                   <Font name="System Bold" size="56.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="1373.0" layoutY="404.0" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" style="-fx-background-color: #1dd1a1;" text="+ Add">
+            <JFXButton buttonType="RAISED" layoutX="1216.0" layoutY="528.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" style="-fx-background-color: #1dd1a1;" text="+ Add">
                <font>
                   <Font name="Arial" size="30.0" />
                </font>
@@ -111,9 +105,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1290.0" layoutY="627.0" prefHeight="70.0" prefWidth="197.0" ripplerFill="#0d38ff" style="-fx-background-color: #0abde3;" text="Save">
+            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="50.0" layoutX="1269.0" layoutY="627.0" onAction="#btnSaveOnAction" prefHeight="70.0" prefWidth="230.0" ripplerFill="#0d38ff" style="-fx-background-color: #0abde3;" text="Save">
                <font>
-                  <Font name="Dubai Bold" size="28.0" />
+                  <Font name="Dubai Bold" size="27.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -126,31 +120,55 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <TextField alignment="CENTER" layoutX="968.0" layoutY="407.0" prefHeight="51.0" prefWidth="173.0">
+            <TextField fx:id="txtPurchasedPrice" alignment="CENTER" layoutX="1033.0" layoutY="421.0" prefHeight="51.0" prefWidth="173.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <JFXTextField labelFloat="true" layoutX="789.0" layoutY="257.0" prefHeight="51.0" prefWidth="300.0" promptText="Owners' Contact">
+            <JFXTextField fx:id="txtOwnerContact" editable="false" labelFloat="true" layoutX="789.0" layoutY="257.0" prefHeight="51.0" prefWidth="300.0" promptText="Owners' Contact">
                <font>
-                  <Font size="24.0" />
+                  <Font size="25.0" />
                </font>
             </JFXTextField>
-            <TextField alignment="CENTER" layoutX="79.0" layoutY="407.0" prefHeight="54.0" prefWidth="300.0" promptText="Press Enter to Search">
+            <TextField fx:id="txtDescription" editable="false" layoutX="413.0" layoutY="421.0" prefHeight="54.0" prefWidth="416.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" layoutX="427.0" layoutY="407.0" prefHeight="54.0" prefWidth="300.0">
+            <TextField fx:id="txtQtyOnHand" alignment="CENTER" editable="false" layoutX="846.0" layoutY="421.0" prefHeight="54.0" prefWidth="173.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" layoutX="766.0" layoutY="407.0" prefHeight="54.0" prefWidth="173.0">
+            <JFXComboBox fx:id="cmbSeaFoodItem" layoutX="75.0" layoutY="412.0" onAction="#cmbSeaFoodItemOnAction" prefHeight="60.0" prefWidth="300.0" style="-fx-font-size: 28;" />
+            <Label alignment="CENTER" layoutX="77.0" layoutY="350.0" prefHeight="51.0" prefWidth="300.0" text="SeaFood Code">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="1389.0" layoutY="528.0" onAction="#btnRemoveOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" style="-fx-background-color: #B71C1C;" text="- Remove" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label alignment="CENTER" layoutX="1218.0" layoutY="360.0" prefHeight="51.0" prefWidth="173.0" text="Selling Price">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtSellingPrice" alignment="CENTER" layoutX="1218.0" layoutY="421.0" prefHeight="51.0" prefWidth="173.0">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
+            <JFXTextField fx:id="txtBoatName" editable="false" labelFloat="true" layoutX="84.0" layoutY="257.0" prefHeight="51.0" prefWidth="300.0" promptText="Boat Name">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
    </children>

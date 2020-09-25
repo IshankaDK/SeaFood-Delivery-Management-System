@@ -27,6 +27,21 @@ public class ClientDaoImpl implements ClientDAO {
     }
 
     @Override
+    public Client get(String s) throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT * FROM Client WHERE clientId =? ",s);
+        if(set.next()){
+            return new Client(
+                    set.getString(1),
+                    set.getString(2),
+                    set.getString(3),
+                    set.getString(4),
+                    set.getString(5)
+            );
+        }
+        return null;
+    }
+
+    @Override
     public ArrayList<Client> getAll() throws Exception {
         ResultSet set =  CrudUtil.execute("SELECT * FROM Client");
         ArrayList<Client> clientArrayList = new ArrayList<>();

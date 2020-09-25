@@ -65,6 +65,9 @@
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <Label layoutX="108.0" layoutY="212.0" prefHeight="47.0" prefWidth="442.0" text="Client Id " textFill="#041272">
                <font>
@@ -94,16 +97,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <TextField fx:id="txtSearch" layoutX="1119.0" layoutY="187.0" onAction="#txtSearchOnAction" prefHeight="63.0" prefWidth="442.0">
+            <TextField fx:id="txtSearch" layoutX="1119.0" layoutY="187.0" onAction="#txtSearchOnAction" prefHeight="63.0" prefWidth="442.0" promptText="Search">
                <font>
                   <Font size="30.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER_RIGHT" layoutX="971.0" layoutY="187.0" prefHeight="63.0" prefWidth="134.0" text="Search">
-               <font>
-                  <Font name="System Bold" size="42.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="63.0" fitWidth="84.0" layoutX="1041.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/searchimage.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

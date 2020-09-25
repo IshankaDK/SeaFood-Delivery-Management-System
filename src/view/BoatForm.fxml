@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,47 +27,51 @@
                   <Image url="@../assert/fishing-boat-2519937-2113517.png" />
                </image>
             </ImageView>
-            <TableView fx:id="tblBoats" layoutX="636.0" layoutY="187.0" prefHeight="619.0" prefWidth="907.0">
+            <TableView fx:id="tblBoats" layoutX="640.0" layoutY="276.0" prefHeight="527.0" prefWidth="910.0">
                <columns>
-                  <TableColumn prefWidth="160.0" text="Boat ID" />
-                  <TableColumn prefWidth="233.0" text="Owners' Name" />
-                  <TableColumn minWidth="0.0" prefWidth="204.0" text="Owners' Contact" />
-                  <TableColumn minWidth="0.0" prefWidth="148.0" text="Delete" />
-                  <TableColumn minWidth="0.0" prefWidth="160.0" text="Update" />
+                  <TableColumn fx:id="colBoatId" prefWidth="124.0" text="Boat ID" />
+                  <TableColumn fx:id="colBoatName" prefWidth="199.0" text="Boat Name" />
+                  <TableColumn fx:id="colOwnerName" minWidth="0.0" prefWidth="182.0" text="Owners' Name" />
+                  <TableColumn fx:id="colOwnerContact" minWidth="0.0" prefWidth="185.0" text="Owners' Contact" />
+                  <TableColumn fx:id="colDeleteButton" minWidth="0.0" prefWidth="97.0" text="Delete" />
+                  <TableColumn fx:id="colUpdateButton" prefWidth="117.0" text="Update" />
                </columns>
             </TableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="619.0" layoutX="57.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="554.0" />
-            <JFXTextField layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtBoatId" layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="108.0" layoutY="382.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtOwnerName" layoutX="108.0" layoutY="498.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="107.0" layoutY="516.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtOwnerContact" layoutX="107.0" layoutY="632.0" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="415.0" layoutY="648.0" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#f7fc02" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="427.0" layoutY="722.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="63.0" prefWidth="134.0" ripplerFill="#f7fc02" style="-fx-background-color: #10ac84;" text="+ Add">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <Label layoutX="108.0" layoutY="212.0" prefHeight="47.0" prefWidth="442.0" text="Boat Id " textFill="#041272">
                <font>
                   <Font name="Century Schoolbook" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="107.0" layoutY="341.0" prefHeight="47.0" prefWidth="442.0" text="Owners' Name" textFill="#041272">
+            <Label layoutX="107.0" layoutY="457.0" prefHeight="47.0" prefWidth="442.0" text="Owners' Name" textFill="#041272">
                <font>
                   <Font name="Century Schoolbook" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="107.0" layoutY="469.0" prefHeight="47.0" prefWidth="442.0" text="Owners' Contact" textFill="#041272">
+            <Label layoutX="107.0" layoutY="585.0" prefHeight="47.0" prefWidth="442.0" text="Owners' Contact" textFill="#041272">
                <font>
                   <Font name="Century Schoolbook" size="24.0" />
                </font>
@@ -79,6 +84,26 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <TextField fx:id="txtSearch" layoutX="1110.0" layoutY="187.0" onAction="#txtSearchOnAction" prefHeight="47.0" prefWidth="433.0" promptText="Search">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="63.0" fitWidth="84.0" layoutX="1013.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/searchimage.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtBoatName" layoutX="108.0" layoutY="374.0" prefHeight="41.0" prefWidth="442.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="107.0" layoutY="333.0" prefHeight="47.0" prefWidth="442.0" text="Boat Name" textFill="#041272">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

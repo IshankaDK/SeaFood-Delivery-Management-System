@@ -51,7 +51,7 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="root" layoutX="321.0" layoutY="80.0" prefHeight="949.0" prefWidth="1591.0" style="-fx-background-color: #6a89cc;" />
-      <VBox alignment="TOP_CENTER" layoutX="-6.0" layoutY="299.0" prefHeight="731.0" prefWidth="327.0" style="-fx-background-color: #1A237E;">
+      <VBox fx:id="vBox" alignment="TOP_CENTER" layoutX="-6.0" layoutY="299.0" prefHeight="731.0" prefWidth="327.0" style="-fx-background-color: #1A237E;">
          <children>
             <JFXButton fx:id="btnClient" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnClientOnAction" opacity="0.92" prefHeight="79.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Client" textFill="WHITE">
                <font>

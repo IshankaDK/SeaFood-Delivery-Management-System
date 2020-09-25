@@ -8,8 +8,10 @@ import dto.ClientDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -42,6 +44,7 @@ public class ClientFormController {
 
     public void initialize() throws Exception {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.CLIENT);
+        loadId();
         getClientType();
         loadAllClient();
 
@@ -94,19 +97,19 @@ public class ClientFormController {
            try {
                boolean isAdded = bo.saveClient(new ClientDTO(id,name,address,contact,type));
                if (isAdded) {
-                   new Alert(Alert.AlertType.CONFIRMATION, "Saved").showAndWait();
+                   new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
                    loadAllClient();
                    clear();
                } else {
-                   new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again").show();
+                   new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
                }
            } catch (SQLException se){
-               new Alert(Alert.AlertType.ERROR, "SQL Syntax Error").show();
+               new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
            } catch (Exception e) {
-               new Alert(Alert.AlertType.ERROR, "Error").show();
+               new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
            }
        }else {
-           new Alert(Alert.AlertType.WARNING, "Text Field is Empty").show();
+           new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
        }
 
     }
@@ -116,12 +119,16 @@ public class ClientFormController {
         ObservableList<ClientTM> tmList = FXCollections.observableArrayList();
         for (ClientDTO dto : clientDTOS) {
             Button btnDelete = new Button("Delete");
+            btnDelete.setMaxSize(100, 50);
+            btnDelete.setCursor(Cursor.HAND);
             btnDelete.setStyle("-fx-font-weight: bold ; -fx-background-color:  #D50000; ");
             btnDelete.setTextFill(Color.web("#FFFFFF"));
            // btnDelete.setStyle("-fx-background-image: url('/assert/bin.png')");
            // btnDelete.setStyle("-fx-font-size:20");
             //btnDelete.setStyle("-fx-font-weight: bold;");
             Button btnUpdate = new Button("Update");
+            btnUpdate.setMaxSize(100, 50);
+            btnUpdate.setCursor(Cursor.HAND);
            // btnUpdate.setStyle("-fx-background-color: #00BFA5");
             btnUpdate.setStyle("-fx-font-weight: bold ; -fx-background-color:  #00BFA5;");
             //btnUpdate.setStyle();
@@ -184,6 +191,33 @@ public class ClientFormController {
             });
         }
         tblClient.setItems(tmList);
+
+        FilteredList<ClientTM> filteredData = new FilteredList<>(tmList, b -> true);
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(client -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (client.getId().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true;
+                } else if (client.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (client.getAddress().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (client.getContact().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (client.getType().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+                else
+                    return false;
+            });
+        });
+        SortedList<ClientTM> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tblClient.comparatorProperty());
+        tblClient.setItems(sortedData);
     }
 
     public void clear() {
@@ -191,11 +225,26 @@ public class ClientFormController {
         txtClientName.setText(null);
         txtClientAddress.setText(null);
         txtClientContact.setText(null);
+        txtSearch.setText(null);
       //  cmbClientType.requestFocus();
     }
 
+    private void loadId() throws Exception {
+        String id = bo.getClientID();
+        txtClientId.setText(id);
+    }
 
-    public void txtSearchOnAction(ActionEvent actionEvent) {
-
+    public void txtSearchOnAction(ActionEvent actionEvent) throws Exception {
+        ClientDTO dto = bo.getClient(txtSearch.getText().trim());
+        if(dto != null){
+            txtClientId.setText(dto.getId());
+            txtClientName.setText(dto.getName());
+            txtClientAddress.setText(dto.getAddress());
+            txtClientContact.setText(dto.getContact());
+//            cmbClientType.
+        }else{
+            new Alert(Alert.AlertType.INFORMATION,
+                    "Enter Valid Client Id", ButtonType.OK).show();
+        }
     }
 }
