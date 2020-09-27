@@ -3,19 +3,21 @@ package dto;
 public class SeaFoodDTO {
     private String code;
     private String description;
-    private int qtyOnHand;
+    private double qtyOnHand;
     private double purchasePrice;
     private double sellingPrice;
 
-    public SeaFoodDTO() {
-    }
-
-    public SeaFoodDTO(String code, String description, int qtyOnHand, double purchasePrice, double sellingPrice) {
+    public SeaFoodDTO(String code, String description, double qtyOnHand, double purchasePrice, double sellingPrice) {
         this.setCode(code);
         this.setDescription(description);
         this.setQtyOnHand(qtyOnHand);
         this.setPurchasePrice(purchasePrice);
         this.setSellingPrice(sellingPrice);
+    }
+
+
+
+    public SeaFoodDTO() {
     }
 
     public String getCode() {
@@ -34,11 +36,11 @@ public class SeaFoodDTO {
         this.description = description;
     }
 
-    public int getQtyOnHand() {
+    public double getQtyOnHand() {
         return qtyOnHand;
     }
 
-    public void setQtyOnHand(int qtyOnHand) {
+    public void setQtyOnHand(double qtyOnHand) {
         this.qtyOnHand = qtyOnHand;
     }
 

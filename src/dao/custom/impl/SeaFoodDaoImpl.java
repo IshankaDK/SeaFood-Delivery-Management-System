@@ -23,7 +23,7 @@ public class SeaFoodDaoImpl implements SeaFoodDAO {
 
     @Override
     public boolean update(SeaFood seaFood) throws Exception {
-        return CrudUtil.execute("UPDATE Seafood SET description = ? , qtyOnHand = (qtyOnHand+?) , purchasedPrice = ? , sellingPrice = ? WHERE itemCode = ? ",
+        return CrudUtil.execute("UPDATE Seafood SET description = ? , qtyOnHand = ? , purchasedPrice = ? , sellingPrice = ? WHERE itemCode = ? ",
                 seaFood.getDescription(),seaFood.getQtyOnHand(),seaFood.getPurchasePrice(),seaFood.getSellingPrice(),seaFood.getCode());
     }
 
@@ -34,7 +34,7 @@ public class SeaFoodDaoImpl implements SeaFoodDAO {
             return new SeaFood(
                     set.getString(1),
                     set.getString(2),
-                    set.getInt(3),
+                    set.getDouble(3),
                     set.getDouble(4),
                     set.getDouble(5)
             );
@@ -48,7 +48,7 @@ public class SeaFoodDaoImpl implements SeaFoodDAO {
         ArrayList<SeaFood> seaFoods = new ArrayList<>();
         while (set.next()){
             seaFoods.add(new SeaFood(
-                    set.getString(1),set.getString(2),set.getInt(3),
+                    set.getString(1),set.getString(2),set.getDouble(3),
                     set.getDouble(4),set.getDouble(5)
             ));
         }

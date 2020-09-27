@@ -5,13 +5,13 @@ import javafx.scene.control.Button;
 public class SeaFoodTM {
     private String code;
     private String description;
-    private int qtyOnHand;
+    private double qtyOnHand;
     private double purchasePrice;
     private double sellingPrice;
     private Button btnDelete;
     private Button btnUpdate;
 
-    public SeaFoodTM(String code, String description, int qtyOnHand, double purchasePrice, double sellingPrice, Button btnDelete, Button btnUpdate) {
+    public SeaFoodTM(String code, String description, double qtyOnHand, double purchasePrice, double sellingPrice, Button btnDelete, Button btnUpdate) {
         this.setCode(code);
         this.setDescription(description);
         this.setQtyOnHand(qtyOnHand);
@@ -40,11 +40,11 @@ public class SeaFoodTM {
         this.description = description;
     }
 
-    public int getQtyOnHand() {
+    public double getQtyOnHand() {
         return qtyOnHand;
     }
 
-    public void setQtyOnHand(int qtyOnHand) {
+    public void setQtyOnHand(double qtyOnHand) {
         this.qtyOnHand = qtyOnHand;
     }
 

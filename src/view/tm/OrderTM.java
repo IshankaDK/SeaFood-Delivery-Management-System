@@ -1,22 +1,20 @@
 package view.tm;
 
-
-public class PurchaseTM {
+public class OrderTM {
     private String code;
     private String description;
     private double qty;
     private double price;
+    private double discount;
     private double total;
 
-    public PurchaseTM(String code, String description, double qty, double price, double total) {
+    public OrderTM(String code, String description, double qty, double price, double discount, double total) {
         this.setCode(code);
         this.setDescription(description);
         this.setQty(qty);
         this.setPrice(price);
+        this.setDiscount(discount);
         this.setTotal(total);
-    }
-
-    public PurchaseTM() {
     }
 
 
@@ -50,6 +48,14 @@ public class PurchaseTM {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
     public double getTotal() {

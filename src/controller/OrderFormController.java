@@ -13,12 +13,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import view.tm.OrderTM;
+import view.tm.PurchaseTM;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -27,7 +27,7 @@ import java.util.function.BinaryOperator;
 
 public class OrderFormController {
     public AnchorPane root;
-    public TableView tblOrder;
+    public TableView<OrderTM> tblOrder;
     public JFXTextField txtOrderId;
     public JFXTextField txtOrderDate;
     public JFXComboBox cmbClientId;
@@ -89,10 +89,61 @@ public class OrderFormController {
         cmbCode.setItems(observableList);
     }
 
+
+    ObservableList<OrderTM>observableList=FXCollections.observableArrayList();
     public void btnAddOnAction(ActionEvent actionEvent) {
+
+        colCode.setCellValueFactory(new PropertyValueFactory("code"));
+        colDescription.setCellValueFactory(new PropertyValueFactory("description"));
+        colQty.setCellValueFactory(new PropertyValueFactory("qty"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory("price"));
+        colDiscount.setCellValueFactory(new PropertyValueFactory("discount"));
+        colTotal.setCellValueFactory(new PropertyValueFactory("total"));
+
+        String code = String.valueOf(cmbCode.getValue());
+        String desc = txtDescription.getText();
+        double qty =Double.parseDouble(txtQty.getText());
+        double discount = Double.parseDouble(txtDiscount.getText());
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+
+        if (!observableList.isEmpty()) { // check observableList is empty
+            for (int i = 0; i < tblOrder.getItems().size(); i++) { // check all rows in table
+                if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
+                    double temp = (double) colQty.getCellData(i); // get qty in table for temp
+                    temp += qty; // add new qty to old qty
+                    double tot = (temp * unitPrice)-discount; // get new total
+                    observableList.get(i).setQty(temp); // set new qty to observableList
+                    observableList.get(i).setTotal(tot); // set new total to observableList
+                    getSubTotal();
+                    tblOrder.refresh(); // refresh table
+                    return;
+                }
+            }
+        }
+
+        observableList.add(new OrderTM(code, desc, qty, unitPrice,discount, ((qty * unitPrice)-discount)));
+        tblOrder.setItems(observableList); // if their is no list or, no matched itemcode
+        getSubTotal();
+
+    }
+
+    private void getSubTotal() {
+        double tot = 0.0;
+        for (OrderTM orderTM : observableList) {
+            tot += orderTM.getTotal();
+        }
+        lblTotal.setText(String.valueOf(tot));
     }
 
     public void btnRemoveOnAction(ActionEvent actionEvent) {
+        OrderTM selectedItem = tblOrder.getSelectionModel().getSelectedItem();
+        if(selectedItem!=null) {
+            observableList.remove(selectedItem);
+            tblOrder.getItems().remove(selectedItem);
+            getSubTotal();
+        }else{
+            new Alert(Alert.AlertType.WARNING,"Please Select Row that You Want to Remove !").show();
+        }
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {

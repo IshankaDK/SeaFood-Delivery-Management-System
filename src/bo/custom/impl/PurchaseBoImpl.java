@@ -31,8 +31,7 @@ public class PurchaseBoImpl implements PurchaseBo {
     @Override
     public boolean savePurchase(PurchaseDTO dto, ArrayList<PurchaseDetailDTO> purchaseDetailDTOS, SeaFoodDTO foodDTO) throws Exception {
          boolean isPurchaseSaved =  pDao.save(new Purchased(dto.getId(),dto.getDate(),dto.getBoatId()));
-        /* boolean isPurchaseDetailSaved = detailDAO.save(new PurchaseDetail(detailDTO.getId(),detailDTO.getCode(),
-                 detailDTO.getQty(),detailDTO.getPurchasedPrice()));*/
+        // boolean isPurchaseDetailSaved = detailDAO.save(purchaseDetailDTOS);
          boolean isUpdated = foodDAO.update(new SeaFood(foodDTO.getCode(),foodDTO.getDescription(),foodDTO.getQtyOnHand(),
                  foodDTO.getPurchasePrice(),foodDTO.getSellingPrice()));
 

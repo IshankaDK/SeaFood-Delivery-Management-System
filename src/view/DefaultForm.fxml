@@ -25,21 +25,21 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="38.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
       <TableView fx:id="tblMostItem" layoutX="53.0" layoutY="630.0" prefHeight="198.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
          <columns>
-            <TableColumn prefWidth="97.00003051757812" text="Item Code" />
-            <TableColumn prefWidth="157.0" text="Description" />
-            <TableColumn prefWidth="157.0" text="Qty On Hand ( Kg )" />
-            <TableColumn prefWidth="150.0" text="Purchased Price" />
-            <TableColumn prefWidth="154.0" text="Selling Price" />
+            <TableColumn fx:id="colMostCode" prefWidth="97.00003051757812" text="Item Code" />
+            <TableColumn fx:id="colMostDesc" prefWidth="157.0" text="Description" />
+            <TableColumn fx:id="colMostQtyOnHand" prefWidth="157.0" text="Qty On Hand ( Kg )" />
+            <TableColumn fx:id="colMostPurchPrice" prefWidth="150.0" text="Purchased Price" />
+            <TableColumn fx:id="colMostSellPrice" prefWidth="154.0" text="Selling Price" />
          </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="820.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
       <TableView fx:id="tblLeastItem" layoutX="835.0" layoutY="629.0" prefHeight="200.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
          <columns>
-            <TableColumn prefWidth="97.00003051757812" text="Item Code" />
-            <TableColumn prefWidth="157.0" text="Description" />
-            <TableColumn prefWidth="157.0" text="Qty On Hand ( Kg )" />
-            <TableColumn prefWidth="150.0" text="Purchased Price" />
-            <TableColumn prefWidth="154.0" text="Selling Price" />
+            <TableColumn fx:id="colLeastCode" prefWidth="97.00003051757812" text="Item Code" />
+            <TableColumn fx:id="colLeastDesc" prefWidth="157.0" text="Description" />
+            <TableColumn fx:id="colLeastQtyOnHand" prefWidth="157.0" text="Qty On Hand ( Kg )" />
+            <TableColumn fx:id="colLeastPurchPrice" prefWidth="150.0" text="Purchased Price" />
+            <TableColumn fx:id="colLeastSellPrice" prefWidth="154.0" text="Selling Price" />
          </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="53.0" layoutY="543.0" prefHeight="73.0" prefWidth="719.0" style="-fx-background-color: #0fb9b1;" text="Most Moveable SeaFood Items" textFill="WHITE">
@@ -68,12 +68,12 @@
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="210.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalOrder" layoutX="210.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="290.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalOrderToday" layoutX="290.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
@@ -94,12 +94,12 @@
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="596.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalClient" layoutX="596.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="674.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalClientToday" layoutX="674.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
@@ -110,22 +110,22 @@
             <Image url="@../assert/boatfordash.png" />
          </image>
       </ImageView>
-      <Label layoutX="827.0" layoutY="234.0" prefHeight="61.0" prefWidth="252.0" text="Total Boats:" textFill="WHITE">
+      <Label layoutX="827.0" layoutY="234.0" prefHeight="61.0" prefWidth="252.0" text="Total Delivery:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="827.0" layoutY="301.0" prefHeight="61.0" prefWidth="252.0" text="Total Boats Today:" textFill="WHITE">
+      <Label layoutX="827.0" layoutY="301.0" prefHeight="61.0" prefWidth="252.0" text="Total Delivery Today:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="982.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalDelivery" layoutX="996.0" layoutY="237.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1050.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalDeliveryToday" layoutX="1073.0" layoutY="304.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
@@ -146,12 +146,12 @@
             <Font name="System Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1401.0" layoutY="236.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalItem" layoutX="1401.0" layoutY="236.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="1477.0" layoutY="303.0" prefHeight="61.0" prefWidth="70.0" text="0" textFill="WHITE">
+      <Label fx:id="lblTotalItemToday" layoutX="1477.0" layoutY="303.0" prefHeight="61.0" prefWidth="70.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>

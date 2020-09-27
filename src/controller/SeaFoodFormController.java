@@ -90,20 +90,20 @@ public class SeaFoodFormController {
             try {
                 boolean isAdded = bo.saveSeaFood(new SeaFoodDTO(code,description,qtyOnHand,purchasePrice,sellingPrice));
                 if (isAdded) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved").showAndWait();
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
                     loadAllSeaFood();
                     clear();
                     loadCode();
                 } else {
-                    new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again").show();
+                    new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
                 }
             } catch (SQLException se){
-                new Alert(Alert.AlertType.ERROR, "SQL Syntax Error").show();
+                new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR, "Error").show();
+                new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
             }
         }else {
-            new Alert(Alert.AlertType.WARNING, "Text Field is Empty").show();
+            new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
         }
     }
 

@@ -45,6 +45,7 @@ public class PurchaseFormController {
     public TableColumn colQty;
     public TextField txtSellingPrice;
     public JFXTextField txtBoatName;
+    public Label lblTotal;
 
 
     PurchaseBo bo;
@@ -118,19 +119,6 @@ public class PurchaseFormController {
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws Exception {
 
-        String pId = txtPurchaseId.getText().trim();
-        String pDate = txtPurchaseDate.getText().trim();
-        String bId = String.valueOf(cmbBoatId.getValue());
-        String code = String.valueOf(cmbSeaFoodItem.getValue());
-        String description = txtDescription.getText().trim();
-        int qty = Integer.parseInt(txtQTY.getText());
-        double purchasedPrice = Double.parseDouble(txtPurchasedPrice.getText());
-        double sellingPrice = Double.parseDouble(txtSellingPrice.getText());
-
-
-      /*  ArrayList<PurchaseDetailDTO> purchaseDetailDTOS = new ArrayList<>();
-        purchaseDetailDTOS.add(new PurchaseDetailDTO(pId,code,qty,purchasedPrice));*/
-
 
         boolean isSaved = bo.savePurchase(getPurchased(),getPurchasedDetail(),getItemDetail());
         if(isSaved){
@@ -154,14 +142,17 @@ public class PurchaseFormController {
     }
 
     private PurchaseDTO getPurchased() {
-        return null;
+
+        String pId = txtPurchaseId.getText().trim();
+        String pDate = txtPurchaseDate.getText().trim();
+        String bId = String.valueOf(cmbBoatId.getValue());
+
+        return new PurchaseDTO(pId,pDate,bId);
     }
 
+    ObservableList<PurchaseTM>observableList=FXCollections.observableArrayList();
+
     public void btnAddOnAction(ActionEvent actionEvent) {
-        String code = String.valueOf(cmbSeaFoodItem.getValue());
-        String desc = txtDescription.getText();
-        int qty = Integer.parseInt(txtQTY.getText());
-        double purchasedPrice = Double.parseDouble(txtPurchasedPrice.getText());
 
         colCode.setCellValueFactory(new PropertyValueFactory("code"));
         colDescription.setCellValueFactory(new PropertyValueFactory("description"));
@@ -169,31 +160,44 @@ public class PurchaseFormController {
         colPurchasedPrice.setCellValueFactory(new PropertyValueFactory("price"));
         colTotal.setCellValueFactory(new PropertyValueFactory("total"));
 
-        if(qty > 0){
-            PurchaseTM tm = new PurchaseTM(code,desc,qty,purchasedPrice,(qty*purchasedPrice));
-
-            boolean checkItemAdded = tblPurchase.getItems().stream().anyMatch(itemCheck->code.equals(itemCheck.getCode()));
-            if(!checkItemAdded) {
-                tblPurchase.getItems().add(tm);
+        String code = String.valueOf(cmbSeaFoodItem.getValue());
+        String desc = txtDescription.getText();
+        double qty = Double.parseDouble(txtQTY.getText());
+        double purchasedPrice = Double.parseDouble(txtPurchasedPrice.getText());
+        if (!observableList.isEmpty()) { // check observableList is empty
+            for (int i = 0; i < tblPurchase.getItems().size(); i++) { // check all rows in table
+                if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
+                    double temp = (int) colQty.getCellData(i); // get qty in table for temp
+                    temp += qty; // add new qty to old qty
+                    double tot = temp * purchasedPrice; // get new total
+                    observableList.get(i).setQty(temp); // set new qty to observableList
+                    observableList.get(i).setTotal(tot); // set new total to observableList
+                    getSubTotal();
+                    tblPurchase.refresh(); // refresh table
+                    return;
+                }
             }
-            else {
-                /*colQty.setCellFactory(TextFieldTableCell.forTableColumn());
-                colQty.setOnEditCommit(event -> {*/
-//                    int newQ = Integer.parseInt(txtQTY.getText())+qty;
-//                    colQty.setCellValueFactory(new PropertyValueFactory("newQ"));
-//                    System.out.println(newQ);
-//                });
-            }
-
-       }else {
-            new Alert(Alert.AlertType.WARNING,"Enter Valid Quantity..!").show();
         }
+
+        observableList.add(new PurchaseTM(code, desc, qty, purchasedPrice, (qty * purchasedPrice)));
+        tblPurchase.setItems(observableList); // if their is no list or, no matched itemcode
+        getSubTotal();
+
     }
 
+    private void getSubTotal(){
+        double tot = 0.0;
+        for (PurchaseTM purchaseTM : observableList) {
+            tot += purchaseTM.getTotal();
+        }
+        lblTotal.setText(String.valueOf(tot));
+    }
     public void btnRemoveOnAction(ActionEvent actionEvent) {
         PurchaseTM selectedItem = tblPurchase.getSelectionModel().getSelectedItem();
         if(selectedItem!=null) {
+            observableList.remove(selectedItem);
             tblPurchase.getItems().remove(selectedItem);
+            getSubTotal();
         }else{
             new Alert(Alert.AlertType.WARNING,"Please Select Row that You Want to Remove !").show();
         }

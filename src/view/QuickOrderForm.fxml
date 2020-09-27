@@ -88,7 +88,7 @@
                   <Font name="System Bold" size="44.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="1205.0" layoutY="221.0" prefHeight="87.0" prefWidth="300.0" style="-fx-background-color: #222f3e;" text="0.00" textFill="#d0d090">
+            <Label fx:id="lblTotal" alignment="CENTER" layoutX="1205.0" layoutY="221.0" prefHeight="87.0" prefWidth="300.0" style="-fx-background-color: #222f3e;" text="0.00" textFill="#d0d090">
                <font>
                   <Font name="System Bold" size="56.0" />
                </font>

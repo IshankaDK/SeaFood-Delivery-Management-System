@@ -3,10 +3,10 @@ package dto;
 public class PurchaseDetailDTO {
     private String id;
     private String code;
-    private int qty;
+    private double qty;
     private double purchasedPrice;
 
-    public PurchaseDetailDTO(String id, String code, int qty, double purchasedPrice) {
+    public PurchaseDetailDTO(String id, String code, double qty, double purchasedPrice) {
         this.setId(id);
         this.setCode(code);
         this.setQty(qty);
@@ -32,11 +32,11 @@ public class PurchaseDetailDTO {
         this.code = code;
     }
 
-    public int getQty() {
+    public double getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(double qty) {
         this.qty = qty;
     }
 

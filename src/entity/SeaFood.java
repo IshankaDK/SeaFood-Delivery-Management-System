@@ -1,21 +1,22 @@
 package entity;
 
-public class SeaFood implements SuperEntity{
+public class SeaFood implements SuperEntity {
     private String code;
     private String description;
-    private int qtyOnHand;
+    private double qtyOnHand;
     private double purchasePrice;
     private double sellingPrice;
 
-    public SeaFood() {
-    }
-
-    public SeaFood(String code, String description, int qtyOnHand, double purchasePrice, double sellingPrice) {
+    public SeaFood(String code, String description, double qtyOnHand, double purchasePrice, double sellingPrice) {
         this.setCode(code);
         this.setDescription(description);
         this.setQtyOnHand(qtyOnHand);
         this.setPurchasePrice(purchasePrice);
         this.setSellingPrice(sellingPrice);
+    }
+
+
+    public SeaFood() {
     }
 
     public String getCode() {
@@ -34,11 +35,11 @@ public class SeaFood implements SuperEntity{
         this.description = description;
     }
 
-    public int getQtyOnHand() {
+    public double getQtyOnHand() {
         return qtyOnHand;
     }
 
-    public void setQtyOnHand(int qtyOnHand) {
+    public void setQtyOnHand(double qtyOnHand) {
         this.qtyOnHand = qtyOnHand;
     }
 
