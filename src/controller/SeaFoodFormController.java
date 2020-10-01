@@ -2,8 +2,8 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.SeaFoodBo;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import dto.ClientDTO;
 import dto.SeaFoodDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,13 +17,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import view.tm.ClientTM;
+import javafx.scene.paint.Paint;
 import view.tm.SeaFoodTM;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class SeaFoodFormController {
     public AnchorPane root;
@@ -41,6 +42,7 @@ public class SeaFoodFormController {
     public TableColumn colSellingPrice;
     public TableColumn colDeleteButton;
     public TableColumn colUpdateButton;
+    public JFXButton btnAdd;
 
     SeaFoodBo bo;
 
@@ -81,7 +83,7 @@ public class SeaFoodFormController {
     public void btnAddOnAction(ActionEvent actionEvent) {
         String code = txtCode.getText().trim();
         String description = txtDescription.getText().trim();
-        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText().trim());
+        double qtyOnHand = Double.parseDouble(txtQtyOnHand.getText().trim());
         double purchasePrice = Double.parseDouble(txtPurchasePrice.getText().trim());
         double sellingPrice = Double.parseDouble(txtSellPrice.getText().trim());
 
@@ -94,16 +96,21 @@ public class SeaFoodFormController {
                     loadAllSeaFood();
                     clear();
                     loadCode();
+                    txtCode.requestFocus();
                 } else {
                     new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                    txtCode.requestFocus();
                 }
             } catch (SQLException se){
                 new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+                txtCode.requestFocus();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+                txtCode.requestFocus();
             }
         }else {
             new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+            txtCode.requestFocus();
         }
     }
 
@@ -162,7 +169,7 @@ public class SeaFoodFormController {
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.orElse(no) == ok) {
                         if (bo.updateSeaFood(new SeaFoodDTO(txtCode.getText().trim(), txtDescription.getText().trim(),
-                                Integer.parseInt(txtQtyOnHand.getText()), Double.parseDouble(txtPurchasePrice.getText()),
+                                Double.parseDouble(txtQtyOnHand.getText()), Double.parseDouble(txtPurchasePrice.getText()),
                                 Double.parseDouble(txtSellPrice.getText())))) {
                             new Alert(Alert.AlertType.CONFIRMATION,
                                     "Updated", ButtonType.OK).show();
@@ -233,8 +240,70 @@ public class SeaFoodFormController {
             txtPurchasePrice.setText(String.valueOf(dto.getPurchasePrice()));
             txtSellPrice.setText(String.valueOf(dto.getSellingPrice()));
         }else{
+            txtSearch.setStyle("-fx-border-color: #f53b57 ");
+            txtSearch.requestFocus();
             new Alert(Alert.AlertType.INFORMATION,
                     "Enter Valid Client Id", ButtonType.OK).show();
+        }
+    }
+
+    public void txtCodeOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^(SF)[0-9]{1,}$").matcher(txtCode.getText().trim()).matches()){
+            txtCode.setFocusColor(Paint.valueOf("skyblue"));
+            txtDescription.requestFocus();
+        }else {
+            txtCode.setFocusColor(Paint.valueOf("red"));
+            txtCode.requestFocus();
+        }
+    }
+
+    public void txtDescriptionOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[A-z| |()]{1,}$").matcher(txtDescription.getText().trim()).matches()){
+            txtDescription.setFocusColor(Paint.valueOf("skyblue"));
+            txtQtyOnHand.requestFocus();
+        }else {
+            txtDescription.setFocusColor(Paint.valueOf("red"));
+            txtDescription.requestFocus();
+        }
+    }
+
+    public void txtQtyOnHandOnAction(ActionEvent actionEvent) {
+        if (Pattern.compile("^[\\d|.]{1,4}$").matcher(txtQtyOnHand.getText().trim()).matches()) {
+            txtQtyOnHand.setFocusColor(Paint.valueOf("skyblue"));
+            txtPurchasePrice.requestFocus();
+        } else {
+            txtQtyOnHand.setFocusColor(Paint.valueOf("red"));
+            txtQtyOnHand.requestFocus();
+        }
+    }
+
+    public void txtPurchasePriceOnAction(ActionEvent actionEvent) {
+        if (Pattern.compile("^[\\d|.]{1,9}$").matcher(txtPurchasePrice.getText().trim()).matches()) {
+            txtPurchasePrice.setFocusColor(Paint.valueOf("skyblue"));
+            txtSellPrice.requestFocus();
+        } else {
+            txtPurchasePrice.setFocusColor(Paint.valueOf("red"));
+            txtPurchasePrice.requestFocus();
+        }
+    }
+
+    public void txtSellPriceOnAction(ActionEvent actionEvent) {
+        if (Pattern.compile("^[\\d|.]{1,9}$").matcher(txtSellPrice.getText().trim()).matches()) {
+            txtSellPrice.setFocusColor(Paint.valueOf("skyblue"));
+            btnAdd.requestFocus();
+            btnAddOnAction(actionEvent);
+        } else {
+            txtSellPrice.setFocusColor(Paint.valueOf("red"));
+            txtSellPrice.requestFocus();
+        }
+    }
+
+    public void btnNewOnAction(ActionEvent actionEvent) {
+        try {
+            clear();
+            loadCode();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

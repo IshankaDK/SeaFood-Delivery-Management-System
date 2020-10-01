@@ -5,8 +5,6 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -36,53 +34,35 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="403.0" layoutX="20.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1516.0" />
-            <JFXComboBox fx:id="cmbDriverId" layoutX="449.0" layoutY="205.0" onAction="#cmbDriverIdOnAction" prefHeight="63.0" prefWidth="313.0" promptText="Driver Id" style="-fx-font-size: 29;" />
-            <JFXTextField fx:id="txtDriverName" editable="false" labelFloat="true" layoutX="795.0" layoutY="208.0" prefHeight="63.0" prefWidth="313.0" promptText="Driver Name">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="556.0" layoutX="22.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1516.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="207.0" layoutX="302.0" layoutY="716.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="952.0" />
+            <JFXComboBox fx:id="cmbDriverId" layoutX="70.0" layoutY="416.0" onAction="#cmbDriverIdOnAction" prefHeight="63.0" prefWidth="313.0" promptText="Driver Id" style="-fx-font-size: 29;" />
+            <JFXTextField fx:id="txtDriverName" editable="false" labelFloat="true" layoutX="416.0" layoutY="419.0" prefHeight="63.0" prefWidth="313.0" promptText="Driver Name">
                <font>
                   <Font size="29.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtDriverContact" editable="false" labelFloat="true" layoutX="1143.0" layoutY="208.0" prefHeight="63.0" prefWidth="313.0" promptText="Driver Contact">
+            <JFXTextField fx:id="txtDriverContact" editable="false" labelFloat="true" layoutX="764.0" layoutY="419.0" prefHeight="63.0" prefWidth="313.0" promptText="Driver Contact">
                <font>
                   <Font size="29.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtClientName" editable="false" labelFloat="true" layoutX="448.0" layoutY="300.0" prefHeight="63.0" prefWidth="313.0" promptText="Client Name">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </JFXTextField>
-            <Label alignment="CENTER" layoutX="85.0" layoutY="388.0" prefHeight="63.0" prefWidth="313.0" text="Departure Time">
+            <Label alignment="CENTER" layoutX="80.0" layoutY="522.0" prefHeight="63.0" prefWidth="313.0" text="Departure Time">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="448.0" layoutY="388.0" prefHeight="63.0" prefWidth="313.0" text="Delivery Fee">
+            <Label alignment="CENTER" layoutX="445.0" layoutY="523.0" prefHeight="63.0" prefWidth="313.0" text="Delivery Fee">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="795.0" layoutY="388.0" prefHeight="63.0" prefWidth="313.0" text="Delivery Status">
+            <Label alignment="CENTER" layoutX="792.0" layoutY="522.0" prefHeight="63.0" prefWidth="313.0" text="Delivery Status">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <TableView fx:id="tblDo" layoutX="45.0" layoutY="588.0" prefHeight="308.0" prefWidth="1119.0">
-              <columns>
-                <TableColumn fx:id="colDoId" prefWidth="101.0" text="DO Id" />
-                <TableColumn fx:id="colOrderId" minWidth="0.0" prefWidth="85.99996948242188" text="Order Id" />
-                  <TableColumn fx:id="colClientName" minWidth="0.0" prefWidth="131.99996948242188" text="Client Name" />
-                  <TableColumn fx:id="colClientAddress" minWidth="0.0" prefWidth="144.0" text="Client Address" />
-                  <TableColumn fx:id="colClientContact" minWidth="0.0" prefWidth="112.0" text="Client Contact" />
-                  <TableColumn fx:id="colDeparture" minWidth="0.0" prefWidth="131.0" text="Departure Time" />
-                  <TableColumn fx:id="colArrival" minWidth="0.0" prefWidth="106.0" text="Arrival Time" />
-                  <TableColumn fx:id="colDeliveryFee" minWidth="0.0" prefWidth="108.0" text="Delivery Fee" />
-                  <TableColumn fx:id="colDriverName" minWidth="0.0" prefWidth="102.0" text="Drive Name" />
-                  <TableColumn fx:id="colRemoveButton" minWidth="0.0" prefWidth="97.0" text="Remove" />
-              </columns>
-            </TableView>
-            <JFXButton buttonType="RAISED" layoutX="1178.0" layoutY="388.0" onAction="#btnAddtoTableOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#def50e" style="-fx-background-color: #38ada9;" text="+ Add to Table">
+            <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="764.0" onAction="#btnUpdateOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #009688#009688;" text="Update" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
@@ -90,70 +70,92 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1181.0" layoutY="475.0" onAction="#btnSaveOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#ad0ff5" style="-fx-background-color: #eb2f06;" text="Save &amp; Print" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="23.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1263.0" layoutY="806.0" onAction="#btnUpdateOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #009688#009688;" text="Update" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="23.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <Label alignment="CENTER" layoutX="1249.0" layoutY="655.0" prefHeight="63.0" prefWidth="268.0" text="Arrival Time">
+            <Label alignment="CENTER" layoutX="299.0" layoutY="795.0" prefHeight="63.0" prefWidth="268.0" text="Arrival Time">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <TextField fx:id="txtArrival" alignment="CENTER" layoutX="1241.0" layoutY="723.0" prefHeight="63.0" prefWidth="295.0">
+            <TextField fx:id="txtArrival" layoutX="605.0" layoutY="795.0" onAction="#txtArrivalOnAction" prefHeight="63.0" prefWidth="298.0" text="00:00:00">
                <font>
                   <Font size="29.0" />
                </font>
             </TextField>
-            <JFXTextField fx:id="txtClientAddress" editable="false" labelFloat="true" layoutX="796.0" layoutY="300.0" prefHeight="63.0" prefWidth="313.0" promptText="Client Address">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </JFXTextField>
-            <TextField fx:id="txtDeparture" alignment="CENTER" layoutX="79.0" layoutY="465.0" prefHeight="63.0" prefWidth="313.0" text="00:00:00">
+            <TextField fx:id="txtDeparture" alignment="CENTER" layoutX="79.0" layoutY="599.0" onAction="#txtDepartureOnAction" prefHeight="63.0" prefWidth="313.0" text="00:00:00">
                <font>
                   <Font size="29.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtDeliveryFee" alignment="CENTER" layoutX="448.0" layoutY="465.0" prefHeight="63.0" prefWidth="313.0">
+            <TextField fx:id="txtDeliveryFee" alignment="CENTER" layoutX="445.0" layoutY="599.0" onAction="#txtDeliveryFeeOnAction" prefHeight="63.0" prefWidth="313.0" text="0.00">
                <font>
                   <Font size="29.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtStatus" alignment="CENTER" layoutX="801.0" layoutY="465.0" prefHeight="63.0" prefWidth="313.0" text="In Progress">
+            <TextField fx:id="txtStatus" alignment="CENTER" layoutX="805.0" layoutY="596.0" onAction="#txtStatusOnAction" prefHeight="63.0" prefWidth="313.0" text="In Progress">
                <font>
                   <Font size="29.0" />
                </font>
             </TextField>
-            <JFXTextField fx:id="txtClientContact" editable="false" labelFloat="true" layoutX="1137.0" layoutY="300.0" prefHeight="63.0" prefWidth="313.0" promptText="Client Contact">
+            <JFXTextField fx:id="txtDoId" labelFloat="true" layoutX="70.0" layoutY="197.0" onAction="#txtDoIdOnAction" prefHeight="63.0" prefWidth="313.0" promptText="Delivery Order Id">
                <font>
                   <Font size="29.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtOrderId" labelFloat="true" layoutX="85.0" layoutY="300.0" prefHeight="63.0" prefWidth="313.0" promptText="Order Id">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="txtDoId" editable="false" labelFloat="true" layoutX="85.0" layoutY="206.0" prefHeight="63.0" prefWidth="313.0" promptText="Delivery Order Id">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="1249.0" layoutY="588.0" onAction="#btnSaveAllOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #f6b93b;" text="Save &amp; Print All">
+            <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="1186.0" layoutY="596.0" onAction="#btnSaveOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #0fbcf9;" text="Save &amp; Print">
                <font>
                   <Font name="System Bold" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <TextField fx:id="txtOrderId" layoutX="831.0" layoutY="197.0" onAction="#txtOrderIdOnAction" prefHeight="63.0" prefWidth="610.0" promptText="Search Order">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </TextField>
+            <Label layoutX="433.0" layoutY="197.0" prefHeight="63.0" prefWidth="243.0" text="Order ID">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="63.0" fitWidth="84.0" layoutX="727.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/searchimage.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtDriverAddress" editable="false" labelFloat="true" layoutX="1115.0" layoutY="419.0" prefHeight="63.0" prefWidth="313.0" promptText="Driver Address">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtClientName" editable="false" labelFloat="true" layoutX="422.0" layoutY="301.0" prefHeight="63.0" prefWidth="313.0" promptText="Client Name">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtClientAddress" editable="false" labelFloat="true" layoutX="769.0" layoutY="301.0" prefHeight="63.0" prefWidth="313.0" promptText="Client Address">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtClientContact" editable="false" labelFloat="true" layoutX="1120.0" layoutY="301.0" prefHeight="63.0" prefWidth="313.0" promptText="Client Contact">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtClientId" editable="false" labelFloat="true" layoutX="67.0" layoutY="301.0" prefHeight="63.0" prefWidth="313.0" promptText="Client Id">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="CENTER" layoutX="477.0" layoutY="745.0" prefHeight="50.0" prefWidth="565.0" text="to Use Current time press Enter">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="998.0" layoutY="846.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" style="-fx-background-color: #ffa801;" text="Clear">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />

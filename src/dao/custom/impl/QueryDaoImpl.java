@@ -2,6 +2,7 @@ package dao.custom.impl;
 
 import dao.CrudUtil;
 import dao.QueryDAO;
+import entity.Client;
 import entity.Driver;
 
 import java.sql.ResultSet;
@@ -39,12 +40,12 @@ public class QueryDaoImpl implements QueryDAO {
             String[] cs = temp.split("PU");
             int selectedId=Integer.parseInt(cs[1]);
             if (selectedId<9){
-                id="PU0"+(selectedId+1);
+                id="PU00"+(selectedId+1);
             }else if(selectedId >= 9 && selectedId <99){
+                id="PU0"+(selectedId+1);
+            }else if(selectedId >= 99){
                 id="PU"+(selectedId+1);
-            }/*else if(selectedId >= 99){
-                id="P"+(selectedId+1);
-            }*/
+            }
         }
         return id;
     }
@@ -119,12 +120,12 @@ public class QueryDaoImpl implements QueryDAO {
             String[] cs = temp.split("OR");
             int selectedId=Integer.parseInt(cs[1]);
             if (selectedId<9){
-                id="OR0"+(selectedId+1);
+                id="OR00"+(selectedId+1);
             }else if(selectedId >= 9 && selectedId <99){
+                id="OR0"+(selectedId+1);
+            }else if(selectedId >= 99){
                 id="OR"+(selectedId+1);
-            }/*else if(selectedId >= 99){
-                id="P"+(selectedId+1);
-            }*/
+            }
         }
         return id;
     }
@@ -139,12 +140,12 @@ public class QueryDaoImpl implements QueryDAO {
             String[] cs = temp.split("QOR");
             int selectedId=Integer.parseInt(cs[1]);
             if (selectedId<9){
-                id="QOR0"+(selectedId+1);
+                id="QOR00"+(selectedId+1);
             }else if(selectedId >= 9 && selectedId <99){
+                id="QOR0"+(selectedId+1);
+            }else if(selectedId >= 99){
                 id="QOR"+(selectedId+1);
-            }/*else if(selectedId >= 99){
-                id="P"+(selectedId+1);
-            }*/
+            }
         }
         return id;
     }
@@ -159,14 +160,30 @@ public class QueryDaoImpl implements QueryDAO {
             String[] cs = temp.split("DOR");
             int selectedId=Integer.parseInt(cs[1]);
             if (selectedId<9){
-                id="DOR0"+(selectedId+1);
+                id="DOR00"+(selectedId+1);
             }else if(selectedId >= 9 && selectedId <99){
+                id="DOR0"+(selectedId+1);
+            }else if(selectedId >= 99){
                 id="DOR"+(selectedId+1);
-            }/*else if(selectedId >= 99){
-                id="P"+(selectedId+1);
-            }*/
+            }
         }
         return id;
+    }
+
+    @Override
+    public Client getMatchedClient(String id) throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT * FROM Client c , _Order o WHERE (c.clientId = o.clientId) && orderId = ?",
+                id);
+        if(set.next()){
+            return new Client(
+                    set.getString(1),
+                    set.getString(2),
+                    set.getString(3),
+                    set.getString(4),
+                    set.getString(5)
+            );
+        }
+        return null;
     }
 
 

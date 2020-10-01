@@ -6,7 +6,7 @@ import bo.custom.SeaFoodBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dto.SeaFoodDTO;
+import dto.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +21,7 @@ import view.tm.QuickOrderTM;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class QuickOrderFormController {
     public AnchorPane root;
@@ -65,6 +66,36 @@ public class QuickOrderFormController {
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+        try {
+            boolean isSaved = bo.saveOrder(getOrder(),getOrderDetail());
+            if(isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Saved",ButtonType.OK).show();
+            }else {
+                new Alert(Alert.AlertType.CONFIRMATION,"Not Saved",ButtonType.OK).show();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.WARNING,"error",ButtonType.OK).show();
+        }
+    }
+
+    private ArrayList<QuickOrderDetailDTO> getOrderDetail() {
+        String oId = txtQuickId.getText().trim();
+        ArrayList<QuickOrderDetailDTO> orderDetailDTOS = new ArrayList<>();
+
+        for (int i = 0; i < tblQuickOrder.getItems().size(); i++) {
+            QuickOrderTM orderTM = observableList.get(i);
+            orderDetailDTOS.add(new QuickOrderDetailDTO(oId,
+                    orderTM.getCode(),orderTM.getQty(),orderTM.getPrice(),orderTM.getDiscount()));
+        }
+        return orderDetailDTOS;
+
+    }
+
+    private QuickOrderDTO getOrder() {
+        String oId = txtQuickId.getText().trim();
+        String oDate = txtQuickDate.getText().trim();
+
+        return new QuickOrderDTO(oId,oDate);
     }
 
     ObservableList<QuickOrderTM>observableList=FXCollections.observableArrayList();
@@ -119,6 +150,7 @@ public class QuickOrderFormController {
             getSubTotal();
         }else{
             new Alert(Alert.AlertType.WARNING,"Please Select Row that You Want to Remove !").show();
+            tblQuickOrder.requestFocus();
         }
     }
 
@@ -146,5 +178,37 @@ public class QuickOrderFormController {
 
             txtQty.requestFocus();
         }
+    }
+
+    public void txtQtyOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[\\d|.]{1,4}$").matcher(txtQty.getText().trim()).matches()){
+            txtQty.setStyle("-fx-border-color: #0fbcf9 ");
+            txtDiscount.requestFocus();
+        }else {
+            txtQty.setStyle("-fx-border-color: #f53b57 ");
+            txtQty.requestFocus();
+        }
+    }
+
+    public void txtDiscountOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[\\d|.]{1,4}$").matcher(txtDiscount.getText().trim()).matches()){
+            txtDiscount.setStyle("-fx-border-color: #0fbcf9 ");
+            btnAddOnAction(actionEvent);
+            cmbCode.requestFocus();
+        }else {
+            txtDiscount.setStyle("-fx-border-color: #f53b57 ");
+            txtDiscount.requestFocus();
+        }
+    }
+
+    public void btnClearOnAction(ActionEvent actionEvent) throws Exception {
+        cmbCode.setValue(null);
+        txtDescription.setText(null);
+        txtQtyOnHand.setText(null);
+        txtUnitPrice.setText(null);
+        txtQty.setText(null);
+        txtDiscount.setText(null);
+        tblQuickOrder.getItems().clear();
+        loadID();
     }
 }

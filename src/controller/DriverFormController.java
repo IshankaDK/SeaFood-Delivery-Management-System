@@ -2,8 +2,8 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.DriverBo;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import dto.ClientDTO;
 import dto.DriverDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,13 +17,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import view.tm.ClientTM;
+import javafx.scene.paint.Paint;
 import view.tm.DriverTM;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class DriverFormController {
     public AnchorPane root;
@@ -39,6 +40,7 @@ public class DriverFormController {
     public TableColumn colDriverContact;
     public TableColumn colDeleteButton;
     public TableColumn colUpdateButton;
+    public JFXButton btnAdd;
     DriverBo bo;
 
     public void initialize() throws Exception {
@@ -188,16 +190,22 @@ public class DriverFormController {
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
                     loadAllDriver();
                     clear();
+                    loadID();
+                    txtDriverId.requestFocus();
                 } else {
                     new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                    txtDriverId.requestFocus();
                 }
             } catch (SQLException se){
                 new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+                txtDriverId.requestFocus();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+                txtDriverId.requestFocus();
             }
         }else {
             new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+            txtDriverId.requestFocus();
         }
     }
 
@@ -209,11 +217,12 @@ public class DriverFormController {
             txtDriverAddress.setText(dto.getAddress());
             txtDriverContact.setText(dto.getContact());
         }else{
+            txtSearch.setStyle("-fx-border-color: #f53b57 ");
+            txtSearch.requestFocus();
             new Alert(Alert.AlertType.INFORMATION,
                     "Enter Valid Client Id", ButtonType.OK).show();
         }
     }
-
 
     public void clear() {
         txtDriverId.setText(null);
@@ -221,5 +230,51 @@ public class DriverFormController {
         txtDriverAddress.setText(null);
         txtDriverContact.setText(null);
         txtSearch.setText(null);
+    }
+
+    public void txtDriverIdOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^(DR)[0-9]{1,}$").matcher(txtDriverId.getText().trim()).matches()){
+            txtDriverId.setFocusColor(Paint.valueOf("skyblue"));
+            txtDriverName.requestFocus();
+        }else {
+            txtDriverId.setFocusColor(Paint.valueOf("red"));
+            txtDriverId.requestFocus();
+        }
+    }
+
+    public void txtDriverNameOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[A-z| ]{1,}$").matcher(txtDriverName.getText().trim()).matches()){
+            txtDriverName.setFocusColor(Paint.valueOf("skyblue"));
+            txtDriverAddress.requestFocus();
+        }else {
+            txtDriverName.setFocusColor(Paint.valueOf("red"));
+            txtDriverName.requestFocus();
+        }
+    }
+
+    public void txtDriverAddressOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[A-z| |0-9|,]{1,}$").matcher(txtDriverAddress.getText().trim()).matches()){
+            txtDriverAddress.setFocusColor(Paint.valueOf("skyblue"));
+            txtDriverContact.requestFocus();
+        }else {
+            txtDriverAddress.setFocusColor(Paint.valueOf("red"));
+            txtDriverAddress.requestFocus();
+        }
+    }
+
+    public void txtDriverContactOnAction(ActionEvent actionEvent) {
+        if (Pattern.compile("^(0)[0-9]{9}$").matcher(txtDriverContact.getText().trim()).matches()) {
+            txtDriverContact.setFocusColor(Paint.valueOf("skyblue"));
+            btnAdd.requestFocus();
+            btnAddOnAction(actionEvent);
+        } else {
+            txtDriverContact.setFocusColor(Paint.valueOf("red"));
+            txtDriverContact.requestFocus();
+        }
+    }
+
+    public void btnNewOnAction(ActionEvent actionEvent) throws Exception {
+        clear();
+        loadID();
     }
 }

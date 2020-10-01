@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Client;
 import entity.Driver;
 
 import java.util.ArrayList;
@@ -13,4 +14,5 @@ public interface QueryDAO extends SuperDAO {
     public String getOrderId() throws Exception;
     public String getQuickOrderId() throws Exception;
     public String getDoId() throws Exception;
+    public Client getMatchedClient(String id) throws Exception;
 }

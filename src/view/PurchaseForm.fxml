@@ -46,12 +46,12 @@
                </columns>
             </TableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="361.0" layoutX="17.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1557.0" />
-            <JFXTextField fx:id="txtPurchaseId" labelFloat="true" layoutX="84.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Purchase ID">
+            <JFXTextField fx:id="txtPurchaseId" editable="false" labelFloat="true" layoutX="84.0" layoutY="165.0" onAction="#txtPurchaseIdOnAction" prefHeight="51.0" prefWidth="300.0" promptText="Purchase ID">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtPurchaseDate" labelFloat="true" layoutX="433.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Purchase Date">
+            <JFXTextField fx:id="txtPurchaseDate" editable="false" labelFloat="true" layoutX="433.0" layoutY="165.0" prefHeight="51.0" prefWidth="300.0" promptText="Purchase Date">
                <font>
                   <Font size="25.0" />
                </font>
@@ -82,7 +82,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="txtQTY" alignment="CENTER" layoutX="1404.0" layoutY="421.0" prefHeight="54.0" prefWidth="148.0">
+            <TextField fx:id="txtQTY" alignment="CENTER" layoutX="1404.0" layoutY="421.0" onAction="#txtQtyOnAction" prefHeight="54.0" prefWidth="148.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -97,7 +97,7 @@
                   <Font name="System Bold" size="56.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="1216.0" layoutY="528.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" style="-fx-background-color: #1dd1a1;" text="+ Add">
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1216.0" layoutY="528.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" style="-fx-background-color: #1dd1a1;" text="+ Add">
                <font>
                   <Font name="Arial" size="30.0" />
                </font>
@@ -120,7 +120,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <TextField fx:id="txtPurchasedPrice" alignment="CENTER" layoutX="1033.0" layoutY="421.0" prefHeight="51.0" prefWidth="173.0">
+            <TextField fx:id="txtPurchasedPrice" alignment="CENTER" layoutX="1033.0" layoutY="421.0" onAction="#txtPurchasedPriceOnAction" prefHeight="51.0" prefWidth="173.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -159,7 +159,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="txtSellingPrice" alignment="CENTER" layoutX="1218.0" layoutY="421.0" prefHeight="51.0" prefWidth="173.0">
+            <TextField fx:id="txtSellingPrice" alignment="CENTER" layoutX="1218.0" layoutY="421.0" onAction="#txtSellingPriceOnAction" prefHeight="51.0" prefWidth="173.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -169,6 +169,14 @@
                   <Font size="25.0" />
                </font>
             </JFXTextField>
+            <JFXButton buttonType="RAISED" layoutX="1305.0" layoutY="730.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" style="-fx-background-color: #ffa801;" text="Clear">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="1030.0" prefWidth="1910.0" style="-fx-background-color: #45aaf2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a4751" height="741.0" layoutX="506.0" layoutY="141.0" opacity="0.61" stroke="WHITE" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" width="924.0" />
+      <Label alignment="CENTER" layoutX="735.0" layoutY="219.0" prefHeight="65.0" prefWidth="467.0" text="Create new Account" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="53.0" />
+         </font>
+      </Label>
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="887.0" layoutY="660.0" onAction="#btnSignUpOnAction" prefHeight="74.0" prefWidth="410.0" style="-fx-background-color: #0fbcf9;" text="SIGN UP" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/login.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Hyperlink alignment="CENTER" layoutX="887.0" layoutY="804.0" onAction="#hyperSingInOnAction" prefHeight="40.0" prefWidth="410.0" style="-fx-background-color: #4bcffa;" text="Sign In" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Hyperlink>
+      <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="1817.0" layoutY="15.0" onMouseReleased="#imgExitOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/icons8_Shutdown_48px_1.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="1752.0" layoutY="18.0" onMouseReleased="#imgMinimizeOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/minini.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <TextField layoutX="887.0" layoutY="472.0" onAction="#txtUserNameOnAction" prefHeight="57.0" prefWidth="410.0">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="570.0" layoutY="377.0" prefHeight="57.0" prefWidth="284.0" text="Name :-" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="570.0" layoutY="472.0" prefHeight="57.0" prefWidth="284.0" text="User Name :-" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="570.0" layoutY="565.0" prefHeight="57.0" prefWidth="284.0" text="Password :-" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <TextField layoutX="887.0" layoutY="565.0" onAction="#txtPasswordOnAction" prefHeight="57.0" prefWidth="410.0">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </TextField>
+      <Separator layoutX="687.0" layoutY="292.0" prefHeight="0.0" prefWidth="557.0" />
+      <Label alignment="CENTER" layoutX="950.0" layoutY="747.0" prefHeight="57.0" prefWidth="284.0" text="Already have an account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="887.0" layoutY="377.0" onAction="#txtNameOnAction" prefHeight="57.0" prefWidth="410.0">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

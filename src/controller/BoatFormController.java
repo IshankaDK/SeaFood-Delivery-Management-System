@@ -2,9 +2,9 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.BoatBo;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dto.BoatDTO;
-import dto.ClientDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -17,13 +17,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import view.tm.BoatTM;
-import view.tm.ClientTM;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class BoatFormController {
     public AnchorPane root;
@@ -39,6 +40,7 @@ public class BoatFormController {
     public TextField txtSearch;
     public TableColumn colBoatName;
     public JFXTextField txtBoatName;
+    public JFXButton btnAdd;
     BoatBo bo;
 
     public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
@@ -86,16 +88,22 @@ public class BoatFormController {
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
                     loadAllBoat();
                     clear();
+                    loadId();
+                    txtBoatId.requestFocus();
                 } else {
                     new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                    txtBoatId.requestFocus();
                 }
             } catch (SQLException se){
                 new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+                txtBoatId.requestFocus();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+                txtBoatId.requestFocus();
             }
         }else {
             new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+            txtBoatId.requestFocus();
         }
     }
 
@@ -211,8 +219,11 @@ public class BoatFormController {
             txtOwnerName.setText(dto.getOwnerName());
             txtOwnerContact.setText(dto.getOwnerContact());
         }else{
+            txtSearch.setStyle("-fx-border-color: #f53b57 ");
+            txtSearch.requestFocus();
             new Alert(Alert.AlertType.INFORMATION,
                     "Enter Valid Client Id", ButtonType.OK).show();
+
         }
     }
 
@@ -227,5 +238,51 @@ public class BoatFormController {
     private void loadId() throws Exception {
         String id = bo.getBoatId();
         txtBoatId.setText(id);
+    }
+
+    public void txtBoatIdOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^(B)[0-9]{1,}$").matcher(txtBoatId.getText().trim()).matches()){
+            txtBoatId.setFocusColor(Paint.valueOf("skyblue"));
+            txtBoatName.requestFocus();
+        }else {
+            txtBoatId.setFocusColor(Paint.valueOf("red"));
+            txtBoatId.requestFocus();
+        }
+    }
+
+    public void txtOwnerNameOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[A-z| ]{1,}$").matcher(txtOwnerName.getText().trim()).matches()){
+            txtOwnerName.setFocusColor(Paint.valueOf("skyblue"));
+            txtOwnerContact.requestFocus();
+        }else {
+            txtOwnerName.setFocusColor(Paint.valueOf("red"));
+            txtOwnerName.requestFocus();
+        }
+    }
+
+    public void txtOwnerContactOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^(0)[0-9]{9}$").matcher(txtOwnerContact.getText().trim()).matches()){
+            txtOwnerContact.setFocusColor(Paint.valueOf("skyblue"));
+            btnAdd.requestFocus();
+            btnAddOnAction(actionEvent);
+        }else {
+            txtOwnerContact.setFocusColor(Paint.valueOf("red"));
+            txtOwnerContact.requestFocus();
+        }
+    }
+
+    public void txtBoatNameOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[A-z| ]{1,}$").matcher(txtBoatName.getText().trim()).matches()){
+            txtBoatName.setFocusColor(Paint.valueOf("skyblue"));
+            txtOwnerName.requestFocus();
+        }else {
+            txtBoatName.setFocusColor(Paint.valueOf("red"));
+            txtBoatName.requestFocus();
+        }
+    }
+
+    public void btnNewOnAction(ActionEvent actionEvent) throws Exception {
+        clear();
+        loadId();
     }
 }

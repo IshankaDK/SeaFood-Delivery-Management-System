@@ -14,9 +14,9 @@
    <children>
       <AnchorPane layoutX="321.0" prefHeight="81.0" prefWidth="1591.0" style="-fx-background-color: #283593;" AnchorPane.leftAnchor="321.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fx:id="minIcon" fitHeight="59.0" fitWidth="71.0" layoutX="1489.0" layoutY="11.0" onMouseReleased="#imgExitOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="1489.0" layoutY="11.0" onMouseReleased="#imgExitOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assert/icons8_Shutdown_48px_1.png" />
+                  <Image url="@../assert/logout.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

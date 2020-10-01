@@ -4,9 +4,7 @@ import bo.custom.SeaFoodBo;
 import dao.DaoFactory;
 import dao.QueryDAO;
 import dao.custom.SeaFoodDAO;
-import dto.ClientDTO;
-import dto.DriverDTO;
-import dto.SeaFoodDTO;
+import dto.*;
 import entity.Client;
 import entity.SeaFood;
 
@@ -56,5 +54,53 @@ public class SeaFoodBoImpl implements SeaFoodBo {
     @Override
     public String getCode() throws Exception {
         return qDao.getCode();
+    }
+
+    @Override
+    public boolean UpdateStockWhenPurchase(ArrayList<PurchaseDetailDTO> purchaseDetailDTOS) throws Exception {
+        for (PurchaseDetailDTO purchaseDetailDTO : purchaseDetailDTOS) {
+            boolean b = UpdateStockWhenPurchase(purchaseDetailDTO);
+            if(!b){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean UpdateStockWhenPurchase(PurchaseDetailDTO detailDTO) throws Exception {
+        return dao.updateWhenPurchase(new SeaFood(detailDTO.getCode(),detailDTO.getQty()));
+    }
+
+    @Override
+    public boolean UpdateStockWhenOrder(ArrayList<OrderDetailDTO> orderDetailDTOS) throws Exception {
+        for (OrderDetailDTO orderDetailDTO : orderDetailDTOS) {
+            boolean b = UpdateStockWhenOrder(orderDetailDTO);
+            if(!b){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean UpdateStockWhenOrder(OrderDetailDTO detailDTO) throws Exception {
+        return dao.updateWhenOrder(new SeaFood(detailDTO.getCode(),detailDTO.getQty()));
+    }
+
+    @Override
+    public boolean UpdateStockWhenQuickOrder(ArrayList<QuickOrderDetailDTO> orderDetailDTOS) throws Exception {
+        for (QuickOrderDetailDTO orderDetailDTO : orderDetailDTOS) {
+            boolean b = UpdateStockWhenQuickOrder(orderDetailDTO);
+            if(!b){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean UpdateStockWhenQuickOrder(QuickOrderDetailDTO detailDTO) throws Exception {
+        return dao.updateWhenOrder(new SeaFood(detailDTO.getCode(),detailDTO.getQty()));
     }
 }

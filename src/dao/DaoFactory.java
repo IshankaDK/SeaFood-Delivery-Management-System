@@ -1,5 +1,6 @@
 package dao;
 
+import dao.custom.OrderDAO;
 import dao.custom.impl.*;
 
 public class DaoFactory {
@@ -12,7 +13,7 @@ public class DaoFactory {
     }
 
     public enum DAOType{
-        CLIENT,BOAT,DRIVER,SEAFOOD,QUERY,PURCHASE,PURCHASEDETAIL
+        CLIENT,BOAT,DRIVER,SEAFOOD,QUERY,PURCHASE,PURCHASEDETAIL,ORDER,ORDERDETAIL,QUICK,QUICKDETAIL,DELIVERY
     }
 
     public <T> T getDao(DAOType type){
@@ -29,6 +30,16 @@ public class DaoFactory {
                 return (T) new PurchaseDAOImpl();
             case PURCHASEDETAIL:
                 return (T) new PurchaseDetailDaoImpl();
+            case ORDER:
+                return (T) new OrderDaoImpl();
+            case ORDERDETAIL:
+                return (T) new OrderDetailDaoImpl();
+            case QUICK:
+                return (T) new QuickOrderDaoImpl();
+            case QUICKDETAIL:
+                return (T) new QuickOrderDetailDaoImpl();
+            case DELIVERY:
+                return (T) new DeliveryOrderDaoImpl();
             case QUERY:
                 return (T) new QueryDaoImpl();
             default:

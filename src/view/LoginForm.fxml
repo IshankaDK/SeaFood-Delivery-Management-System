@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="1030.0" prefWidth="1910.0" style="-fx-background-color: #10ac84;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="672.0" layoutX="680.0" layoutY="161.0" opacity="0.61" stroke="WHITE" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" width="670.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="#09805e" />
+                  <Stop color="#09805e" offset="0.014492753623188406" />
+                  <Stop color="#11eeb3" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label alignment="CENTER" layoutX="820.0" layoutY="272.0" prefHeight="64.0" prefWidth="372.0" text="Login" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="53.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="836.0" layoutY="407.0" onAction="#txtUserNameOnAction" prefHeight="57.0" prefWidth="410.0">
+         <font>
+            <Font size="27.0" />
+         </font></TextField>
+      <PasswordField fx:id="txtPassword" layoutX="836.0" layoutY="513.0" onAction="#txtPasswordOnAction" prefHeight="65.0" prefWidth="410.0" />
+      <ImageView fitHeight="65.0" fitWidth="64.0" layoutX="772.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="57.0" fitWidth="54.0" layoutX="777.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/key.png" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="835.0" layoutY="602.0" onAction="#btnLoginOnAction" prefHeight="74.0" prefWidth="410.0" style="-fx-background-color: #26de81;" text="SIGN IN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/login.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Hyperlink alignment="CENTER" layoutX="837.0" layoutY="708.0" onAction="#hyperNewAccountOnAction" prefHeight="40.0" prefWidth="410.0" text="Create new account" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Hyperlink>
+      <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="1817.0" layoutY="15.0" onMouseReleased="#imgExitOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/icons8_Shutdown_48px_1.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="1752.0" layoutY="18.0" onMouseReleased="#imgMinimizeOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/minini.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Separator layoutX="906.0" layoutY="346.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

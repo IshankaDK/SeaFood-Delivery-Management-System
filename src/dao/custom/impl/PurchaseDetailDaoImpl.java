@@ -7,10 +7,12 @@ import entity.PurchaseDetail;
 import java.util.ArrayList;
 
 public class PurchaseDetailDaoImpl implements PurchaseDetailDAO {
+
+
     @Override
     public boolean save(PurchaseDetail purchaseDetail) throws Exception {
-        return CrudUtil.execute("INSERT INTO PurchaseDetail VALUES (?,?,?,?)",purchaseDetail.getId(),
-                purchaseDetail.getCode(),purchaseDetail.getQty(),purchaseDetail.getPurchasedPrice());
+        return CrudUtil.execute("INSERT INTO PurchaseDetail VALUES (?,?,?,?)",
+                purchaseDetail.getId(),purchaseDetail.getCode(),purchaseDetail.getQty(),purchaseDetail.getPurchasedPrice());
     }
 
     @Override

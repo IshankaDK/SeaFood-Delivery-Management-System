@@ -1,6 +1,10 @@
 package dto;
 
-public class PurchaseDTO {
+import entity.SuperEntity;
+
+import java.util.ArrayList;
+
+public class PurchaseDTO implements SuperEntity {
     private String id;
     private String date;
     private String boatId;
@@ -37,4 +41,5 @@ public class PurchaseDTO {
     public void setBoatId(String boatId) {
         this.boatId = boatId;
     }
+
 }

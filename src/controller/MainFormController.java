@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -101,8 +102,12 @@ public class MainFormController {
 
     }
 
-    public void imgExitOnAction(MouseEvent mouseEvent) { System.exit(0);
+    public void imgExitOnAction(MouseEvent mouseEvent) throws IOException {
+       /* Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"))));*/
+        System.exit(0);
     }
+
 
     public void btnDriverOnAction(ActionEvent actionEvent) throws IOException {
         initUI("DriverForm.fxml");

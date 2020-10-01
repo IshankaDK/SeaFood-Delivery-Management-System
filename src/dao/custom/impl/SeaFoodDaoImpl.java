@@ -4,9 +4,11 @@ import dao.CrudDAO;
 import dao.CrudUtil;
 import dao.custom.SeaFoodDAO;
 import entity.Client;
+import entity.PurchaseDetail;
 import entity.SeaFood;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SeaFoodDaoImpl implements SeaFoodDAO {
@@ -53,5 +55,17 @@ public class SeaFoodDaoImpl implements SeaFoodDAO {
             ));
         }
         return seaFoods;
+    }
+
+    @Override
+    public boolean updateWhenPurchase(SeaFood seaFood) throws Exception {
+        return CrudUtil.execute("UPDATE Seafood SET qtyOnHand =( qtyOnHand + ?)  WHERE itemCode = ?",
+                seaFood.getQtyOnHand(),seaFood.getCode());
+    }
+
+    @Override
+    public boolean updateWhenOrder(SeaFood seaFood) throws Exception {
+        return CrudUtil.execute("UPDATE Seafood SET qtyOnHand =( qtyOnHand - ?)  WHERE itemCode = ?",
+                seaFood.getQtyOnHand(),seaFood.getCode());
     }
 }

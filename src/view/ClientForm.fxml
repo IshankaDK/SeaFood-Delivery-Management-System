@@ -40,22 +40,22 @@
               </columns>
             </TableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="619.0" layoutX="26.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="554.0" />
-            <JFXTextField fx:id="txtClientId" layoutX="108.0" layoutY="249.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientId" layoutX="108.0" layoutY="249.0" onAction="#txtClientIdOnAction" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtClientName" layoutX="108.0" layoutY="360.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientName" layoutX="108.0" layoutY="360.0" onAction="#txtClientNameOnAction" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtClientAddress" layoutX="109.0" layoutY="475.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientAddress" layoutX="109.0" layoutY="475.0" onAction="#txtClientAddressOnAction" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtClientContact" layoutX="109.0" layoutY="593.0" prefHeight="41.0" prefWidth="442.0">
+            <JFXTextField fx:id="txtClientContact" layoutX="109.0" layoutY="593.0" onAction="#txtClientContactOnAction" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -107,6 +107,14 @@
                   <Image url="@../assert/searchimage.png" />
                </image>
             </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="451.0" layoutY="212.0" onAction="#btnNewOnAction" opacity="0.88" prefHeight="48.0" prefWidth="108.0" ripplerFill="#e5ff00" style="-fx-background-color: #00BCD4;" text="+ New" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

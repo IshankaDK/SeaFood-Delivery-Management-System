@@ -2,6 +2,7 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.ClientBo;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.ClientDTO;
@@ -17,12 +18,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import view.tm.ClientTM;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class ClientFormController {
     public AnchorPane root;
@@ -40,6 +43,8 @@ public class ClientFormController {
     public TableColumn colDeleteButton;
     public TableColumn colUpdateButton;
     public TextField txtSearch;
+    public JFXButton btnAdd;
+
     ClientBo bo;
 
     public void initialize() throws Exception {
@@ -47,7 +52,6 @@ public class ClientFormController {
         loadId();
         getClientType();
         loadAllClient();
-
 
         colClientId.setCellValueFactory(new PropertyValueFactory("id"));
         colClientName.setCellValueFactory(new PropertyValueFactory("name"));
@@ -68,7 +72,7 @@ public class ClientFormController {
         txtClientName.setText(tm.getName());
         txtClientAddress.setText(tm.getAddress());
         txtClientContact.setText(tm.getContact());
-       // cmbClientType.requestFocus();
+        cmbClientType.setValue(tm.getType());
     }
 
     public void getClientType()  {
@@ -85,7 +89,6 @@ public class ClientFormController {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent)  {
-
         String id = txtClientId.getText().trim();
         txtClientName.requestFocus();
         String name = txtClientName.getText().trim();
@@ -100,16 +103,22 @@ public class ClientFormController {
                    new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
                    loadAllClient();
                    clear();
+                   txtClientId.requestFocus();
+                   loadId();
                } else {
                    new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                   txtClientId.requestFocus();
                }
            } catch (SQLException se){
                new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+               txtClientId.requestFocus();
            } catch (Exception e) {
                new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+               txtClientId.requestFocus();
            }
        }else {
            new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+           txtClientId.requestFocus();
        }
 
     }
@@ -226,7 +235,7 @@ public class ClientFormController {
         txtClientAddress.setText(null);
         txtClientContact.setText(null);
         txtSearch.setText(null);
-      //  cmbClientType.requestFocus();
+        cmbClientType.setValue(null);
     }
 
     private void loadId() throws Exception {
@@ -235,16 +244,65 @@ public class ClientFormController {
     }
 
     public void txtSearchOnAction(ActionEvent actionEvent) throws Exception {
+
         ClientDTO dto = bo.getClient(txtSearch.getText().trim());
         if(dto != null){
             txtClientId.setText(dto.getId());
             txtClientName.setText(dto.getName());
             txtClientAddress.setText(dto.getAddress());
             txtClientContact.setText(dto.getContact());
-//            cmbClientType.
+            cmbClientType.setValue(dto.getType());
         }else{
+            txtSearch.setStyle("-fx-border-color: #f53b57 ");
+            txtSearch.requestFocus();
             new Alert(Alert.AlertType.INFORMATION,
                     "Enter Valid Client Id", ButtonType.OK).show();
         }
     }
+
+    public void txtClientIdOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^(C)[0-9]{1,}$").matcher(txtClientId.getText().trim()).matches()){
+                txtClientId.setFocusColor(Paint.valueOf("skyblue"));
+                txtClientName.requestFocus();
+        }else {
+            txtClientId.setFocusColor(Paint.valueOf("red"));
+            txtClientId.requestFocus();
+        }
+    }
+
+    public void txtClientNameOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[A-z| ]{1,}$").matcher(txtClientName.getText().trim()).matches()){
+            txtClientName.setFocusColor(Paint.valueOf("skyblue"));
+            txtClientAddress.requestFocus();
+        }else {
+            txtClientName.setFocusColor(Paint.valueOf("red"));
+            txtClientName.requestFocus();
+        }
+    }
+
+    public void txtClientAddressOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[A-z| |0-9|,]{1,}$").matcher(txtClientAddress.getText().trim()).matches()){
+            txtClientAddress.setFocusColor(Paint.valueOf("skyblue"));
+            txtClientContact.requestFocus();
+        }else {
+            txtClientAddress.setFocusColor(Paint.valueOf("red"));
+            txtClientAddress.requestFocus();
+        }
+    }
+
+    public void txtClientContactOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^(0)[0-9]{9}$").matcher(txtClientContact.getText().trim()).matches()){
+            txtClientContact.setFocusColor(Paint.valueOf("skyblue"));
+            cmbClientType.requestFocus();
+        }else {
+            txtClientContact.setFocusColor(Paint.valueOf("red"));
+            txtClientContact.requestFocus();
+        }
+    }
+
+    public void btnNewOnAction(ActionEvent actionEvent) throws Exception {
+        clear();
+        loadId();
+    }
+
 }

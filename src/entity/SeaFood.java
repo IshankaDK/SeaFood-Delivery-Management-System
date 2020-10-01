@@ -19,6 +19,11 @@ public class SeaFood implements SuperEntity {
     public SeaFood() {
     }
 
+    public SeaFood(String code, double qty) {
+        this.setCode(code);
+        this.setQtyOnHand(qty);
+    }
+
     public String getCode() {
         return code;
     }

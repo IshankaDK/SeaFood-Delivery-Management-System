@@ -7,8 +7,7 @@ import bo.custom.SeaFoodBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dto.ClientDTO;
-import dto.SeaFoodDTO;
+import dto.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +23,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.function.BinaryOperator;
+import java.util.regex.Pattern;
 
 public class OrderFormController {
     public AnchorPane root;
@@ -143,10 +143,43 @@ public class OrderFormController {
             getSubTotal();
         }else{
             new Alert(Alert.AlertType.WARNING,"Please Select Row that You Want to Remove !").show();
+            tblOrder.requestFocus();
         }
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+        try {
+            boolean isSaved = bo.saveOrder(getOrder(),getOrderDetail());
+            if(isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Saved",ButtonType.OK).show();
+            }else {
+                new Alert(Alert.AlertType.CONFIRMATION,"Not Saved",ButtonType.OK).show();
+            }
+        } catch (Exception e) {
+           new Alert(Alert.AlertType.WARNING,"error",ButtonType.OK).show();
+        }
+    }
+
+    private ArrayList<OrderDetailDTO> getOrderDetail() {
+        String oId = txtOrderId.getText().trim();
+        ArrayList<OrderDetailDTO> orderDetailDTOS = new ArrayList<>();
+
+        for (int i = 0; i < tblOrder.getItems().size(); i++) {
+            OrderTM orderTM = observableList.get(i);
+            orderDetailDTOS.add(new OrderDetailDTO(oId,
+                    orderTM.getCode(),orderTM.getQty(),orderTM.getPrice(),orderTM.getDiscount()));
+        }
+        return orderDetailDTOS;
+    }
+
+    private OrderDTO getOrder() {
+
+        String oId = txtOrderId.getText().trim();
+        String oDate = txtOrderDate.getText().trim();
+        String cId = String.valueOf(cmbClientId.getValue());
+        String status = "Pending";
+
+        return new OrderDTO(oId,oDate,cId,status);
     }
 
     public void btnPrintBillOnAction(ActionEvent actionEvent) {
@@ -175,8 +208,42 @@ public class OrderFormController {
             txtQtyOnHand.setText(String.valueOf(dto.getQtyOnHand()));
             txtUnitPrice.setText(String.valueOf(dto.getSellingPrice()));
 
-
             txtQty.requestFocus();
         }
+    }
+
+    public void txtQtyOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[\\d|.]{1,4}$").matcher(txtQty.getText().trim()).matches()){
+            txtQty.setStyle("-fx-border-color: #0fbcf9 ");
+            txtDiscount.requestFocus();
+        }else {
+            txtQty.setStyle("-fx-border-color: #f53b57 ");
+            txtQty.requestFocus();
+        }
+    }
+
+    public void txtDiscountOnAction(ActionEvent actionEvent) {
+        if(Pattern.compile("^[\\d|.]{1,4}$").matcher(txtDiscount.getText().trim()).matches()){
+            txtDiscount.setStyle("-fx-border-color: #0fbcf9 ");
+            btnAddOnAction(actionEvent);
+            cmbCode.requestFocus();
+        }else {
+            txtDiscount.setStyle("-fx-border-color: #f53b57 ");
+            txtDiscount.requestFocus();
+        }
+    }
+
+    public void btnClearOnAction(ActionEvent actionEvent) throws Exception {
+        cmbClientId.setValue(null);
+        txtClientName.setText(null);
+        txtClientAddress.setText(null);
+        cmbCode.setValue(null);
+        txtDescription.setText(null);
+        txtQtyOnHand.setText(null);
+        txtUnitPrice.setText(null);
+        txtQty.setText(null);
+        txtDiscount.setText(null);
+        tblOrder.getItems().clear();
+        loadId();
     }
 }

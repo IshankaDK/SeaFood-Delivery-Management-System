@@ -94,7 +94,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="txtQty" alignment="CENTER" layoutX="1158.0" layoutY="427.0" prefHeight="51.0" prefWidth="173.0">
+            <TextField fx:id="txtQty" alignment="CENTER" layoutX="1158.0" layoutY="427.0" onAction="#txtQtyOnAction" prefHeight="51.0" prefWidth="173.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -132,7 +132,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnPrintBill" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1277.0" layoutY="747.0" onAction="#btnPrintBillOnAction" prefHeight="65.0" prefWidth="244.0" ripplerFill="#0715fa" style="-fx-background-color: #0abde3;" text="Print Bill">
+            <JFXButton fx:id="btnPrintBill" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1277.0" layoutY="714.0" onAction="#btnPrintBillOnAction" prefHeight="65.0" prefWidth="244.0" ripplerFill="#0715fa" style="-fx-background-color: #0abde3;" text="Print Bill">
                <font>
                   <Font name="Dubai Regular" size="30.0" />
                </font>
@@ -147,7 +147,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <TextField fx:id="txtUnitPrice" alignment="CENTER" layoutX="958.0" layoutY="427.0" prefHeight="51.0" prefWidth="173.0">
+            <TextField fx:id="txtUnitPrice" alignment="CENTER" editable="false" layoutX="958.0" layoutY="427.0" prefHeight="51.0" prefWidth="173.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -170,6 +170,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="1324.0" layoutY="803.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" style="-fx-background-color: #ffa801;" text="Clear">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="1362.0" layoutY="364.0" prefHeight="51.0" prefWidth="173.0" text="Discount">
@@ -177,7 +185,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDiscount" alignment="CENTER" layoutX="1367.0" layoutY="425.0" prefHeight="51.0" prefWidth="173.0">
+      <TextField fx:id="txtDiscount" alignment="CENTER" layoutX="1367.0" layoutY="425.0" onAction="#txtDiscountOnAction" prefHeight="51.0" prefWidth="173.0">
          <font>
             <Font size="25.0" />
          </font>

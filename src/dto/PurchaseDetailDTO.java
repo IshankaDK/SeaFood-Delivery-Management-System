@@ -1,5 +1,7 @@
 package dto;
 
+import entity.SuperEntity;
+
 public class PurchaseDetailDTO {
     private String id;
     private String code;

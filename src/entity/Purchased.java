@@ -1,5 +1,9 @@
 package entity;
 
+import dto.PurchaseDetailDTO;
+
+import java.util.ArrayList;
+
 public class Purchased implements SuperEntity {
     private String id;
     private String date;
@@ -37,4 +41,5 @@ public class Purchased implements SuperEntity {
     public void setBoatId(String boatId) {
         this.boatId = boatId;
     }
+
 }
