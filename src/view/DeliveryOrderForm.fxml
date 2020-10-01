@@ -108,21 +108,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <TextField fx:id="txtOrderId" layoutX="831.0" layoutY="197.0" onAction="#txtOrderIdOnAction" prefHeight="63.0" prefWidth="610.0" promptText="Search Order">
+            <TextField fx:id="txtOrderId" layoutX="766.0" layoutY="197.0" onAction="#txtOrderIdOnAction" prefHeight="63.0" prefWidth="610.0" promptText="Search Order">
                <font>
                   <Font size="29.0" />
                </font>
             </TextField>
-            <Label layoutX="433.0" layoutY="197.0" prefHeight="63.0" prefWidth="243.0" text="Order ID">
+            <Label layoutX="556.0" layoutY="197.0" prefHeight="63.0" prefWidth="173.0" text="Order ID :-">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <ImageView fitHeight="63.0" fitWidth="84.0" layoutX="727.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assert/searchimage.png" />
-               </image>
-            </ImageView>
             <JFXTextField fx:id="txtDriverAddress" editable="false" labelFloat="true" layoutX="1115.0" layoutY="419.0" prefHeight="63.0" prefWidth="313.0" promptText="Driver Address">
                <font>
                   <Font size="29.0" />
@@ -161,6 +156,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <ImageView fitHeight="50.0" fitWidth="41.0" layoutX="402.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/searchimage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="63.0" fitWidth="84.0" layoutX="1376.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/searchimage.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

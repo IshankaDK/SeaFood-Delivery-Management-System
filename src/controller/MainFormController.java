@@ -103,9 +103,9 @@ public class MainFormController {
     }
 
     public void imgExitOnAction(MouseEvent mouseEvent) throws IOException {
-       /* Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"))));*/
-        System.exit(0);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"))));
+//        System.exit(0);
     }
 
 

@@ -13,7 +13,7 @@ public class DaoFactory {
     }
 
     public enum DAOType{
-        CLIENT,BOAT,DRIVER,SEAFOOD,QUERY,PURCHASE,PURCHASEDETAIL,ORDER,ORDERDETAIL,QUICK,QUICKDETAIL,DELIVERY
+        CLIENT,BOAT,DRIVER,SEAFOOD,QUERY,PURCHASE,PURCHASEDETAIL,ORDER,ORDERDETAIL,QUICK,QUICKDETAIL,DELIVERY,LOGIN
     }
 
     public <T> T getDao(DAOType type){
@@ -40,6 +40,8 @@ public class DaoFactory {
                 return (T) new QuickOrderDetailDaoImpl();
             case DELIVERY:
                 return (T) new DeliveryOrderDaoImpl();
+            case LOGIN:
+                return (T) new LoginDaoImpl();
             case QUERY:
                 return (T) new QueryDaoImpl();
             default:

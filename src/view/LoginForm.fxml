@@ -32,11 +32,14 @@
             <Font name="Bell MT Bold" size="53.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUserName" layoutX="836.0" layoutY="407.0" onAction="#txtUserNameOnAction" prefHeight="57.0" prefWidth="410.0">
+      <TextField fx:id="txtUserName" layoutX="836.0" layoutY="407.0" onAction="#txtUserNameOnAction" prefHeight="57.0" prefWidth="410.0" promptText="User Name">
          <font>
             <Font size="27.0" />
          </font></TextField>
-      <PasswordField fx:id="txtPassword" layoutX="836.0" layoutY="513.0" onAction="#txtPasswordOnAction" prefHeight="65.0" prefWidth="410.0" />
+      <PasswordField fx:id="txtPassword" layoutX="836.0" layoutY="513.0" onAction="#txtPasswordOnAction" prefHeight="65.0" prefWidth="410.0" promptText="Password">
+         <font>
+            <Font size="27.0" />
+         </font></PasswordField>
       <ImageView fitHeight="65.0" fitWidth="64.0" layoutX="772.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assert/user.png" />

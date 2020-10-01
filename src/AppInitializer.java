@@ -16,7 +16,7 @@ public class AppInitializer extends Application {
     public void start(Stage primaryStage) throws Exception {
        // primaryStage.setTitle("New Ocean SeaFoods");
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("view/MainForm.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("view/LoginForm.fxml"))));
        /* minIcon.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 primaryStage.setIconified(true);

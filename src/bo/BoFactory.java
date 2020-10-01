@@ -14,7 +14,7 @@ public class BoFactory {
     }
 
     public enum BOType {
-      CLIENT,BOAT,DRIVER,SEAFOOD,ORDER,DELIVERY,PURCHASE,QUICKORDER,PURCHASEDETAIL,ORDERDETAIL,QUICKDETAIL
+      CLIENT,BOAT,DRIVER,SEAFOOD,ORDER,DELIVERY,PURCHASE,QUICKORDER,PURCHASEDETAIL,ORDERDETAIL,QUICKDETAIL,LOGIN
     }
 
     public <T> T getBo(BOType type) {
@@ -41,6 +41,8 @@ public class BoFactory {
                 return (T) new DeliveryOrderBoImpl();
             case PURCHASEDETAIL:
                  return (T) new PurchaseDetailBoImpl();
+            case LOGIN:
+                return (T) new LoginBoImpl();
             default:
                 return null;
         }
