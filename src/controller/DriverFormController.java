@@ -67,10 +67,12 @@ public class DriverFormController {
     }
 
     private void setData(DriverTM tm) {
-        txtDriverId.setText(tm.getId());
-        txtDriverName.setText(tm.getName());
-        txtDriverAddress.setText(tm.getAddress());
-        txtDriverContact.setText(tm.getContact());
+        if(tm != null){
+            txtDriverId.setText(tm.getId());
+            txtDriverName.setText(tm.getName());
+            txtDriverAddress.setText(tm.getAddress());
+            txtDriverContact.setText(tm.getContact());
+        }
     }
 
     private void loadAllDriver() throws Exception {
@@ -105,6 +107,7 @@ public class DriverFormController {
                                     "Deleted", ButtonType.OK).show();
                             loadAllDriver();
                             clear();
+                            loadID();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -133,6 +136,7 @@ public class DriverFormController {
                                     "Updated", ButtonType.OK).show();
                             loadAllDriver();
                             clear();
+                            loadID();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -177,7 +181,7 @@ public class DriverFormController {
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) {
+    public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
         String id = txtDriverId.getText().trim();
         String name = txtDriverName.getText().trim();
         String address = txtDriverAddress.getText().trim();
@@ -195,17 +199,21 @@ public class DriverFormController {
                 } else {
                     new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
                     txtDriverId.requestFocus();
+                    loadID();
                 }
             } catch (SQLException se){
                 new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
                 txtDriverId.requestFocus();
+                loadID();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
                 txtDriverId.requestFocus();
+                loadID();
             }
         }else {
             new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
             txtDriverId.requestFocus();
+            loadID();
         }
     }
 
@@ -262,7 +270,7 @@ public class DriverFormController {
         }
     }
 
-    public void txtDriverContactOnAction(ActionEvent actionEvent) {
+    public void txtDriverContactOnAction(ActionEvent actionEvent) throws Exception {
         if (Pattern.compile("^(0)[0-9]{9}$").matcher(txtDriverContact.getText().trim()).matches()) {
             txtDriverContact.setFocusColor(Paint.valueOf("skyblue"));
             btnAdd.requestFocus();

@@ -68,10 +68,12 @@ public class BoatFormController {
     }
 
     private void setData(BoatTM tm) {
-        txtBoatId.setText(tm.getBoatId());
-        txtBoatName.setText(tm.getName());
-        txtOwnerName.setText(tm.getOwnerName());
-        txtOwnerContact.setText(tm.getOwnerContact());
+        if(tm != null){
+            txtBoatId.setText(tm.getBoatId());
+            txtBoatName.setText(tm.getName());
+            txtOwnerName.setText(tm.getOwnerName());
+            txtOwnerContact.setText(tm.getOwnerContact());
+        }
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
@@ -144,6 +146,7 @@ public class BoatFormController {
                                     "Deleted", ButtonType.OK).show();
                             loadAllBoat();
                             clear();
+                            loadId();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -154,7 +157,6 @@ public class BoatFormController {
                     e1.printStackTrace();
                 }
             });
-
             btnUpdate.setOnAction((e) -> {
                 try {
                     ButtonType ok = new ButtonType("OK",
@@ -172,6 +174,7 @@ public class BoatFormController {
                                     "Updated", ButtonType.OK).show();
                             loadAllBoat();
                             clear();
+                            loadId();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -281,8 +284,4 @@ public class BoatFormController {
         }
     }
 
-    public void btnNewOnAction(ActionEvent actionEvent) throws Exception {
-        clear();
-        loadId();
-    }
 }

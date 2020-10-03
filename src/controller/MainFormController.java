@@ -124,4 +124,7 @@ public class MainFormController {
         s.setIconified(true);
     }
 
+    public void btnHomeOnAction(MouseEvent mouseEvent) throws IOException {
+        initUI("DefaultForm.fxml");
+    }
 }

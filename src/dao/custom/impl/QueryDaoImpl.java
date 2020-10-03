@@ -4,6 +4,7 @@ import dao.CrudUtil;
 import dao.QueryDAO;
 import entity.Client;
 import entity.Driver;
+import entity.SeaFood;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -220,6 +221,32 @@ public class QueryDaoImpl implements QueryDAO {
             return set.getInt(1);
         }
         return 0;
+    }
+
+    @Override
+    public ArrayList<SeaFood> getMostMovable() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT *,COUNT(od.orderId)  FROM Seafood s,OrderDetail od WHERE od.itemCode=s.itemCode GROUP BY od.itemCode ORDER BY COUNT(od.orderId) DESC LIMIT 7");
+        ArrayList<SeaFood> seaFoods = new ArrayList<>();
+        while (set.next()){
+            seaFoods.add(new SeaFood(
+                    set.getString(1),set.getString(2),set.getDouble(3),
+                    set.getDouble(4),set.getDouble(5)
+            ));
+        }
+        return seaFoods;
+    }
+
+    @Override
+    public ArrayList<SeaFood> getLeastMovable() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT *,COUNT(od.orderId) FROM Seafood s, OrderDetail od WHERE od.itemCode=s.itemCode GROUP BY od.itemCode ORDER BY COUNT(od.orderId) LIMIT 7");
+        ArrayList<SeaFood> seaFoods = new ArrayList<>();
+        while (set.next()){
+            seaFoods.add(new SeaFood(
+                    set.getString(1),set.getString(2),set.getDouble(3),
+                    set.getDouble(4),set.getDouble(5)
+            ));
+        }
+        return seaFoods;
     }
 
 }

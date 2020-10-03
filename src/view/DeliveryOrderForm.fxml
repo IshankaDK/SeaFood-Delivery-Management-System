@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -62,7 +63,7 @@
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="764.0" onAction="#btnUpdateOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #009688#009688;" text="Update" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="795.0" onAction="#btnUpdateOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #009688#009688;" text="Update" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
@@ -75,16 +76,6 @@
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <TextField fx:id="txtArrival" layoutX="605.0" layoutY="795.0" onAction="#txtArrivalOnAction" prefHeight="63.0" prefWidth="298.0" text="00:00:00">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txtDeparture" alignment="CENTER" layoutX="79.0" layoutY="599.0" onAction="#txtDepartureOnAction" prefHeight="63.0" prefWidth="313.0" text="00:00:00">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </TextField>
             <TextField fx:id="txtDeliveryFee" alignment="CENTER" layoutX="445.0" layoutY="599.0" onAction="#txtDeliveryFeeOnAction" prefHeight="63.0" prefWidth="313.0" text="0.00">
                <font>
                   <Font size="29.0" />
@@ -143,19 +134,6 @@
                   <Font size="29.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="477.0" layoutY="745.0" prefHeight="50.0" prefWidth="565.0" text="to Use Current time press Enter">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </Label>
-            <JFXButton buttonType="RAISED" layoutX="998.0" layoutY="846.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" style="-fx-background-color: #ffa801;" text="Clear">
-               <font>
-                  <Font name="Arial Bold" size="19.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
             <ImageView fitHeight="50.0" fitWidth="41.0" layoutX="402.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/searchimage.png" />
@@ -166,6 +144,8 @@
                   <Image url="@../assert/searchimage.png" />
                </image>
             </ImageView>
+            <JFXTimePicker fx:id="ArrivalTimePicker" defaultColor="#640a0a" layoutX="586.0" layoutY="801.0" prefHeight="51.0" prefWidth="297.0" style="-fx-font-size: 27;" />
+            <JFXTimePicker fx:id="DepartureTimePicker" defaultColor="#640a0a" layoutX="88.0" layoutY="599.0" prefHeight="51.0" prefWidth="297.0" style="-fx-font-size: 27;" />
          </children>
       </AnchorPane>
    </children>

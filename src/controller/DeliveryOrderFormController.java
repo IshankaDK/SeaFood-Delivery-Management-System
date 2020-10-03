@@ -3,9 +3,7 @@ package controller;
 import bo.BoFactory;
 import bo.custom.DeliveryOrderBo;
 import bo.custom.DriverBo;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import dto.ClientDTO;
 import dto.DeliveryOrderDTO;
 import dto.DriverDTO;
@@ -20,6 +18,7 @@ import javafx.scene.paint.Paint;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -29,10 +28,8 @@ public class DeliveryOrderFormController {
     public JFXTextField txtDriverContact;
     public  TextField txtOrderId;
     public JFXTextField txtDoId;
-    public TextField txtDeparture;
     public TextField txtDeliveryFee;
     public TextField txtStatus;
-    public TextField txtArrival;
     public JFXComboBox cmbDriverId;
     public JFXTextField txtDriverName;
     public JFXTextField txtClientName;
@@ -41,6 +38,8 @@ public class DeliveryOrderFormController {
     public JFXTextField txtDriverAddress;
     public JFXTextField txtClientId;
     public JFXButton btnSave;
+    public JFXTimePicker ArrivalTimePicker;
+    public JFXTimePicker DepartureTimePicker;
 
 
     DeliveryOrderBo bo;
@@ -52,9 +51,7 @@ public class DeliveryOrderFormController {
         loadDriverCombo();
         loadId();
 
-        Date date = new Date();
-        SimpleDateFormat simpDate = new SimpleDateFormat("kk:mm:ss");
-        txtDeparture.setText(simpDate.format(date));
+        DepartureTimePicker.setValue(LocalTime.now());
         txtDeliveryFee.setText("250.00");
     }
 
@@ -64,18 +61,19 @@ public class DeliveryOrderFormController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
+        String arrivalTime = ArrivalTimePicker.getValue().toString();
         String status = "Done";
         try {
-            boolean isSaved = bo.updateDO(new DeliveryOrderDTO(txtDoId.getText().trim(),txtArrival.getText().trim(),status),
+            boolean isSaved = bo.updateDO(new DeliveryOrderDTO(txtDoId.getText().trim(),arrivalTime,status),
                     (txtOrderId.getText().trim()));
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Updated", ButtonType.OK).show();
+                clear();
             }else {
+                System.out.println(arrivalTime);
                 new Alert(Alert.AlertType.WARNING,
                         "Not Updated", ButtonType.OK).show();
-                txtArrival.setStyle("-fx-border-color: #f53b57 ");
-                txtArrival.requestFocus();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,7 +96,7 @@ public class DeliveryOrderFormController {
             txtDriverName.setText(dto.getName());
             txtDriverContact.setText(dto.getContact());
             txtDriverAddress.setText(dto.getAddress());
-            txtDeparture.requestFocus();
+            DepartureTimePicker.requestFocus();
         }
     }
 
@@ -133,8 +131,8 @@ public class DeliveryOrderFormController {
         String doId = txtDoId.getText().trim();
         String orId = txtOrderId.getText().trim();
         String driverId = String.valueOf(cmbDriverId.getValue());
-        String departure = txtDeparture.getText().trim();
-        String arrival = txtArrival.getText().trim();
+        String departure = String.valueOf(DepartureTimePicker.getValue());
+        String arrival = "00:00:00";
         String fee = txtDeliveryFee.getText().trim();
         String status = "On the Way";
 
@@ -143,12 +141,14 @@ public class DeliveryOrderFormController {
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Saved", ButtonType.OK).show();
+                clear();
             }else {
                 new Alert(Alert.AlertType.WARNING,
                         "Not Saved", ButtonType.OK).show();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.WARNING,
+                    "Not Saved", ButtonType.OK).show();
         }
     }
 
@@ -158,8 +158,8 @@ public class DeliveryOrderFormController {
             if(dto != null) {
                 txtOrderId.setText(dto.getOrderID());
                 cmbDriverId.setValue(dto.getDriverID());
-                txtDeparture.setText(dto.getDeparture());
-                txtArrival.setText(dto.getArrival());
+                DepartureTimePicker.setValue(LocalTime.parse(dto.getDeparture()));
+                ArrivalTimePicker.setValue(LocalTime.parse(dto.getArrival()));
                 txtDeliveryFee.setText(dto.getFee());
                 txtStatus.setText(dto.getStatus());
                 txtDoId.setStyle("-fx-border-color: #0fbcf9 ");
@@ -174,28 +174,6 @@ public class DeliveryOrderFormController {
         }
     }
 
-    public void txtArrivalOnAction(ActionEvent actionEvent) {
-        if(Pattern.compile("^[0-9:]{1,}$").matcher(txtArrival.getText().trim()).matches()){
-            txtArrival.setStyle("-fx-border-color: #0fbcf9 ");
-            Date date = new Date();
-            SimpleDateFormat simpDate = new SimpleDateFormat("kk:mm:ss");
-            txtArrival.setText(simpDate.format(date));
-        }else {
-            txtArrival.setStyle("-fx-border-color: #f53b57 ");
-            txtArrival.requestFocus();
-        }
-    }
-
-    public void txtDepartureOnAction(ActionEvent actionEvent) {
-        if(Pattern.compile("^[0-9:]{1,}$").matcher(txtDeparture.getText().trim()).matches()){
-            txtDeparture.setStyle("-fx-border-color: #0fbcf9 ");
-            txtDeliveryFee.requestFocus();
-        }else {
-            txtDeparture.setStyle("-fx-border-color: #f53b57 ");
-            txtDeparture.requestFocus();
-        }
-    }
-
     public void txtDeliveryFeeOnAction(ActionEvent actionEvent) {
         if (Pattern.compile("^[\\d|.]{1,9}$").matcher(txtDeliveryFee.getText().trim()).matches()) {
             txtDeliveryFee.setStyle("-fx-border-color: #0fbcf9 ");
@@ -206,7 +184,7 @@ public class DeliveryOrderFormController {
         }
     }
 
-    public void btnClearOnAction(ActionEvent actionEvent) throws Exception {
+    public void clear() throws Exception {
         txtOrderId.setText(null);
         txtClientId.setText(null);
         txtClientName.setText(null);
@@ -216,12 +194,10 @@ public class DeliveryOrderFormController {
         txtDriverName.setText(null);
         txtDriverAddress.setText(null);
         txtDriverContact.setText(null);
-        Date date = new Date();
-        SimpleDateFormat simpDate = new SimpleDateFormat("kk:mm:ss");
-        txtDeparture.setText(simpDate.format(date));
+        DepartureTimePicker.setValue(null);
         txtDeliveryFee.setText("250.00");
         txtStatus.setText("In Progress");
-        txtArrival.setText("00:00:00");
+        ArrivalTimePicker.setValue(null);
         loadId();
     }
 

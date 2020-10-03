@@ -2,6 +2,7 @@ package dao;
 
 import entity.Client;
 import entity.Driver;
+import entity.SeaFood;
 
 import java.util.ArrayList;
 
@@ -19,4 +20,6 @@ public interface QueryDAO extends SuperDAO {
     public int getTotalClient() throws Exception;
     public int getTotalDelivery() throws Exception;
     public int getTotalSeafood() throws Exception;
+    public ArrayList<SeaFood> getMostMovable() throws Exception;
+    public ArrayList<SeaFood> getLeastMovable() throws Exception;
 }

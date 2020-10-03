@@ -22,8 +22,8 @@
                 <Image url="@../assert/icons8_Home_48px.png" />
             </image>
         </ImageView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="38.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
-        <TableView fx:id="tblMostItem" layoutX="53.0" layoutY="630.0" prefHeight="198.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="360.0" layoutX="38.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
+        <TableView fx:id="tblMostItem" layoutX="53.0" layoutY="630.0" prefHeight="243.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
             <columns>
                 <TableColumn fx:id="colMostCode" prefWidth="97.00003051757812" text="Item Code" />
                 <TableColumn fx:id="colMostDesc" prefWidth="157.0" text="Description" />
@@ -32,8 +32,8 @@
                 <TableColumn fx:id="colMostSellPrice" prefWidth="154.0" text="Selling Price" />
             </columns>
         </TableView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="323.0" layoutX="820.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
-        <TableView fx:id="tblLeastItem" layoutX="835.0" layoutY="629.0" prefHeight="200.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2bec3" height="360.0" layoutX="820.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" width="749.0" />
+        <TableView fx:id="tblLeastItem" layoutX="835.0" layoutY="629.0" prefHeight="243.0" prefWidth="719.0" style="-fx-background-color: #a5b1c2;">
             <columns>
                 <TableColumn fx:id="colLeastCode" prefWidth="97.00003051757812" text="Item Code" />
                 <TableColumn fx:id="colLeastDesc" prefWidth="157.0" text="Description" />

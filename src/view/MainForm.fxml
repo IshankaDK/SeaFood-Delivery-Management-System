@@ -27,7 +27,7 @@
                   <Font name="Arial" size="38.0" />
                </font>
             </Label>
-            <Label fx:id="lblDate" layoutX="34.0" layoutY="11.0" prefHeight="59.0" prefWidth="677.0" text="Wednseday, January 01,2020" textFill="WHITE">
+            <Label fx:id="lblDate" layoutX="99.0" layoutY="11.0" prefHeight="59.0" prefWidth="436.0" text="Wednseday, January 01,2020" textFill="WHITE">
                <font>
                   <Font name="Arial" size="31.0" />
                </font>
@@ -35,6 +35,14 @@
             <ImageView fitHeight="59.0" fitWidth="71.0" layoutX="1426.0" layoutY="10.0" onMouseReleased="#imgMinimizeOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assert/minimize.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="82.0" fitWidth="47.0" layoutX="14.0" layoutY="20.0" onMouseReleased="#btnHomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/homeX.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

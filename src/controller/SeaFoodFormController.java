@@ -83,7 +83,7 @@ public class SeaFoodFormController {
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) {
+    public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
         String code = txtCode.getText().trim();
         String description = txtDescription.getText().trim();
         double qtyOnHand = Double.parseDouble(txtQtyOnHand.getText().trim());
@@ -103,17 +103,21 @@ public class SeaFoodFormController {
                 } else {
                     new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
                     txtCode.requestFocus();
+                    loadCode();
                 }
             } catch (SQLException se){
                 new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
                 txtCode.requestFocus();
+                loadCode();
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
                 txtCode.requestFocus();
+                loadCode();
             }
         }else {
             new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
             txtCode.requestFocus();
+            loadCode();
         }
     }
 
@@ -149,6 +153,7 @@ public class SeaFoodFormController {
                                     "Deleted", ButtonType.OK).show();
                             loadAllSeaFood();
                             clear();
+                            loadCode();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -159,7 +164,6 @@ public class SeaFoodFormController {
                     e1.printStackTrace();
                 }
             });
-
             btnUpdate.setOnAction((e) -> {
                 try {
                     ButtonType ok = new ButtonType("OK",
@@ -178,6 +182,7 @@ public class SeaFoodFormController {
                                     "Updated", ButtonType.OK).show();
                             loadAllSeaFood();
                             clear();
+                            loadCode();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -290,7 +295,7 @@ public class SeaFoodFormController {
         }
     }
 
-    public void txtSellPriceOnAction(ActionEvent actionEvent) {
+    public void txtSellPriceOnAction(ActionEvent actionEvent) throws Exception {
         if (Pattern.compile("^[\\d|.]{1,9}$").matcher(txtSellPrice.getText().trim()).matches()) {
             txtSellPrice.setFocusColor(Paint.valueOf("skyblue"));
             btnAdd.requestFocus();

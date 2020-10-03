@@ -68,11 +68,13 @@ public class ClientFormController {
     }
 
     private void setData(ClientTM tm) {
-        txtClientId.setText(tm.getId());
-        txtClientName.setText(tm.getName());
-        txtClientAddress.setText(tm.getAddress());
-        txtClientContact.setText(tm.getContact());
-        cmbClientType.setValue(tm.getType());
+        if(tm != null){
+            txtClientId.setText(tm.getId());
+            txtClientName.setText(tm.getName());
+            txtClientAddress.setText(tm.getAddress());
+            txtClientContact.setText(tm.getContact());
+            cmbClientType.setValue(tm.getType());
+        }
     }
 
     public void getClientType()  {
@@ -88,7 +90,7 @@ public class ClientFormController {
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent)  {
+    public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
         String id = txtClientId.getText().trim();
         txtClientName.requestFocus();
         String name = txtClientName.getText().trim();
@@ -108,16 +110,19 @@ public class ClientFormController {
                } else {
                    new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
                    txtClientId.requestFocus();
+                   loadId();
                }
            } catch (SQLException se){
                new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+               loadId();
                txtClientId.requestFocus();
            } catch (Exception e) {
                new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
                txtClientId.requestFocus();
+               loadId();
            }
        }else {
-           new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+           new Alert(Alert.AlertType.WARNING, "Some Field is Empty",ButtonType.OK).show();
            txtClientId.requestFocus();
        }
 
@@ -160,6 +165,7 @@ public class ClientFormController {
                                     "Deleted", ButtonType.OK).show();
                             loadAllClient();
                             clear();
+                            loadId();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -170,7 +176,6 @@ public class ClientFormController {
                     e1.printStackTrace();
                 }
             });
-
             btnUpdate.setOnAction((e) -> {
                 try {
                     ButtonType ok = new ButtonType("OK",
@@ -188,6 +193,7 @@ public class ClientFormController {
                                     "Updated", ButtonType.OK).show();
                             loadAllClient();
                             clear();
+                            loadId();
                             return;
                         }
                         new Alert(Alert.AlertType.WARNING,
@@ -298,11 +304,6 @@ public class ClientFormController {
             txtClientContact.setFocusColor(Paint.valueOf("red"));
             txtClientContact.requestFocus();
         }
-    }
-
-    public void btnNewOnAction(ActionEvent actionEvent) throws Exception {
-        clear();
-        loadId();
     }
 
 }
