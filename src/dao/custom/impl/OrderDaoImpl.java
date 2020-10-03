@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class OrderDaoImpl implements OrderDAO {
     @Override
     public boolean save(Order order) throws Exception {
-       return CrudUtil.execute("INSERT INTO _Order (orderId,clientId,paymentStatus) VALUES (?,?,?)",
-                order.getId(),order.getClientId(),order.getStatus());
+       return CrudUtil.execute("INSERT INTO _Order  VALUES (?,?,?,?)",
+                order.getId(),order.getDate(),order.getClientId(),order.getStatus());
     }
 
     @Override

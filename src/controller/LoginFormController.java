@@ -49,16 +49,16 @@ public class LoginFormController {
                     this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/MainForm.fxml")));
                 }else {
                     new Alert(Alert.AlertType.WARNING,"Password does not match, Try Again..!", ButtonType.OK).show();
-                    txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3");
+                    txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
                     txtPassword.requestFocus();
                 }
             }else {
                 new Alert(Alert.AlertType.WARNING,"No User Found to this User Name.", ButtonType.OK).show();
-                txtUserName.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3");
+                txtUserName.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
                 txtUserName.requestFocus();
             }
         } else {
-            txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3");
+            txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
             txtPassword.requestFocus();
         }
 
@@ -66,13 +66,13 @@ public class LoginFormController {
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws Exception {
         if(txtUserName.getText().trim().equalsIgnoreCase(null)){
-            txtUserName.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3");
+            txtUserName.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
             txtUserName.requestFocus();
         }else{
             txtUserNameOnAction(actionEvent);
         }
         if(txtPassword.getText().trim().equalsIgnoreCase(null)){
-            txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3");
+            txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
             txtPassword.requestFocus();
         }else {
             txtPasswordOnAction(actionEvent);

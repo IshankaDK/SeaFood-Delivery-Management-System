@@ -68,11 +68,14 @@ public class SeaFoodFormController {
     }
 
     private void setData(SeaFoodTM tm) {
-        txtCode.setText(tm.getCode());
-        txtDescription.setText(tm.getDescription());
-        txtQtyOnHand.setText(String.valueOf(tm.getQtyOnHand()));
-        txtPurchasePrice.setText(String.valueOf(tm.getPurchasePrice()));
-        txtSellPrice.setText(String.valueOf(tm.getSellingPrice()));
+        if(tm != null){
+            txtCode.setText(tm.getCode());
+            txtDescription.setText(tm.getDescription());
+            txtQtyOnHand.setText(String.valueOf(tm.getQtyOnHand()));
+            txtPurchasePrice.setText(String.valueOf(tm.getPurchasePrice()));
+            txtSellPrice.setText(String.valueOf(tm.getSellingPrice()));
+        }
+
     }
 
     public void imgBackToHome(MouseEvent mouseEvent) throws IOException {

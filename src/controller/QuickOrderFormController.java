@@ -119,16 +119,20 @@ public class QuickOrderFormController {
                 if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
                     double temp = (double) colQty.getCellData(i); // get qty in table for temp
                     temp += qty; // add new qty to old qty
-                    double tot = (temp * unitPrice)-discount; // get new total
-                    observableList.get(i).setQty(temp); // set new qty to observableList
-                    observableList.get(i).setTotal(tot); // set new total to observableList
-                    getSubTotal();
-                    tblQuickOrder.refresh(); // refresh table
-                    return;
+                    if(temp <= Double.parseDouble(txtQtyOnHand.getText())){
+                        double tot = (temp * unitPrice)-discount; // get new total
+                        observableList.get(i).setQty(temp); // set new qty to observableList
+                        observableList.get(i).setTotal(tot); // set new total to observableList
+                        getSubTotal();
+                        tblQuickOrder.refresh(); // refresh table
+                        return;
+                    }else {
+                        new Alert(Alert.AlertType.WARNING,"No Sufficient Items in the Stock..! ",ButtonType.OK).show();
+                        return;
+                    }
                 }
             }
         }
-
         observableList.add(new QuickOrderTM(code, desc, qty, unitPrice,discount, ((qty * unitPrice)-discount)));
         tblQuickOrder.setItems(observableList); // if their is no list or, no matched itemcode
         getSubTotal();
@@ -182,8 +186,14 @@ public class QuickOrderFormController {
 
     public void txtQtyOnAction(ActionEvent actionEvent) {
         if(Pattern.compile("^[\\d|.]{1,4}$").matcher(txtQty.getText().trim()).matches()){
-            txtQty.setStyle("-fx-border-color: #0fbcf9 ");
-            txtDiscount.requestFocus();
+            if(Double.parseDouble(txtQty.getText()) <= Double.parseDouble(txtQtyOnHand.getText())){
+                txtQty.setStyle("-fx-border-color: #0fbcf9 ");
+                txtDiscount.requestFocus();
+            }else {
+                txtQty.setStyle("-fx-border-color: #f53b57 ");
+                txtQty.requestFocus();
+                new Alert(Alert.AlertType.WARNING,"No Sufficient Items in the Stock..! ",ButtonType.OK).show();
+            }
         }else {
             txtQty.setStyle("-fx-border-color: #f53b57 ");
             txtQty.requestFocus();

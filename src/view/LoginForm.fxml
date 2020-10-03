@@ -32,11 +32,11 @@
             <Font name="Bell MT Bold" size="53.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUserName" layoutX="836.0" layoutY="407.0" onAction="#txtUserNameOnAction" prefHeight="57.0" prefWidth="410.0" promptText="User Name">
+      <TextField fx:id="txtUserName" layoutX="836.0" layoutY="407.0" onAction="#txtUserNameOnAction" prefHeight="57.0" prefWidth="410.0" promptText="User Name" text="ishanka123">
          <font>
             <Font size="27.0" />
          </font></TextField>
-      <PasswordField fx:id="txtPassword" layoutX="836.0" layoutY="513.0" onAction="#txtPasswordOnAction" prefHeight="65.0" prefWidth="410.0" promptText="Password">
+      <PasswordField fx:id="txtPassword" layoutX="836.0" layoutY="513.0" onAction="#txtPasswordOnAction" prefHeight="65.0" prefWidth="410.0" promptText="Password" text="1234abc">
          <font>
             <Font size="27.0" />
          </font></PasswordField>

@@ -186,5 +186,40 @@ public class QueryDaoImpl implements QueryDAO {
         return null;
     }
 
+    @Override
+    public int getTotalOrders() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT COUNT(orderId) from _Order;");
+        if(set.next()){
+            return set.getInt(1);
+        }
+        return 0;
+    }
+
+    @Override
+    public int getTotalClient() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT COUNT(clientId) from Client;");
+        if(set.next()){
+            return set.getInt(1);
+        }
+        return 0;
+    }
+
+    @Override
+    public int getTotalDelivery() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT COUNT(doId) from DeliveryOrder;");
+        if(set.next()){
+            return set.getInt(1);
+        }
+        return 0;
+    }
+
+    @Override
+    public int getTotalSeafood() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT COUNT(itemCode) from Seafood;");
+        if(set.next()){
+            return set.getInt(1);
+        }
+        return 0;
+    }
 
 }
