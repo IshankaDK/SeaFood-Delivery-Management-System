@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2020-10-04T17:11:55 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="orderReport01" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f16a171-ea88-467b-be27-5e71236b2c79">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My Data Adapter"/>
+	<parameter name="customer" class="java.lang.String"/>
+	<parameter name="allTtotal" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT orderId,description,qty,unitprice,discount,((qty * unitprice)-discount) as total FROM OrderDetail INNER JOIN Seafood ON OrderDetail.itemCode = Seafood.itemCode where orderId = (select orderId FROM OrderDetail ORDER BY orderId DESC LIMIT 1)]]>
+	</queryString>
+	<field name="orderId" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="qty" class="java.lang.Double"/>
+	<field name="unitprice" class="java.lang.Double"/>
+	<field name="discount" class="java.lang.Double"/>
+	<field name="total" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="221" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="-10" width="470" height="40" uuid="2b6a29f0-6379-4e21-a261-6d1a40352a14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Franklin Gothic Demi" size="30"/>
+				</textElement>
+				<text><![CDATA[New Ocean SeaFoods]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="25" width="360" height="30" uuid="f7e5ccdf-3323-4d69-9276-0323d7b41880"/>
+				<textElement textAlignment="Center">
+					<font fontName="OCR A Extended" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Call us, we’ll be there.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="50" width="320" height="60" uuid="25ad1001-61b1-48bd-b8a8-b2b327e8fed7"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[No 10, Harbour Road, Unawatuna, Galle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="103" width="300" height="30" uuid="3e923505-f147-4542-aafa-c4eee340e13e"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[011 2 115 649 / 077 0 455 666]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="129" width="400" height="30" uuid="edf06837-cae5-4721-b09a-31af6817189f"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[newoceanseafood.colombo@gmail.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="220" width="545" height="1" uuid="2c0a72db-41c5-421f-b4e6-9506437b85e6"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="10" width="100" height="30" uuid="f1b19f2b-88b6-4199-b234-17070c2c1eae"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Order No: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="46" width="100" height="30" uuid="2bc370ee-5b6b-4d3d-b069-73241531e05a"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="110" y="46" width="170" height="30" uuid="2ef0b587-a483-4985-a462-a8d686dfe2a9"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="318" y="46" width="100" height="30" uuid="d8acb3d4-5822-476a-bb9c-fb9bcda8430a"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Time :]]></text>
+			</staticText>
+			<textField pattern="HH:mm">
+				<reportElement x="360" y="45" width="150" height="30" uuid="457ad158-9b1f-40ba-a6ad-597a8b104144"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="10" width="100" height="30" uuid="6ad7c790-864d-424e-ba7f-41fcc5724f8c"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="298" y="10" width="100" height="30" uuid="1f324452-7f5d-44fc-a71b-e46e174de2ec"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Customer :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="10" width="160" height="30" uuid="d06fe552-ad06-43d9-b010-cb569711ea9f"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customer}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="10" width="90" height="30" uuid="fe57ac02-36d2-4fcc-a5bb-f33e18b59c7f"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="10" width="100" height="30" uuid="a031d1c4-5a28-4fa5-8f26-5829ccfcda15"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Quntity (Kg)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="10" width="120" height="30" uuid="1d6f58c8-5635-4639-bd1d-4d19336dcd1d"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Unit Price (Rs.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="10" width="110" height="30" uuid="505588f0-b3fa-4f91-b947-159372cc78bc"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Discount (Rs.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="10" width="120" height="30" uuid="6df187fd-57b5-41f1-86e7-ce8b6016fbe6"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Amount (Rs.)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="69" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="10" width="145" height="50" uuid="5c8b1056-1595-43a2-a011-8275e2651b82"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="10" width="80" height="30" uuid="fd60d3bc-2c07-4847-be58-805c69fd7fe1"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="10" width="70" height="30" uuid="05079622-bb1e-4db1-8fc5-a30dbe8e6453"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unitprice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="10" width="60" height="30" uuid="1781c01c-e06a-4f9c-9097-cf4d1b0dfbc6"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{discount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="10" width="60" height="30" uuid="1876b629-de1e-48b2-a288-3c713e97b1fd"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="49">
+			<staticText>
+				<reportElement x="340" y="10" width="100" height="30" uuid="acf4e74f-4f55-49be-a82a-ac31950f2fbf"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="5" y="5" width="545" height="1" forecolor="#000000" uuid="162c1796-2920-41f2-bf47-f0a5591b34a0"/>
+			</line>
+			<textField>
+				<reportElement x="421" y="10" width="118" height="30" uuid="39774845-9daa-4f41-801c-09d4b6482a64"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{allTtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="152" y="10" width="240" height="30" uuid="c3e586c2-894a-4c3c-9f5e-625e9ad63b5a"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Software by Ishanka Dilshan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="8" y="5" width="545" height="1" forecolor="#000000" uuid="bbaf8132-fefd-46ed-a42d-7de0c878f469"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

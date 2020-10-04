@@ -7,6 +7,7 @@ import bo.custom.SeaFoodBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import db.DBConnection;
 import dto.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,12 +17,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 import view.tm.OrderTM;
 import view.tm.PurchaseTM;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.function.BinaryOperator;
 import java.util.regex.Pattern;
 
@@ -186,6 +192,26 @@ public class OrderFormController {
     }
 
     public void btnPrintBillOnAction(ActionEvent actionEvent) {
+
+        try {
+            InputStream is = this.getClass().getResourceAsStream("/report/orderReport01.jrxml");
+
+            JasperReport jr = JasperCompileManager.compileReport(is);
+
+            HashMap hm = new HashMap();
+            hm.put("customer", txtClientName.getText());
+            hm.put("allTtotal", lblTotal.getText());
+            JasperPrint jp = JasperFillManager.fillReport(jr, hm, DBConnection.getInstance().getConnection());
+
+            JasperViewer.viewReport(jp, false);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadId() throws Exception {
