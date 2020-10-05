@@ -50,7 +50,7 @@
             <Image url="@../assert/key.png" />
          </image>
       </ImageView>
-      <JFXButton alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="835.0" layoutY="602.0" onAction="#btnLoginOnAction" prefHeight="74.0" prefWidth="410.0" style="-fx-background-color: #26de81;" text="SIGN IN" textFill="WHITE">
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="835.0" layoutY="602.0" onAction="#btnLoginOnAction" prefHeight="74.0" prefWidth="410.0" stylesheets="@../CSS/loginButtonCSS.css" text="SIGN IN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>

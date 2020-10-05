@@ -97,7 +97,7 @@
                   <Font name="System Bold" size="56.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1216.0" layoutY="528.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" style="-fx-background-color: #1dd1a1;" text="+ Add">
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1216.0" layoutY="528.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" stylesheets="@../CSS/addButtonCSS.css" text="+ Add">
                <font>
                   <Font name="Arial" size="30.0" />
                </font>
@@ -105,7 +105,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="50.0" layoutX="1269.0" layoutY="627.0" onAction="#btnSaveOnAction" prefHeight="70.0" prefWidth="230.0" ripplerFill="#0d38ff" style="-fx-background-color: #0abde3;" text="Save">
+            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="50.0" layoutX="1269.0" layoutY="627.0" onAction="#btnSaveOnAction" prefHeight="70.0" prefWidth="230.0" ripplerFill="#0d38ff" stylesheets="@../CSS/saveandprintButtonCSS.css" text="Save">
                <font>
                   <Font name="Dubai Bold" size="27.0" />
                </font>
@@ -146,7 +146,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="1389.0" layoutY="528.0" onAction="#btnRemoveOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" style="-fx-background-color: #B71C1C;" text="- Remove" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="1389.0" layoutY="528.0" onAction="#btnRemoveOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#fff70b" stylesheets="@../CSS/removeButtonCSS.css" text="- Remove" textFill="WHITE">
                <font>
                   <Font name="Arial" size="24.0" />
                </font>
@@ -169,7 +169,7 @@
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="1305.0" layoutY="730.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" style="-fx-background-color: #ffa801;" text="Clear">
+            <JFXButton buttonType="RAISED" layoutX="1305.0" layoutY="713.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" stylesheets="@../CSS/clearButtonCSS.css" text="Clear">
                <font>
                   <Font name="Arial Bold" size="19.0" />
                </font>

@@ -61,7 +61,7 @@
       <AnchorPane fx:id="root" layoutX="321.0" layoutY="80.0" prefHeight="949.0" prefWidth="1591.0" style="-fx-background-color: #6a89cc;" />
       <VBox fx:id="vBox" alignment="TOP_CENTER" layoutX="-6.0" layoutY="299.0" prefHeight="731.0" prefWidth="327.0" style="-fx-background-color: #1A237E;" stylesheets="@../assert/abc.css">
          <children>
-            <JFXButton fx:id="btnClient" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnClientOnAction" opacity="0.92" prefHeight="79.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Client" textFill="WHITE">
+            <JFXButton fx:id="btnClient" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnClientOnAction" opacity="0.92" prefHeight="83.0" prefWidth="327.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="Client" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -79,7 +79,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnSeaFood" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnItemOnAction" opacity="0.92" prefHeight="81.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="SeaFood" textFill="WHITE">
+            <JFXButton fx:id="btnSeaFood" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnItemOnAction" opacity="0.92" prefHeight="79.0" prefWidth="327.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="SeaFood" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -97,7 +97,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnPurchase" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnPurchaseOnAction" opacity="0.92" prefHeight="83.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Purchase" textFill="WHITE">
+            <JFXButton fx:id="btnPurchase" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnPurchaseOnAction" opacity="0.92" prefHeight="81.0" prefWidth="327.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="Purchase" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -115,7 +115,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnOrderOnAction" opacity="0.92" prefHeight="83.0" prefWidth="323.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Order" textFill="WHITE">
+            <JFXButton fx:id="btnOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnOrderOnAction" opacity="0.92" prefHeight="81.0" prefWidth="323.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -133,7 +133,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnQuickOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnQuickOrderOnAction" opacity="0.92" prefHeight="82.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Quick Order" textFill="WHITE">
+            <JFXButton fx:id="btnQuickOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnQuickOrderOnAction" opacity="0.92" prefHeight="82.0" prefWidth="327.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="Quick Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -151,7 +151,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnDeliveryOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDOrderOnAction" opacity="0.92" prefHeight="82.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Delivery Order" textFill="WHITE">
+            <JFXButton fx:id="btnDeliveryOrder" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDOrderOnAction" opacity="0.92" prefHeight="78.0" prefWidth="327.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="Delivery Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="32.0" />
                </font>
@@ -169,7 +169,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnBoat" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnBoatOnAction" opacity="0.92" prefHeight="84.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Boat" textFill="WHITE">
+            <JFXButton fx:id="btnBoat" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnBoatOnAction" opacity="0.92" prefHeight="80.0" prefWidth="327.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="Boat" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -187,7 +187,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnDriver" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDriverOnAction" opacity="0.92" prefHeight="85.0" prefWidth="327.0" ripplerFill="#0fff9b" style="-fx-background-color: #1A237E#1A237E;" text="Driver" textFill="WHITE">
+            <JFXButton fx:id="btnDriver" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="20.0" onAction="#btnDriverOnAction" opacity="0.92" prefHeight="77.0" prefWidth="327.0" ripplerFill="#0fff9b" stylesheets="@../CSS/mainButtonCSS.css" text="Driver" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>

@@ -109,7 +109,7 @@
                   <Font name="System Bold" size="56.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1233.0" layoutY="533.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#effc07" style="-fx-background-color: #1dd1a1;" text="+ Add">
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="1233.0" layoutY="533.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#effc07" stylesheets="@../CSS/addButtonCSS.css" text="+ Add">
                <font>
                   <Font name="Arial" size="30.0" />
                </font>
@@ -117,7 +117,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="btnPlaceOrder" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="2.0" layoutX="1277.0" layoutY="629.0" onAction="#btnPlaceOrderOnAction" prefHeight="65.0" prefWidth="244.0" ripplerFill="#0715fa" style="-fx-background-color: #0abde3;" text="Place Order">
+            <JFXButton fx:id="btnPlaceOrder" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="2.0" layoutX="1277.0" layoutY="629.0" onAction="#btnPlaceOrderOnAction" prefHeight="69.0" prefWidth="261.0" ripplerFill="#0715fa" stylesheets="@../CSS/saveandprintButtonCSS.css" text="Place Order">
                <font>
                   <Font name="Dubai Regular" size="30.0" />
                </font>
@@ -132,7 +132,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnPrintBill" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1277.0" layoutY="714.0" onAction="#btnPrintBillOnAction" prefHeight="65.0" prefWidth="244.0" ripplerFill="#0715fa" style="-fx-background-color: #0abde3;" text="Print Bill">
+            <JFXButton fx:id="btnPrintBill" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="25.0" layoutX="1277.0" layoutY="714.0" onAction="#btnPrintBillOnAction" prefHeight="74.0" prefWidth="261.0" ripplerFill="#0715fa" stylesheets="@../CSS/saveandprintButtonCSS.css" text="Print Bill">
                <font>
                   <Font name="Dubai Regular" size="30.0" />
                </font>
@@ -162,7 +162,7 @@
                   <Font size="25.0" />
                </font>
             </TextField>
-            <JFXButton fx:id="btnRemove" buttonType="RAISED" layoutX="1412.0" layoutY="533.0" onAction="#btnRemoveOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#effc07" style="-fx-background-color: #D50000;" text="- Remove" textFill="WHITE">
+            <JFXButton fx:id="btnRemove" buttonType="RAISED" layoutX="1412.0" layoutY="533.0" onAction="#btnRemoveOnAction" prefHeight="54.0" prefWidth="148.0" ripplerFill="#effc07" stylesheets="@../CSS/removeButtonCSS.css" text="- Remove" textFill="WHITE">
                <font>
                   <Font name="Arial" size="24.0" />
                </font>
@@ -170,7 +170,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1324.0" layoutY="803.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" style="-fx-background-color: #ffa801;" text="Clear">
+            <JFXButton buttonType="RAISED" layoutX="1324.0" layoutY="803.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" stylesheets="@../CSS/clearButtonCSS.css" text="Clear">
                <font>
                   <Font name="Arial Bold" size="19.0" />
                </font>

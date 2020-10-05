@@ -61,7 +61,7 @@
                </font>
             </JFXTextField>
             <JFXComboBox fx:id="cmbClientType" labelFloat="true" layoutX="105.0" layoutY="710.0" prefHeight="54.0" prefWidth="198.0" promptText="Client Type" style="-fx-font-size: 24;" visibleRowCount="5" />
-            <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="717.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="54.0" prefWidth="134.0" ripplerFill="#e5ff00" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="717.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="54.0" prefWidth="134.0" ripplerFill="#e5ff00" stylesheets="@../CSS/addButtonCSS.css" text="+ Add">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>

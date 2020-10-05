@@ -63,7 +63,7 @@
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="795.0" onAction="#btnUpdateOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #009688#009688;" text="Update" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="795.0" onAction="#btnUpdateOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" stylesheets="@../CSS/updateButtonCSS.css" text="Update" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
@@ -91,7 +91,7 @@
                   <Font size="29.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="1186.0" layoutY="596.0" onAction="#btnSaveOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" style="-fx-background-color: #0fbcf9;" text="Save &amp; Print">
+            <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="1186.0" layoutY="596.0" onAction="#btnSaveOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" stylesheets="@../CSS/saveandprintButtonCSS.css" text="Save &amp; Print">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>

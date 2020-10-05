@@ -5,15 +5,20 @@ import bo.custom.LoginBo;
 import dto.LoginDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -45,6 +50,16 @@ public class LoginFormController {
             LoginDTO dto = bo.checkLogin(txtUserName.getText().trim());
             if(dto != null){
                 if(dto.getPassword().equalsIgnoreCase(txtPassword.getText().trim())){
+
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Login Successfully.!")
+                            .text("You have Successfully login to the System.")
+                            .graphic(new ImageView(new Image("/assert/done.png")))
+                            .hideAfter(Duration.seconds(5))
+                            .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
+
                     this.root.getChildren().clear();
                     this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/MainForm.fxml")));
                 }else {

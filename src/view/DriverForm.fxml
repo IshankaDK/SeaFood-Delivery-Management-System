@@ -58,7 +58,7 @@
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="415.0" layoutY="690.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="54.0" prefWidth="134.0" ripplerFill="#ddff01" style="-fx-background-color: #10ac84;" text="+ Add">
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="415.0" layoutY="690.0" onAction="#btnAddOnAction" opacity="0.88" prefHeight="54.0" prefWidth="134.0" ripplerFill="#ddff01" stylesheets="@../CSS/addButtonCSS.css" text="+ Add">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
