@@ -48,11 +48,6 @@ public class BoatFormController {
     public JFXButton btnAdd;
     BoatBo bo;
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
-        this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-    }
-
     public void initialize() throws Exception {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.BOAT);
         loadId();

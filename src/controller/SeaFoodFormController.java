@@ -83,15 +83,6 @@ public class SeaFoodFormController {
 
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) {
-        this.root.getChildren().clear();
-        try {
-            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
         String code = txtCode.getText().trim();
         String description = txtDescription.getText().trim();

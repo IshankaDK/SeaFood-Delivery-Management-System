@@ -72,15 +72,6 @@ public class PurchaseFormController {
 
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent)  {
-        this.root.getChildren().clear();
-        try {
-            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void loadBoatCombo(){
         ObservableList<String> observableList = FXCollections.observableArrayList();
         try {

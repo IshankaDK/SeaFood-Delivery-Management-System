@@ -75,15 +75,6 @@ public class OrderFormController {
         loadSeaFoodCombo();
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent)  {
-        this.root.getChildren().clear();
-        try {
-            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void loadClientCombo() {
         ObservableList<String> observableList = FXCollections.observableArrayList();
         ArrayList<ClientDTO> arrayList = null;

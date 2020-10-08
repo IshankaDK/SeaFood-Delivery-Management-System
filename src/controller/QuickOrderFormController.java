@@ -68,15 +68,6 @@ public class QuickOrderFormController {
         loadSeaFoodCombo();
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent)  {
-        this.root.getChildren().clear();
-        try {
-            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void btnPrintBillOnAction(ActionEvent actionEvent) {
         try {
             InputStream is = this.getClass().getResourceAsStream("/report/QuickOrder.jrxml");

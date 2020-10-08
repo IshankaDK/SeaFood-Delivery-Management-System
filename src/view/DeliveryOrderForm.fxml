@@ -27,14 +27,6 @@
                   <Image url="@../assert/icons8_Deliver_Food_48px.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
-               <image>
-                  <Image url="@../assert/icons8_Home_48px.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="556.0" layoutX="22.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1516.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ba7b2" height="207.0" layoutX="302.0" layoutY="716.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="952.0" />
             <JFXComboBox fx:id="cmbDriverId" layoutX="70.0" layoutY="416.0" onAction="#cmbDriverIdOnAction" prefHeight="63.0" prefWidth="313.0" promptText="Driver Id" style="-fx-font-size: 29;" />

@@ -28,14 +28,6 @@
                   <Image url="@../assert/purchased.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
-               <image>
-                  <Image url="@../assert/icons8_Home_48px.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
             <TableView fx:id="tblPurchase" layoutX="109.0" layoutY="500.0" prefHeight="394.0" prefWidth="1032.0">
                <columns>
                   <TableColumn fx:id="colCode" prefWidth="160.0" text="Item Code" />

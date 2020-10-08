@@ -66,11 +66,6 @@ public class DeliveryOrderFormController {
         txtDeliveryFee.setText("250.00");
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
-        this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-    }
-
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         String arrivalTime = ArrivalTimePicker.getValue().toString();
         String status = "Done";

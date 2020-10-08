@@ -90,11 +90,6 @@ public class ClientFormController {
         cmbClientType.setItems(observableList);
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
-        this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-    }
-
     public void btnAddOnAction(ActionEvent actionEvent) {
         String id = txtClientId.getText().trim();
         String name = txtClientName.getText().trim();

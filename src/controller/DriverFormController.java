@@ -229,15 +229,6 @@ public class DriverFormController {
         tblDriver.setItems(sortedData);
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) {
-        this.root.getChildren().clear();
-        try {
-            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void btnAddOnAction(ActionEvent actionEvent) {
         String id = txtDriverId.getText().trim();
         String name = txtDriverName.getText().trim();

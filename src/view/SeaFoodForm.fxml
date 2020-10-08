@@ -77,14 +77,6 @@
                   <Font name="Century Schoolbook" size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="73.0" fitWidth="68.0" layoutX="1463.0" layoutY="42.0" onMouseReleased="#imgBackToHome" pickOnBounds="true">
-               <image>
-                  <Image url="@../assert/icons8_Home_48px.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
             <JFXTextField fx:id="txtPurchasePrice" layoutX="106.0" layoutY="575.0" onAction="#txtPurchasePriceOnAction" prefHeight="41.0" prefWidth="442.0">
                <font>
                   <Font size="25.0" />

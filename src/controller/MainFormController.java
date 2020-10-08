@@ -68,7 +68,6 @@ public class MainFormController {
         this.root.getChildren().clear();
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/"+location)));
     }
-    
 
     public void btnClientOnAction(ActionEvent actionEvent) throws IOException {
         initUI("ClientForm.fxml");
@@ -90,7 +89,6 @@ public class MainFormController {
         btnPurchase.requestFocus();
     }
 
-
     public void btnDOrderOnAction(ActionEvent actionEvent) throws IOException {
         initUI("DeliveryOrderForm.fxml");
         btnDeliveryOrder.requestFocus();
@@ -99,7 +97,6 @@ public class MainFormController {
     public void btnBoatOnAction(ActionEvent actionEvent) throws IOException {
         initUI("BoatForm.fxml");
         btnBoat.requestFocus();
-
     }
 
     public void imgExitOnAction(MouseEvent mouseEvent) throws IOException {
@@ -107,7 +104,6 @@ public class MainFormController {
         stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"))));
 //        System.exit(0);
     }
-
 
     public void btnDriverOnAction(ActionEvent actionEvent) throws IOException {
         initUI("DriverForm.fxml");
