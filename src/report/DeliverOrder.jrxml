@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2020-10-08T13:49:25 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DeliverOrder" pageWidth="595" pageHeight="900" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4fb432f5-9085-4878-8551-377ab928432b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My Data Adapter"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="clientId" class="java.lang.String"/>
+	<parameter name="clientName" class="java.lang.String"/>
+	<parameter name="clientAddress" class="java.lang.String"/>
+	<parameter name="clientContact" class="java.lang.String"/>
+	<parameter name="doId" class="java.lang.String"/>
+	<parameter name="driverId" class="java.lang.String"/>
+	<parameter name="orderId" class="java.lang.String"/>
+	<parameter name="fee" class="java.lang.String"/>
+	<parameter name="diparture" class="java.lang.String"/>
+	<parameter name="driverName" class="java.lang.String"/>
+	<parameter name="arrival" class="java.lang.String"/>
+	<parameter name="accepted" class="java.lang.String"/>
+	<parameter name="handed" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from DeliveryOrder]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="201" splitType="Stretch">
+			<staticText>
+				<reportElement x="56" y="-15" width="470" height="40" uuid="a7a14c1c-156f-4443-af0d-9c6bec6d9230"/>
+				<textElement textAlignment="Center">
+					<font fontName="Franklin Gothic Demi" size="30"/>
+				</textElement>
+				<text><![CDATA[New Ocean SeaFoods]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="20" width="360" height="30" uuid="509b217d-37df-4f67-bfa8-111791dfb30b"/>
+				<textElement textAlignment="Center">
+					<font fontName="OCR A Extended" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Call us, we’ll be there.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="45" width="320" height="60" uuid="b2aab734-7cfc-4d09-adad-1caf52123301"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[No 10, Harbour Road, Unawatuna, Galle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="98" width="300" height="30" uuid="92d71256-010a-4f8d-a789-b4da851c9625"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[011 2 115 649 / 077 0 455 666]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="124" width="400" height="30" uuid="d99c19a7-477a-4d2e-9896-c9e69d21546b"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[newoceanseafood.colombo@gmail.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="6" y="195" width="545" height="1" uuid="0301bc11-f0f7-4f03-ab15-77140bd23fe6"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="474" splitType="Stretch">
+			<rectangle>
+				<reportElement x="20" y="110" width="531" height="120" uuid="c6ba20bd-24c7-47f7-bd40-ed7ce6486754"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="30" y="110" width="190" height="30" uuid="46cc9609-332a-4410-8847-7439c7b71e2d"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Client Id:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="140" width="190" height="30" uuid="0271f3b9-34f4-488e-8757-a654073c1f35"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Client Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="170" width="190" height="30" uuid="6e85cfbb-b489-4312-9512-fc2ab25fa3d0"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Client Address:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="200" width="190" height="30" uuid="22af903d-631a-422b-bbd4-fa06ebb3f80f"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Client Contact:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="10" width="388" height="50" uuid="e692dea0-ae97-4687-8ed9-472a69072447"/>
+				<textElement textAlignment="Center">
+					<font size="35" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Delivery Order]]></text>
+			</staticText>
+			<line>
+				<reportElement x="137" y="50" width="293" height="1" uuid="e59fa890-7338-41f4-8e4a-21d6f399edbb"/>
+			</line>
+			<staticText>
+				<reportElement x="40" y="70" width="190" height="30" uuid="4328fe7b-0cd8-48e0-abed-a41c6ce2cbde"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="260" y="70" width="190" height="30" uuid="e7fd0a20-937f-415e-902d-1d0c65713b0e"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="20" y="260" width="531" height="200" uuid="1ef2aedb-575a-4d18-b02a-43c1bfe61f31"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="31" y="266" width="190" height="30" uuid="2d0ed25a-2162-46b1-8b50-946c733105a3"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Delivery Order Id:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="296" width="190" height="30" uuid="d595d5a2-45ae-40c1-8793-9d6608a3de20"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Order Id:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="326" width="190" height="30" uuid="38da5bb8-f901-4522-b2a6-1f70f45ae409"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Departure Time:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="356" width="190" height="30" uuid="0c412c64-8b8f-4139-91f9-82e360550099"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Delivery Charge:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="386" width="190" height="30" uuid="1eda1796-3f27-4816-b308-509b7d413d0e"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Driver Id:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="416" width="190" height="30" uuid="cc1a0418-15a2-4895-90da-8def20ab6b21"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Driver Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="221" y="110" width="323" height="30" uuid="1545b10a-00fc-4379-be03-15dc027ee331"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{clientId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="140" width="320" height="30" uuid="348b42b4-62b5-4a92-9a07-237a4ec3b7cd"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{clientName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="170" width="320" height="30" uuid="dd106b17-e4de-468b-8aca-952aaa9d8d14"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{clientAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="200" width="320" height="30" uuid="fed6e5e6-f083-4080-be0a-4de20cd8255b"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{clientContact}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="326" width="283" height="30" uuid="4c7016c5-2e88-440f-b0ef-b8cbb1310a96"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{diparture}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="266" width="318" height="30" uuid="64ac5109-1300-47ed-a27f-0ac7e25e6a0b"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{doId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="383" width="315" height="30" uuid="85465daf-b484-4788-97eb-10de10f4cee3"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{driverId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="296" width="315" height="30" uuid="e9fe9cf0-2ac0-4e2c-9a7b-731fd69d64b2"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{orderId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="353" width="315" height="30" uuid="44abafb4-e324-42e9-9cc5-9d0cac9b79b4"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="420" width="283" height="30" uuid="6ad53857-c994-4cb6-b50a-2339580ca2b4"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{driverName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="125" splitType="Stretch">
+			<rectangle>
+				<reportElement x="20" y="12" width="531" height="107" uuid="32722341-c48d-44d2-9531-0f727b27d04e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="31" y="12" width="190" height="30" uuid="e0b29a65-7668-41fd-bcbb-948156d97886"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Arrival Time:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="45" width="260" height="30" uuid="a32d9989-696d-4b09-b0c1-68162954aced"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Signature of acceptance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="77" width="268" height="30" uuid="8a8aaec4-03c2-46f2-925a-8785b2901d4e"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Signature to be handed over:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="47" width="235" height="30" uuid="5d2c34a8-9f43-4609-8509-88586cccebbc"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{accepted}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="80" width="234" height="30" uuid="44db1675-832f-4cf7-9b0a-e5a352ee5cfb"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{handed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="312" y="15" width="69" height="30" uuid="dac32df6-20ab-44c5-855b-e0688a37f50f"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{arrival}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="9" width="240" height="30" uuid="7fd13b5b-99f7-4efa-928e-d9e496707a8d"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Software by Ishanka Dilshan]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

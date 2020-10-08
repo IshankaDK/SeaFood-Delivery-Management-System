@@ -11,13 +11,18 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import view.tm.BoatTM;
 
 import java.io.IOException;
@@ -83,28 +88,63 @@ public class BoatFormController {
         String ownerName = txtOwnerName.getText().trim();
         String contact = txtOwnerContact.getText().trim();
 
-        if(id.length()>0 && name.length()>0 && contact.length()>0){
+        if(txtBoatId.getText().trim().length()>0 && txtBoatName.getText().trim().length()>0 && txtOwnerName.getText().trim().length()>0 && txtOwnerContact.getText().trim().length()>0){
             try {
                 boolean isAdded = bo.saveBoat(new BoatDTO(id,name,ownerName,contact));
                 if (isAdded) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saved Successfully.!")
+                            .text("You have Successfully save Boat to the System.")
+                            .graphic(new ImageView(new Image("/assert/done.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                     loadAllBoat();
                     clear();
                     loadId();
                     txtBoatId.requestFocus();
                 } else {
-                    new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saving UnSuccessful.!")
+                            .text("Boat Not Saved, Try Again.!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                     txtBoatId.requestFocus();
                 }
             } catch (SQLException se){
-                new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saving UnSuccessful.!")
+                        .text("Boat Not Saved, Something Wrong..!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtBoatId.requestFocus();
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saving UnSuccessful.!")
+                        .text("Boat Not Saved, Something Wrong..!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtBoatId.requestFocus();
             }
         }else {
-            new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Saving UnSuccessful.!")
+                    .text("Boat Not Saved, Some fields have been empty ..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
             txtBoatId.requestFocus();
         }
     }
@@ -142,19 +182,38 @@ public class BoatFormController {
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.orElse(no) == ok) {
                         if (bo.deleteBoat(tm.getBoatId())) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Deleted", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Delete Successful.!")
+                                    .text("You have Successfully Delete Boat from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllBoat();
                             clear();
                             loadId();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Delete UnSuccessful.!")
+                                .text("Boat Not Deleted, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Delete UnSuccessful.!")
+                            .text("Boat Not Deleted, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
             btnUpdate.setOnAction((e) -> {
@@ -170,19 +229,38 @@ public class BoatFormController {
                     if (result.orElse(no) == ok) {
                         if (bo.updateBoat(new BoatDTO(txtBoatId.getText().trim(),txtBoatName.getText().trim(), txtOwnerName.getText().trim(),
                                 txtOwnerContact.getText().trim()))) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Updated", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Update Successful.!")
+                                    .text("You have Successfully Update Boat from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllBoat();
                             clear();
                             loadId();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Update UnSuccessful.!")
+                                .text("Boat Not Updated, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Update UnSuccessful.!")
+                            .text("Boat Not Updated, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
         }
@@ -214,33 +292,54 @@ public class BoatFormController {
         tblBoats.setItems(sortedData);
     }
 
-    public void txtSearchOnAction(ActionEvent actionEvent) throws Exception {
-        BoatDTO dto = bo.getBoat(txtSearch.getText().trim());
-        if(dto != null){
-            txtBoatId.setText(dto.getBoatId());
-            txtBoatName.setText(dto.getName());
-            txtOwnerName.setText(dto.getOwnerName());
-            txtOwnerContact.setText(dto.getOwnerContact());
-        }else{
-            txtSearch.setStyle("-fx-border-color: #f53b57 ");
-            txtSearch.requestFocus();
-            new Alert(Alert.AlertType.INFORMATION,
-                    "Enter Valid Client Id", ButtonType.OK).show();
-
+    public void txtSearchOnAction(ActionEvent actionEvent)  {
+        try {
+            BoatDTO dto = bo.getBoat(txtSearch.getText().trim());
+            if(dto != null){
+                txtBoatId.setText(dto.getBoatId());
+                txtBoatName.setText(dto.getName());
+                txtOwnerName.setText(dto.getOwnerName());
+                txtOwnerContact.setText(dto.getOwnerContact());
+            }else{
+                txtSearch.setStyle("-fx-border-color: #f53b57 ");
+                txtSearch.requestFocus();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("No Boat Founded..!")
+                        .text("Enter Valid Boat Id.")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
+            }
+        } catch (Exception e) {
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Error..!")
+                    .text("Something Wrong.Please try Again..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }
+
     }
 
     private void clear() {
-        txtBoatId.setText(null);
-        txtBoatName.setText(null);
-        txtOwnerName.setText(null);
-        txtOwnerContact.setText(null);
-        txtSearch.setText(null);
+        txtBoatId.clear();
+        txtBoatName.clear();
+        txtOwnerName.clear();
+        txtOwnerContact.clear();
+        txtSearch.clear();
     }
 
-    private void loadId() throws Exception {
-        String id = bo.getBoatId();
-        txtBoatId.setText(id);
+    private void loadId()  {
+        try {
+            String  id = bo.getBoatId();
+            txtBoatId.setText(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void txtBoatIdOnAction(ActionEvent actionEvent) {

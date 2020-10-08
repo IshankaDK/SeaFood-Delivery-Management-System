@@ -12,12 +12,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
+import org.controlsfx.control.Notifications;
 import view.tm.OrderTM;
 import view.tm.QuickOrderTM;
 
@@ -55,7 +60,7 @@ public class QuickOrderFormController {
     QuickOrderBo bo;
     SeaFoodBo seaFoodBo;
 
-    public void initialize() throws Exception {
+    public void initialize()  {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.QUICKORDER);
         seaFoodBo = BoFactory.getInstance().getBo(BoFactory.BOType.SEAFOOD);
         loadID();
@@ -63,9 +68,13 @@ public class QuickOrderFormController {
         loadSeaFoodCombo();
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
+    public void imgBackToHome(MouseEvent mouseEvent)  {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        try {
+            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void btnPrintBillOnAction(ActionEvent actionEvent) {
@@ -151,7 +160,14 @@ public class QuickOrderFormController {
                         tblQuickOrder.refresh(); // refresh table
                         return;
                     }else {
-                        new Alert(Alert.AlertType.WARNING,"No Sufficient Items in the Stock..! ",ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Error..!")
+                                .text("No Sufficient Items in the Stock..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                         return;
                     }
                 }
@@ -177,19 +193,36 @@ public class QuickOrderFormController {
             tblQuickOrder.getItems().remove(selectedItem);
             getSubTotal();
         }else{
-            new Alert(Alert.AlertType.WARNING,"Please Select Row that You Want to Remove !").show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("No Row Selected.!")
+                    .text("Please Select Row that You Want to Remove !")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
             tblQuickOrder.requestFocus();
         }
     }
 
-    private void loadID() throws Exception {
-        String id = bo.getQuickOrderId();
+    private void loadID()  {
+        String id = null;
+        try {
+            id = bo.getQuickOrderId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         txtQuickId.setText(id);
     }
 
-    public void loadSeaFoodCombo() throws Exception {
+    public void loadSeaFoodCombo()  {
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        ArrayList<SeaFoodDTO> arrayList = seaFoodBo.getAllSeaFood();
+        ArrayList<SeaFoodDTO> arrayList = null;
+        try {
+            arrayList = seaFoodBo.getAllSeaFood();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for (SeaFoodDTO dto : arrayList) {
             observableList.add(dto.getCode());
 
@@ -197,8 +230,13 @@ public class QuickOrderFormController {
         cmbCode.setItems(observableList);
     }
 
-    public void cmbCodeOnAction(ActionEvent actionEvent) throws Exception {
-        SeaFoodDTO dto = seaFoodBo.getSeaFood(String.valueOf(cmbCode.getValue()));
+    public void cmbCodeOnAction(ActionEvent actionEvent)  {
+        SeaFoodDTO dto = null;
+        try {
+            dto = seaFoodBo.getSeaFood(String.valueOf(cmbCode.getValue()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(dto != null){
             txtDescription.setText(dto.getDescription());
             txtQtyOnHand.setText(String.valueOf(dto.getQtyOnHand()));
@@ -235,7 +273,7 @@ public class QuickOrderFormController {
         }
     }
 
-    public void btnClearOnAction(ActionEvent actionEvent) throws Exception {
+    public void btnClearOnAction(ActionEvent actionEvent) {
         cmbCode.setValue(null);
         txtDescription.setText(null);
         txtQtyOnHand.setText(null);

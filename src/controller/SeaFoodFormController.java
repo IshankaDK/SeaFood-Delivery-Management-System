@@ -11,13 +11,18 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import view.tm.SeaFoodTM;
 
 import java.io.IOException;
@@ -78,9 +83,13 @@ public class SeaFoodFormController {
 
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
+    public void imgBackToHome(MouseEvent mouseEvent) {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        try {
+            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
@@ -90,32 +99,67 @@ public class SeaFoodFormController {
         double purchasePrice = Double.parseDouble(txtPurchasePrice.getText().trim());
         double sellingPrice = Double.parseDouble(txtSellPrice.getText().trim());
 
-        if(code.length()>0 && description.length()>0 && txtQtyOnHand.getText().trim().length()>0 &&
+        if(txtCode.getText().trim().length()>0 && txtDescription.getText().trim().length()>0 && txtQtyOnHand.getText().trim().length()>0 &&
                 txtPurchasePrice.getText().trim().length()>0 && txtSellPrice.getText().trim().length()>0){
             try {
                 boolean isAdded = bo.saveSeaFood(new SeaFoodDTO(code,description,qtyOnHand,purchasePrice,sellingPrice));
                 if (isAdded) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saved Successfully.!")
+                            .text("You have Successfully save Item to the System.")
+                            .graphic(new ImageView(new Image("/assert/done.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                     loadAllSeaFood();
                     clear();
                     loadCode();
                     txtCode.requestFocus();
                 } else {
-                    new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saving UnSuccessful.!")
+                            .text("Item Not Saved, Try Again.!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                     txtCode.requestFocus();
                     loadCode();
                 }
             } catch (SQLException se){
-                new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saving UnSuccessful.!")
+                        .text("Item Not Saved, Try Again.!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtCode.requestFocus();
                 loadCode();
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saving UnSuccessful.!")
+                        .text("Item Not Saved, Try Again.!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtCode.requestFocus();
                 loadCode();
             }
         }else {
-            new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Saving UnSuccessful.!")
+                    .text("Item Not Saved, Some fields have been empty ..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
             txtCode.requestFocus();
             loadCode();
         }
@@ -149,19 +193,38 @@ public class SeaFoodFormController {
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.orElse(no) == ok) {
                         if (bo.deleteSeaFood(tm.getCode())) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Deleted", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Delete Successful.!")
+                                    .text("You have Successfully Delete Item from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllSeaFood();
                             clear();
                             loadCode();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Delete UnSuccessful.!")
+                                .text("Item Not Deleted, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Delete UnSuccessful.!")
+                            .text("Item Not Deleted, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
             btnUpdate.setOnAction((e) -> {
@@ -178,19 +241,38 @@ public class SeaFoodFormController {
                         if (bo.updateSeaFood(new SeaFoodDTO(txtCode.getText().trim(), txtDescription.getText().trim(),
                                 Double.parseDouble(txtQtyOnHand.getText()), Double.parseDouble(txtPurchasePrice.getText()),
                                 Double.parseDouble(txtSellPrice.getText())))) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Updated", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Update Successful.!")
+                                    .text("You have Successfully Update Item from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllSeaFood();
                             clear();
                             loadCode();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Update UnSuccessful.!")
+                                .text("Item Not Updated, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Update UnSuccessful.!")
+                            .text("Item Not Updated, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
         }
@@ -234,13 +316,30 @@ public class SeaFoodFormController {
 
     }
 
-    private void loadCode() throws Exception {
-        String code = bo.getCode();
+    private void loadCode()  {
+        String code = null;
+        try {
+            code = bo.getCode();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         txtCode.setText(code);
     }
 
-    public void txtSearchOnAction(ActionEvent actionEvent) throws Exception {
-        SeaFoodDTO dto = bo.getSeaFood(txtSearch.getText().trim());
+    public void txtSearchOnAction(ActionEvent actionEvent)  {
+        SeaFoodDTO dto = null;
+        try {
+            dto = bo.getSeaFood(txtSearch.getText().trim());
+        } catch (Exception e) {
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Error..!")
+                    .text("Something Wrong.Please try Again..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
+        }
         if(dto != null){
             txtCode.setText(dto.getCode());
             txtDescription.setText(dto.getDescription());
@@ -250,8 +349,14 @@ public class SeaFoodFormController {
         }else{
             txtSearch.setStyle("-fx-border-color: #f53b57 ");
             txtSearch.requestFocus();
-            new Alert(Alert.AlertType.INFORMATION,
-                    "Enter Valid Client Id", ButtonType.OK).show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("No Item Founded..!")
+                    .text("Enter Valid Seafood Item Id.")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }
     }
 

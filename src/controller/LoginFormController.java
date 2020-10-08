@@ -55,7 +55,7 @@ public class LoginFormController {
                             .title("Login Successfully.!")
                             .text("You have Successfully login to the System.")
                             .graphic(new ImageView(new Image("/assert/done.png")))
-                            .hideAfter(Duration.seconds(5))
+                            .hideAfter(Duration.seconds(4))
                             .position(Pos.BOTTOM_RIGHT);
                             notificationBuilder.darkStyle();
                             notificationBuilder.show();
@@ -63,12 +63,26 @@ public class LoginFormController {
                     this.root.getChildren().clear();
                     this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/MainForm.fxml")));
                 }else {
-                    new Alert(Alert.AlertType.WARNING,"Password does not match, Try Again..!", ButtonType.OK).show();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Login Error.!")
+                            .text("Password does not match, Try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                     txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
                     txtPassword.requestFocus();
                 }
             }else {
-                new Alert(Alert.AlertType.WARNING,"No User Found to this User Name.", ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Login Error.!")
+                        .text("No User Found to this User Name.")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtUserName.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
                 txtUserName.requestFocus();
             }

@@ -12,13 +12,18 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import view.tm.ClientTM;
 
 import java.io.IOException;
@@ -90,46 +95,85 @@ public class ClientFormController {
         this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
+    public void btnAddOnAction(ActionEvent actionEvent) {
         String id = txtClientId.getText().trim();
-        txtClientName.requestFocus();
         String name = txtClientName.getText().trim();
         String address = txtClientAddress.getText().trim();
         String contact = txtClientContact.getText().trim();
         String type = (String) cmbClientType.getValue();
 
-       if(id.length()>0 && name.length()>0 && address.length()>0 && contact.length()>0 && type != null){
+       if(txtClientId.getText().trim().length()>0 && txtClientName.getText().trim().length()>0 && txtClientAddress.getText().trim().length()>0 && txtClientContact.getText().trim().length()>0 ){
            try {
                boolean isAdded = bo.saveClient(new ClientDTO(id,name,address,contact,type));
                if (isAdded) {
-                   new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
+                   Notifications notificationBuilder = Notifications.create()
+                           .title("Saved Successfully.!")
+                           .text("You have Successfully save Client to the System.")
+                           .graphic(new ImageView(new Image("/assert/done.png")))
+                           .hideAfter(Duration.seconds(4))
+                           .position(Pos.BOTTOM_RIGHT);
+                   notificationBuilder.darkStyle();
+                   notificationBuilder.show();
                    loadAllClient();
                    clear();
                    txtClientId.requestFocus();
                    loadId();
                } else {
-                   new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                   Notifications notificationBuilder = Notifications.create()
+                           .title("Saving UnSuccessful.!")
+                           .text("Client Not Saved, Try Again.!")
+                           .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                           .hideAfter(Duration.seconds(4))
+                           .position(Pos.BOTTOM_RIGHT);
+                   notificationBuilder.darkStyle();
+                   notificationBuilder.show();
                    txtClientId.requestFocus();
                    loadId();
                }
            } catch (SQLException se){
-               new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+               Notifications notificationBuilder = Notifications.create()
+                       .title("Saving UnSuccessful.!")
+                       .text("Client Not Saved, Something Wrong..!")
+                       .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                       .hideAfter(Duration.seconds(4))
+                       .position(Pos.BOTTOM_RIGHT);
+               notificationBuilder.darkStyle();
+               notificationBuilder.show();
                loadId();
                txtClientId.requestFocus();
            } catch (Exception e) {
-               new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+               Notifications notificationBuilder = Notifications.create()
+                       .title("Saving UnSuccessful.!")
+                       .text("Client Not Saved, Something Wrong..!")
+                       .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                       .hideAfter(Duration.seconds(4))
+                       .position(Pos.BOTTOM_RIGHT);
+               notificationBuilder.darkStyle();
+               notificationBuilder.show();
                txtClientId.requestFocus();
                loadId();
            }
        }else {
-           new Alert(Alert.AlertType.WARNING, "Some Field is Empty",ButtonType.OK).show();
+           Notifications notificationBuilder = Notifications.create()
+                   .title("Saving UnSuccessful.!")
+                   .text("Client Not Saved, Some fields have been empty ..!")
+                   .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                   .hideAfter(Duration.seconds(4))
+                   .position(Pos.BOTTOM_RIGHT);
+           notificationBuilder.darkStyle();
+           notificationBuilder.show();
            txtClientId.requestFocus();
        }
 
     }
 
-    public void loadAllClient() throws Exception {
-        ArrayList<ClientDTO> clientDTOS = bo.getAllClient();
+    public void loadAllClient()  {
+        ArrayList<ClientDTO> clientDTOS = null;
+        try {
+            clientDTOS = bo.getAllClient();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ObservableList<ClientTM> tmList = FXCollections.observableArrayList();
         for (ClientDTO dto : clientDTOS) {
             Button btnDelete = new Button("Delete");
@@ -137,15 +181,10 @@ public class ClientFormController {
             btnDelete.setCursor(Cursor.HAND);
             btnDelete.setStyle("-fx-font-weight: bold ; -fx-background-color:  #D50000; ");
             btnDelete.setTextFill(Color.web("#FFFFFF"));
-           // btnDelete.setStyle("-fx-background-image: url('/assert/bin.png')");
-           // btnDelete.setStyle("-fx-font-size:20");
-            //btnDelete.setStyle("-fx-font-weight: bold;");
             Button btnUpdate = new Button("Update");
             btnUpdate.setMaxSize(100, 50);
             btnUpdate.setCursor(Cursor.HAND);
-           // btnUpdate.setStyle("-fx-background-color: #00BFA5");
             btnUpdate.setStyle("-fx-font-weight: bold ; -fx-background-color:  #00BFA5;");
-            //btnUpdate.setStyle();
            ClientTM tm = new ClientTM(dto.getId(), dto.getName(),dto.getAddress(),
                     dto.getContact(), dto.getType(),btnDelete,btnUpdate);
             tmList.add(tm);
@@ -161,19 +200,38 @@ public class ClientFormController {
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.orElse(no) == ok) {
                         if (bo.deleteClient(tm.getId())) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Deleted", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Delete Successful.!")
+                                    .text("You have Successfully Delete Client from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllClient();
                             clear();
                             loadId();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Delete UnSuccessful.!")
+                                .text("Client Not Deleted, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Delete UnSuccessful.!")
+                            .text("Client Not Deleted, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
             btnUpdate.setOnAction((e) -> {
@@ -189,19 +247,38 @@ public class ClientFormController {
                     if (result.orElse(no) == ok) {
                         if (bo.updateClient(new ClientDTO(txtClientId.getText(), txtClientName.getText(),
                                 txtClientAddress.getText(), txtClientContact.getText(), (String) cmbClientType.getValue()))) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Updated", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Update Successful.!")
+                                    .text("You have Successfully Update Client from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllClient();
                             clear();
                             loadId();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Update UnSuccessful.!")
+                                .text("Client Not Updated, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Update UnSuccessful.!")
+                            .text("Client Not Updated, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
         }
@@ -236,22 +313,39 @@ public class ClientFormController {
     }
 
     public void clear() {
-        txtClientId.setText(null);
-        txtClientName.setText(null);
-        txtClientAddress.setText(null);
-        txtClientContact.setText(null);
-        txtSearch.setText(null);
+        txtClientId.clear();
+        txtClientName.clear();
+        txtClientAddress.clear();
+        txtClientContact.clear();
+        txtSearch.clear();
         cmbClientType.setValue(null);
     }
 
-    private void loadId() throws Exception {
-        String id = bo.getClientID();
+    private void loadId()  {
+        String id = null;
+        try {
+            id = bo.getClientID();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         txtClientId.setText(id);
     }
 
-    public void txtSearchOnAction(ActionEvent actionEvent) throws Exception {
+    public void txtSearchOnAction(ActionEvent actionEvent) {
 
-        ClientDTO dto = bo.getClient(txtSearch.getText().trim());
+        ClientDTO dto = null;
+        try {
+            dto = bo.getClient(txtSearch.getText().trim());
+        } catch (Exception e) {
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Error..!")
+                    .text("Something Wrong.Please try Again..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
+        }
         if(dto != null){
             txtClientId.setText(dto.getId());
             txtClientName.setText(dto.getName());
@@ -261,8 +355,14 @@ public class ClientFormController {
         }else{
             txtSearch.setStyle("-fx-border-color: #f53b57 ");
             txtSearch.requestFocus();
-            new Alert(Alert.AlertType.INFORMATION,
-                    "Enter Valid Client Id", ButtonType.OK).show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("No Client Founded..!")
+                    .text("Enter Valid Client Id.")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }
     }
 

@@ -13,12 +13,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
+import org.controlsfx.control.Notifications;
 import view.tm.OrderTM;
 import view.tm.PurchaseTM;
 
@@ -60,7 +65,7 @@ public class OrderFormController {
     OrderBo bo;
     ClientBo clientBo;
     SeaFoodBo seaFoodBo;
-    public void initialize() throws Exception {
+    public void initialize()  {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.ORDER);
         clientBo = BoFactory.getInstance().getBo(BoFactory.BOType.CLIENT);
         seaFoodBo = BoFactory.getInstance().getBo(BoFactory.BOType.SEAFOOD);
@@ -70,14 +75,23 @@ public class OrderFormController {
         loadSeaFoodCombo();
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
+    public void imgBackToHome(MouseEvent mouseEvent)  {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        try {
+            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void loadClientCombo() throws Exception {
+    public void loadClientCombo() {
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        ArrayList<ClientDTO> arrayList = clientBo.getAllClient();
+        ArrayList<ClientDTO> arrayList = null;
+        try {
+            arrayList = clientBo.getAllClient();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for (ClientDTO dto : arrayList) {
             observableList.add(dto.getId());
 
@@ -85,16 +99,20 @@ public class OrderFormController {
         cmbClientId.setItems(observableList);
     }
 
-    public void loadSeaFoodCombo() throws Exception {
+    public void loadSeaFoodCombo()  {
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        ArrayList<SeaFoodDTO> arrayList = seaFoodBo.getAllSeaFood();
+        ArrayList<SeaFoodDTO> arrayList = null;
+        try {
+            arrayList = seaFoodBo.getAllSeaFood();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for (SeaFoodDTO dto : arrayList) {
             observableList.add(dto.getCode());
 
         }
         cmbCode.setItems(observableList);
     }
-
 
     ObservableList<OrderTM>observableList=FXCollections.observableArrayList();
     public void btnAddOnAction(ActionEvent actionEvent)  {
@@ -125,7 +143,14 @@ public class OrderFormController {
                         tblOrder.refresh(); // refresh table
                         return;
                     }else {
-                        new Alert(Alert.AlertType.WARNING,"No Sufficient Items in the Stock..! ",ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Error..!")
+                                .text("No Sufficient Items in the Stock..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                         return;
                     }
                 }
@@ -151,22 +176,61 @@ public class OrderFormController {
             tblOrder.getItems().remove(selectedItem);
             getSubTotal();
         }else{
-            new Alert(Alert.AlertType.WARNING,"Please Select Row that You Want to Remove !").show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("No Row Selected.!")
+                    .text("Please Select Row that You Want to Remove !")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
             tblOrder.requestFocus();
         }
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
-        try {
-            boolean isSaved = bo.saveOrder(getOrder(),getOrderDetail());
-            if(isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Saved",ButtonType.OK).show();
+        try{
+            if(tblOrder.getItems().size()==0){
+                Notifications notificationBuilder = Notifications.create()
+                        .title("No Item Selected.!")
+                        .text("No Item Selected.!, Select Item and Try Again.")
+                        .graphic(new ImageView(new Image("/assert/done.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
             }else {
-                new Alert(Alert.AlertType.CONFIRMATION,"Not Saved",ButtonType.OK).show();
+                boolean isSaved = bo.saveOrder(getOrder(), getOrderDetail());
+                if (isSaved) {
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saved Successfully.!")
+                            .text("Order Successfully saved to the System.")
+                            .graphic(new ImageView(new Image("/assert/done.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
+                } else {
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saving UnSuccessful.!")
+                            .text("Order Not saved. Please try again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT)
+                            .darkStyle();
+                    notificationBuilder.show();
+                }
             }
-        } catch (Exception e) {
-           new Alert(Alert.AlertType.WARNING,"error",ButtonType.OK).show();
-        }
+            } catch (Exception e) {
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Error, Saving UnSuccessful.!")
+                    .text("Order Not saved. Please try again..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .darkStyle();
+            notificationBuilder.show();
+            }
     }
 
     private ArrayList<OrderDetailDTO> getOrderDetail() {
@@ -214,14 +278,24 @@ public class OrderFormController {
         }
     }
 
-    private void loadId() throws Exception {
-        String id = bo.getOrderId();
+    private void loadId()  {
+        String id = null;
+        try {
+            id = bo.getOrderId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         txtOrderId.setText(id);
 
     }
 
-    public void cmbClientIdOnAction(ActionEvent actionEvent) throws Exception {
-        ClientDTO dto = clientBo.getClient(String.valueOf(cmbClientId.getValue()));
+    public void cmbClientIdOnAction(ActionEvent actionEvent)  {
+        ClientDTO dto = null;
+        try {
+            dto = clientBo.getClient(String.valueOf(cmbClientId.getValue()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(dto != null){
             txtClientName.setText(dto.getName());
             txtClientAddress.setText(dto.getAddress());
@@ -230,8 +304,13 @@ public class OrderFormController {
         }
     }
 
-    public void cmbCodeOnAction(ActionEvent actionEvent) throws Exception {
-        SeaFoodDTO dto = seaFoodBo.getSeaFood(String.valueOf(cmbCode.getValue()));
+    public void cmbCodeOnAction(ActionEvent actionEvent) {
+        SeaFoodDTO dto = null;
+        try {
+            dto = seaFoodBo.getSeaFood(String.valueOf(cmbCode.getValue()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(dto != null){
             txtDescription.setText(dto.getDescription());
             txtQtyOnHand.setText(String.valueOf(dto.getQtyOnHand()));
@@ -249,7 +328,14 @@ public class OrderFormController {
             }else {
                 txtQty.setStyle("-fx-border-color: #f53b57 ");
                 txtQty.requestFocus();
-                new Alert(Alert.AlertType.WARNING,"No Sufficient Items in the Stock..! ",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Error.!, No Items.!")
+                        .text("No Sufficient Items in the Stock..!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT)
+                        .darkStyle();
+                notificationBuilder.show();
             }
         }else {
             txtQty.setStyle("-fx-border-color: #f53b57 ");
@@ -268,7 +354,7 @@ public class OrderFormController {
         }
     }
 
-    public void btnClearOnAction(ActionEvent actionEvent) throws Exception {
+    public void btnClearOnAction(ActionEvent actionEvent)  {
         cmbClientId.setValue(null);
         txtClientName.setText(null);
         txtClientAddress.setText(null);
@@ -279,6 +365,7 @@ public class OrderFormController {
         txtQty.setText(null);
         txtDiscount.setText(null);
         tblOrder.getItems().clear();
+        lblTotal.setText("0.00");
         loadId();
     }
 }

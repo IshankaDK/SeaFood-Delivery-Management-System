@@ -15,11 +15,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import view.tm.PurchaseTM;
 
 import java.io.IOException;
@@ -55,7 +60,7 @@ public class PurchaseFormController {
     BoatBo boatBo;
     SeaFoodBo seaFoodBo;
 
-    public void initialize() throws Exception {
+    public void initialize()  {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.PURCHASE);
         boatBo = BoFactory.getInstance().getBo(BoFactory.BOType.BOAT);
         seaFoodBo = BoFactory.getInstance().getBo(BoFactory.BOType.SEAFOOD);
@@ -64,41 +69,65 @@ public class PurchaseFormController {
         loadBoatCombo();
         loadItemCombo();
         cmbBoatId.requestFocus();
+
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
+    public void imgBackToHome(MouseEvent mouseEvent)  {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
-    }
-
-    public void loadBoatCombo() throws Exception {
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        ArrayList<BoatDTO> arrayList = boatBo.getAllBoat();
-        for (BoatDTO dto : arrayList) {
-            observableList.add(dto.getBoatId());
-
-        }
-        cmbBoatId.setItems(observableList);
-    }
-
-    public void cmbBoatIdOnAction(ActionEvent actionEvent) throws Exception {
-        BoatDTO dto = boatBo.getBoat(String.valueOf(cmbBoatId.getValue()));
-        if(dto != null){
-            txtOwnerName.setText(dto.getOwnerName());
-            txtBoatName.setText(dto.getName());
-            txtOwnerContact.setText(dto.getOwnerContact());
-            cmbSeaFoodItem.requestFocus();
+        try {
+            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    private void loadId() throws Exception {
-        String id = bo.getPurchaseId();
-        txtPurchaseId.setText(id);
+    public void loadBoatCombo(){
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        try {
+            ArrayList<BoatDTO>  arrayList = boatBo.getAllBoat();
+            for (BoatDTO dto : arrayList) {
+                observableList.add(dto.getBoatId());
+
+            }
+            cmbBoatId.setItems(observableList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void loadItemCombo() throws Exception {
+    public void cmbBoatIdOnAction(ActionEvent actionEvent) {
+        try {
+            BoatDTO dto = boatBo.getBoat(String.valueOf(cmbBoatId.getValue()));
+            if(dto != null){
+                txtOwnerName.setText(dto.getOwnerName());
+                txtBoatName.setText(dto.getName());
+                txtOwnerContact.setText(dto.getOwnerContact());
+                cmbSeaFoodItem.requestFocus();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void loadId()  {
+        try {
+            String id = bo.getPurchaseId();
+            txtPurchaseId.setText(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void loadItemCombo() {
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        ArrayList<SeaFoodDTO> arrayList = seaFoodBo.getAllSeaFood();
+        ArrayList<SeaFoodDTO> arrayList = null;
+        try {
+            arrayList = seaFoodBo.getAllSeaFood();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for (SeaFoodDTO dto : arrayList) {
             observableList.add(dto.getCode());
 
@@ -106,30 +135,54 @@ public class PurchaseFormController {
         cmbSeaFoodItem.setItems(observableList);
     }
 
-    public void cmbSeaFoodItemOnAction(ActionEvent actionEvent) throws Exception {
-        SeaFoodDTO dto = seaFoodBo.getSeaFood(String.valueOf(cmbSeaFoodItem.getValue()));
-        if(dto != null){
-            txtDescription.setText(dto.getDescription());
-            txtQtyOnHand.setText(String.valueOf(dto.getQtyOnHand()));
-            txtPurchasedPrice.setText(String.valueOf(dto.getPurchasePrice()));
-            txtSellingPrice.setText(String.valueOf(dto.getSellingPrice()));
-            txtQTY.requestFocus();
+    public void cmbSeaFoodItemOnAction(ActionEvent actionEvent)  {
+        try {
+          SeaFoodDTO dto = seaFoodBo.getSeaFood(String.valueOf(cmbSeaFoodItem.getValue()));
+            if(dto != null){
+                txtDescription.setText(dto.getDescription());
+                txtQtyOnHand.setText(String.valueOf(dto.getQtyOnHand()));
+                txtPurchasedPrice.setText(String.valueOf(dto.getPurchasePrice()));
+                txtSellingPrice.setText(String.valueOf(dto.getSellingPrice()));
+                txtQTY.requestFocus();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-
         try {
             boolean isSaved = bo.savePurchase(getPurchased(),getPurchaseDetail());
             if(isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Saved",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saved Successfully.!")
+                        .text("Purchase Successfully saved to the System.")
+                        .graphic(new ImageView(new Image("/assert/done.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtPurchaseId.requestFocus();
             }else {
-                new Alert(Alert.AlertType.WARNING,"Not Saved",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saving UnSuccessful.!")
+                        .text("Purchase Not saved. Please try again..!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT)
+                        .darkStyle();
+                notificationBuilder.show();
                 tblPurchase.requestFocus();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Saving UnSuccessful.!")
+                    .text("Purchase Not saved. Please try again..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .darkStyle();
+            notificationBuilder.show();
         }
     }
 
@@ -156,7 +209,6 @@ public class PurchaseFormController {
     }
 
     ObservableList<PurchaseTM>observableList=FXCollections.observableArrayList();
-
     public void btnAddOnAction(ActionEvent actionEvent) {
 
         colCode.setCellValueFactory(new PropertyValueFactory("code"));
@@ -205,7 +257,14 @@ public class PurchaseFormController {
             tblPurchase.getItems().remove(selectedItem);
             getSubTotal();
         }else{
-            new Alert(Alert.AlertType.WARNING,"Please Select Row that You Want to Remove !").show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("No Row Selected.!")
+                    .text("Please Select Row that You Want to Remove !")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
             tblPurchase.requestFocus();
         }
     }
@@ -251,7 +310,7 @@ public class PurchaseFormController {
         }
     }
 
-    public void btnClearOnAction(ActionEvent actionEvent) throws Exception {
+    public void btnClearOnAction(ActionEvent actionEvent) {
         cmbBoatId.setValue(null);
         txtBoatName.setText(null);
         txtOwnerName.setText(null);
@@ -263,6 +322,10 @@ public class PurchaseFormController {
         txtSellingPrice.setText(null);
         txtQTY.setText(null);
         tblPurchase.getItems().clear();
-        loadId();
+        try {
+            loadId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

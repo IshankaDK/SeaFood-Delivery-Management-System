@@ -6,15 +6,20 @@ import com.jfoenix.controls.JFXButton;
 import dto.LoginDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -40,21 +45,45 @@ public class RegistrationFormController {
         try {
             boolean isSaved = bo.saveRegistration(new LoginDTO(name,userName,password));
             if(isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Sign Up Successful.! Please Sign In..!", ButtonType.OK).showAndWait();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Sign Up Successfully.!")
+                        .text("You have Successfully Sign Up to the System.")
+                        .graphic(new ImageView(new Image("/assert/done.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 Stage stage = (Stage) root.getScene().getWindow();
                 stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"))));
             }else {
-                new Alert(Alert.AlertType.WARNING,"Sign Up Fail!. Please Try Again..!", ButtonType.OK).showAndWait();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Sign Up Fail..!")
+                        .text("Sign Up Fail.!, Please Try Again..!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.WARNING,"User Name Already Exist, Try Another User Name..!", ButtonType.OK).showAndWait();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Sign Up Fail..!")
+                    .text("User Name Already Exist, Try Another User Name..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }
-
     }
 
-    public void hyperSingInOnAction(ActionEvent actionEvent) throws IOException {
+    public void hyperSingInOnAction(ActionEvent actionEvent)  {
         Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"))));
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/LoginForm.fxml"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void imgExitOnAction(MouseEvent mouseEvent) {

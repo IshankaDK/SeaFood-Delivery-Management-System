@@ -11,13 +11,18 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import view.tm.DriverTM;
 
 import java.io.IOException;
@@ -61,8 +66,13 @@ public class DriverFormController {
                 });
     }
 
-    private void loadID() throws Exception {
-        String id = bo.getDriverID();
+    private void loadID()  {
+        String id = null;
+        try {
+            id = bo.getDriverID();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         txtDriverId.setText(id);
     }
 
@@ -75,8 +85,13 @@ public class DriverFormController {
         }
     }
 
-    private void loadAllDriver() throws Exception {
-        ArrayList<DriverDTO> driverDTOS = bo.getAllDriver();
+    private void loadAllDriver()  {
+        ArrayList<DriverDTO> driverDTOS = null;
+        try {
+            driverDTOS = bo.getAllDriver();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ObservableList<DriverTM> tmList = FXCollections.observableArrayList();
         for (DriverDTO dto : driverDTOS) {
             Button btnDelete = new Button("Delete");
@@ -103,19 +118,38 @@ public class DriverFormController {
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.orElse(no) == ok) {
                         if (bo.deleteDriver(tm.getId())) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Deleted", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Delete Successful.!")
+                                    .text("You have Successfully Delete Driver from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllDriver();
                             clear();
                             loadID();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Delete UnSuccessful.!")
+                                .text("Driver Not Deleted, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Delete UnSuccessful.!")
+                            .text("Driver Not Deleted, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
 
@@ -132,19 +166,38 @@ public class DriverFormController {
                     if (result.orElse(no) == ok) {
                         if (bo.updateDriver(new DriverDTO(txtDriverId.getText().trim(), txtDriverName.getText().trim(),
                                 txtDriverAddress.getText().trim(), txtDriverContact.getText().trim()))) {
-                            new Alert(Alert.AlertType.CONFIRMATION,
-                                    "Updated", ButtonType.OK).show();
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Update Successful.!")
+                                    .text("You have Successfully Update Driver from the System.")
+                                    .graphic(new ImageView(new Image("/assert/done.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
                             loadAllDriver();
                             clear();
                             loadID();
                             return;
                         }
-                        new Alert(Alert.AlertType.WARNING,
-                                "Try Again", ButtonType.OK).show();
+                        Notifications notificationBuilder = Notifications.create()
+                                .title("Update UnSuccessful.!")
+                                .text("Driver Not Updated, Please try Again..!")
+                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                .hideAfter(Duration.seconds(4))
+                                .position(Pos.BOTTOM_RIGHT);
+                        notificationBuilder.darkStyle();
+                        notificationBuilder.show();
                     }
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Update UnSuccessful.!")
+                            .text("Driver Not Updated, Please try Again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                 }
             });
         }
@@ -176,49 +229,100 @@ public class DriverFormController {
         tblDriver.setItems(sortedData);
     }
 
-    public void imgBackToHome(MouseEvent mouseEvent) throws IOException {
+    public void imgBackToHome(MouseEvent mouseEvent) {
         this.root.getChildren().clear();
-        this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        try {
+            this.root.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/DefaultForm.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
+    public void btnAddOnAction(ActionEvent actionEvent) {
         String id = txtDriverId.getText().trim();
         String name = txtDriverName.getText().trim();
         String address = txtDriverAddress.getText().trim();
         String contact = txtDriverContact.getText().trim();
 
-        if(id.length()>0 && name.length()>0 && address.length()>0 && contact.length()>0){
+        if(txtDriverId.getText().trim().length()>0 && txtDriverName.getText().trim().length()>0 && txtDriverAddress.getText().trim().length()>0 && txtDriverContact.getText().trim().length()>0){
             try {
                 boolean isAdded = bo.saveDriver(new DriverDTO(id,name,address,contact));
                 if (isAdded) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved",ButtonType.OK).showAndWait();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saved Successfully.!")
+                            .text("You have Successfully save Driver to the System.")
+                            .graphic(new ImageView(new Image("/assert/done.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                     loadAllDriver();
                     clear();
                     loadID();
                     txtDriverId.requestFocus();
                 } else {
-                    new Alert(Alert.AlertType.CONFIRMATION, " Not Saved, Try Again",ButtonType.OK).show();
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saving UnSuccessful.!")
+                            .text("Driver Not Saved, Try Again.!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
                     txtDriverId.requestFocus();
                     loadID();
                 }
             } catch (SQLException se){
-                new Alert(Alert.AlertType.ERROR, "SQL Syntax Error",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saving UnSuccessful.!")
+                        .text("Driver Not Saved, Try Again.!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtDriverId.requestFocus();
                 loadID();
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR, "Error",ButtonType.OK).show();
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Saving UnSuccessful.!")
+                        .text("Driver Not Saved, Try Again.!")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                 txtDriverId.requestFocus();
                 loadID();
             }
         }else {
-            new Alert(Alert.AlertType.WARNING, "Text Field is Empty",ButtonType.OK).show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Saving UnSuccessful.!")
+                    .text("Driver Not Saved, Some fields have been empty ..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
             txtDriverId.requestFocus();
             loadID();
         }
     }
 
-    public void txtSearchOnAction(ActionEvent actionEvent) throws Exception {
-        DriverDTO dto = bo.getDriver(txtSearch.getText().trim());
+    public void txtSearchOnAction(ActionEvent actionEvent) {
+        DriverDTO dto = null;
+        try {
+            dto = bo.getDriver(txtSearch.getText().trim());
+        } catch (Exception e) {
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Error..!")
+                    .text("Something Wrong.Please try Again..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
+        }
         if(dto != null){
             txtDriverId.setText(dto.getId());
             txtDriverName.setText(dto.getName());
@@ -227,8 +331,14 @@ public class DriverFormController {
         }else{
             txtSearch.setStyle("-fx-border-color: #f53b57 ");
             txtSearch.requestFocus();
-            new Alert(Alert.AlertType.INFORMATION,
-                    "Enter Valid Client Id", ButtonType.OK).show();
+            Notifications notificationBuilder = Notifications.create()
+                    .title("No Driver Founded..!")
+                    .text("Enter Valid Driver Id.")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }
     }
 
@@ -270,11 +380,15 @@ public class DriverFormController {
         }
     }
 
-    public void txtDriverContactOnAction(ActionEvent actionEvent) throws Exception {
+    public void txtDriverContactOnAction(ActionEvent actionEvent)  {
         if (Pattern.compile("^(0)[0-9]{9}$").matcher(txtDriverContact.getText().trim()).matches()) {
             txtDriverContact.setFocusColor(Paint.valueOf("skyblue"));
             btnAdd.requestFocus();
-            btnAddOnAction(actionEvent);
+            try {
+                btnAddOnAction(actionEvent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             txtDriverContact.setFocusColor(Paint.valueOf("red"));
             txtDriverContact.requestFocus();

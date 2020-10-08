@@ -91,7 +91,7 @@
                   <Font size="29.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="1186.0" layoutY="596.0" onAction="#btnSaveOnAction" prefHeight="63.0" prefWidth="243.0" ripplerFill="#35f50f" stylesheets="@../CSS/saveandprintButtonCSS.css" text="Save &amp; Print">
+            <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="1153.0" layoutY="596.0" onAction="#btnSaveOnAction" prefHeight="63.0" prefWidth="289.0" ripplerFill="#35f50f" stylesheets="@../CSS/saveandprintButtonCSS.css" text="Save &amp; Print">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
@@ -146,6 +146,14 @@
             </ImageView>
             <JFXTimePicker fx:id="ArrivalTimePicker" defaultColor="#640a0a" layoutX="586.0" layoutY="801.0" prefHeight="51.0" prefWidth="297.0" style="-fx-font-size: 27;" />
             <JFXTimePicker fx:id="DepartureTimePicker" defaultColor="#640a0a" layoutX="88.0" layoutY="599.0" prefHeight="51.0" prefWidth="297.0" style="-fx-font-size: 27;" />
+            <JFXButton buttonType="RAISED" layoutX="1309.0" layoutY="802.0" onAction="#btnClearOnAction" prefHeight="51.0" prefWidth="173.0" ripplerFill="#fff70b" stylesheets="@../CSS/clearButtonCSS.css" text="Clear">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>
