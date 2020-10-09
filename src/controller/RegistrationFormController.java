@@ -37,7 +37,7 @@ public class RegistrationFormController {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.LOGIN);
     }
 
-    public void btnSignUpOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnSignUpOnAction(ActionEvent actionEvent){
         String name = txtName.getText().trim();
         String userName = txtUserName.getText().trim();
         String password = txtPassword.getText().trim();

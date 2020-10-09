@@ -197,8 +197,8 @@ public class QueryDaoImpl implements QueryDAO {
     }
 
     @Override
-    public int getTotalClient() throws Exception {
-        ResultSet set = CrudUtil.execute("SELECT COUNT(clientId) from Client;");
+    public int getFinishedDO() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT COUNT(doId) from DeliveryOrder WHERE status = 'Done';");
         if(set.next()){
             return set.getInt(1);
         }
@@ -206,8 +206,8 @@ public class QueryDaoImpl implements QueryDAO {
     }
 
     @Override
-    public int getTotalDelivery() throws Exception {
-        ResultSet set = CrudUtil.execute("SELECT COUNT(doId) from DeliveryOrder;");
+    public int getPendingDO() throws Exception {
+        ResultSet set = CrudUtil.execute("SELECT COUNT(doId) from DeliveryOrder WHERE status = 'On the Way';");
         if(set.next()){
             return set.getInt(1);
         }

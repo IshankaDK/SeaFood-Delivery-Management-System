@@ -17,14 +17,15 @@ public class DefaultBoImpl implements DefaultBo {
     }
 
     @Override
-    public int getTotalClient() throws Exception {
-        return dao.getTotalClient();
+    public int getFinishedDO() throws Exception {
+        return dao.getFinishedDO();
     }
 
     @Override
-    public int getTotalDelivery() throws Exception {
-        return dao.getTotalDelivery();
+    public int getPendingDO() throws Exception {
+        return dao.getPendingDO();
     }
+
 
     @Override
     public int getTotalSeafood() throws Exception {

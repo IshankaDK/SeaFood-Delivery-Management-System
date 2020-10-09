@@ -28,16 +28,16 @@ public class DefaultFormController {
     public TableColumn colLeastQtyOnHand;
     public TableColumn colLeastPurchPrice;
     public TableColumn colLeastSellPrice;
-    public Label lblTotalClient;
-    public Label lblTotalDO;
     public Label lblTotalSeaFood;
+    public Label lblFinishedDO;
+    public Label lblPendingDelivery;
 
     DefaultBo bo = BoFactory.getInstance().getBo(BoFactory.BOType.DEFAULT);
 
     public void initialize() throws Exception {
         lblTotalOrder.setText(String.valueOf(bo.getTotalOrders()));
-        lblTotalClient.setText(String.valueOf(bo.getTotalClient()));
-        lblTotalDO.setText(String.valueOf(bo.getTotalDelivery()));
+        lblFinishedDO.setText(String.valueOf(bo.getFinishedDO()));
+        lblPendingDelivery.setText(String.valueOf(bo.getPendingDO()));
         lblTotalSeaFood.setText(String.valueOf(bo.getTotalSeafood()));
 
         colMostCode.setCellValueFactory(new PropertyValueFactory("code"));

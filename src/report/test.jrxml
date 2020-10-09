@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2020-10-08T20:15:31 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8a8dc386-1b81-4266-8037-561b2911ca83">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString language="SQL">
+		<![CDATA[Select * from Customer]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="salary" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="30" uuid="a33415e1-eaf5-402d-a3c4-7d2bcefe2e6c"/>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="30" uuid="2a2df276-3f9f-487a-ad63-9701b3ae7c45"/>
+				<text><![CDATA[name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="30" uuid="c808f25f-829c-42df-90bd-2e703efbc2f4"/>
+				<text><![CDATA[address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="30" uuid="734b80c7-080f-4c41-b6db-01e624fbf31e"/>
+				<text><![CDATA[salary]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="45" width="141" height="30" uuid="da670ac5-2f9c-4b4c-849e-f9ab16724119"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="45" width="138" height="30" uuid="fccf7953-0524-47e0-951b-f8d59fae242c"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="45" width="138" height="30" uuid="12bda3e3-c204-4ee7-9bbc-985f62c0859d"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="45" width="138" height="30" uuid="68c5f0fb-4bf2-4274-8186-a635e6f854d9"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

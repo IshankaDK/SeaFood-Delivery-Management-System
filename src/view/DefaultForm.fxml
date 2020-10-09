@@ -71,10 +71,10 @@
         <Label layoutX="427.0" layoutY="204.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #B71C1C;" />
         <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="615.0" layoutY="226.0" opacity="0.33" pickOnBounds="true">
             <image>
-                <Image url="@../assert/clientfordashboard.png" />
+                <Image url="@../assert/delidash.png" />
             </image>
         </ImageView>
-        <Label layoutX="466.0" layoutY="228.0" prefHeight="61.0" prefWidth="252.0" text="Total Clients" textFill="WHITE">
+        <Label layoutX="446.0" layoutY="228.0" prefHeight="61.0" prefWidth="330.0" text="Pending Deliveries" textFill="WHITE">
             <font>
                 <Font name="System Italic" size="40.0" />
             </font>
@@ -82,10 +82,10 @@
         <Label layoutX="813.0" layoutY="204.0" prefHeight="198.0" prefWidth="359.0" style="-fx-background-color: #673AB7;" />
         <ImageView fitHeight="150.0" fitWidth="156.0" layoutX="1001.0" layoutY="226.0" opacity="0.33" pickOnBounds="true">
             <image>
-                <Image url="@../assert/delidash.png" />
+                <Image url="@../assert/donedash.png" />
             </image>
         </ImageView>
-        <Label layoutX="836.0" layoutY="228.0" prefHeight="61.0" prefWidth="288.0" text="Total Deliveries" textFill="WHITE">
+        <Label layoutX="836.0" layoutY="228.0" prefHeight="61.0" prefWidth="330.0" text="Finished Deliveries" textFill="WHITE">
             <font>
                 <Font name="System Italic" size="40.0" />
             </font>
@@ -102,20 +102,20 @@
             </font>
         </Label>
         <Separator layoutX="14.0" layoutY="463.0" opacity="0.53" prefHeight="3.0" prefWidth="1572.0" />
-      <Label fx:id="lblTotalClient" alignment="CENTER" layoutX="520.0" layoutY="297.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="56.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblTotalDO" alignment="CENTER" layoutX="897.0" layoutY="297.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="56.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblTotalSeaFood" alignment="CENTER" layoutX="1298.0" layoutY="297.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="56.0" />
-         </font>
-      </Label>
+        <Label fx:id="lblPendingDelivery" alignment="CENTER" layoutX="520.0" layoutY="297.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="56.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblFinishedDO" alignment="CENTER" layoutX="922.0" layoutY="297.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="56.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblTotalSeaFood" alignment="CENTER" layoutX="1298.0" layoutY="297.0" prefHeight="61.0" prefWidth="87.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="56.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

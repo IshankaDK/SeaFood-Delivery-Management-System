@@ -17,8 +17,8 @@ public interface QueryDAO extends SuperDAO {
     public String getDoId() throws Exception;
     public Client getMatchedClient(String id) throws Exception;
     public int getTotalOrders() throws Exception;
-    public int getTotalClient() throws Exception;
-    public int getTotalDelivery() throws Exception;
+    public int getFinishedDO() throws Exception;
+    public int getPendingDO() throws Exception;
     public int getTotalSeafood() throws Exception;
     public ArrayList<SeaFood> getMostMovable() throws Exception;
     public ArrayList<SeaFood> getLeastMovable() throws Exception;
