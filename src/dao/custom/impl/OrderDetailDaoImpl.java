@@ -13,7 +13,6 @@ public class OrderDetailDaoImpl implements OrderDetailDAO {
                orderDetail.getId(),orderDetail.getCode(),orderDetail.getQty(),orderDetail.getPrice(),
                 orderDetail.getDiscount());
     }
-
     @Override
     public boolean delete(String s) throws Exception {
         return false;

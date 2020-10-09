@@ -37,14 +37,16 @@ public class OrderBoImpl implements OrderBo {
             boolean isDetailSaved = orderDetailBo.addOrderDetail(orderDetailDTOS);
             boolean isUpdated = seaFoodBo.UpdateStockWhenOrder(orderDetailDTOS);
 
-            if (isSaved && isDetailSaved && isUpdated) {
-                DBConnection.getInstance().getConnection().commit();
-                return true;
-            } else {
-                DBConnection.getInstance().getConnection().rollback();
-                return false;
-            }
-
+                if (isSaved && isDetailSaved && isUpdated) {
+                    DBConnection.getInstance().getConnection().commit();
+                    return true;
+                } else {
+                    DBConnection.getInstance().getConnection().rollback();
+                    return false;
+                }
+            }catch(Exception e){
+            DBConnection.getInstance().getConnection().rollback();
+            return false;
         }finally {
             DBConnection.getInstance().getConnection().setAutoCommit(true);
         }

@@ -48,6 +48,9 @@ public class PurchaseBoImpl implements PurchaseBo {
             }
             connection.rollback();
             return false;
+        }catch(Exception e){
+            DBConnection.getInstance().getConnection().rollback();
+            return false;
         }finally {
             connection.setAutoCommit(true);
         }

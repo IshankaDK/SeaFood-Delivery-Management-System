@@ -42,7 +42,9 @@ public class QuickOrderBoImpl implements QuickOrderBo {
                 DBConnection.getInstance().getConnection().rollback();
                 return false;
             }
-
+        }catch(Exception e){
+            DBConnection.getInstance().getConnection().rollback();
+            return false;
         }finally {
             DBConnection.getInstance().getConnection().setAutoCommit(true);
         }
