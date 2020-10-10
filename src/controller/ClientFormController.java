@@ -2,6 +2,7 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.ClientBo;
+import bo.custom.impl.ClientBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -52,7 +53,7 @@ public class ClientFormController {
 
     ClientBo bo;
 
-    public void initialize() throws Exception {
+    public void initialize() {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.CLIENT);
         loadId();
         getClientType();
@@ -134,7 +135,6 @@ public class ClientFormController {
                        .position(Pos.BOTTOM_RIGHT);
                notificationBuilder.darkStyle();
                notificationBuilder.show();
-               loadId();
                txtClientId.requestFocus();
            } catch (Exception e) {
                Notifications notificationBuilder = Notifications.create()
@@ -146,7 +146,6 @@ public class ClientFormController {
                notificationBuilder.darkStyle();
                notificationBuilder.show();
                txtClientId.requestFocus();
-               loadId();
            }
        }else {
            Notifications notificationBuilder = Notifications.create()

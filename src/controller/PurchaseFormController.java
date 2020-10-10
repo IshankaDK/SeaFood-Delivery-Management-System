@@ -143,27 +143,38 @@ public class PurchaseFormController {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         try {
-            boolean isSaved = bo.savePurchase(getPurchased(),getPurchaseDetail());
-            if(isSaved){
+            if(tblPurchase.getItems().size()==0){
                 Notifications notificationBuilder = Notifications.create()
-                        .title("Saved Successfully.!")
-                        .text("Purchase Successfully saved to the System.")
-                        .graphic(new ImageView(new Image("/assert/done.png")))
+                        .title("No Item Selected.!")
+                        .text("No Item Selected.!, Select Item and Try Again.")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
                         .hideAfter(Duration.seconds(4))
                         .position(Pos.BOTTOM_RIGHT);
                 notificationBuilder.darkStyle();
                 notificationBuilder.show();
-                txtPurchaseId.requestFocus();
             }else {
-                Notifications notificationBuilder = Notifications.create()
-                        .title("Saving UnSuccessful.!")
-                        .text("Purchase Not saved. Please try again..!")
-                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
-                        .hideAfter(Duration.seconds(4))
-                        .position(Pos.BOTTOM_RIGHT)
-                        .darkStyle();
-                notificationBuilder.show();
-                tblPurchase.requestFocus();
+                boolean isSaved = bo.savePurchase(getPurchased(), getPurchaseDetail());
+                if (isSaved) {
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saved Successfully.!")
+                            .text("Purchase Successfully saved to the System.")
+                            .graphic(new ImageView(new Image("/assert/done.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
+                    txtPurchaseId.requestFocus();
+                } else {
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saving UnSuccessful.!")
+                            .text("Purchase Not saved. Please try again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT)
+                            .darkStyle();
+                    notificationBuilder.show();
+                    tblPurchase.requestFocus();
+                }
             }
         } catch (Exception e) {
             Notifications notificationBuilder = Notifications.create()
@@ -208,10 +219,12 @@ public class PurchaseFormController {
         colPurchasedPrice.setCellValueFactory(new PropertyValueFactory("price"));
         colTotal.setCellValueFactory(new PropertyValueFactory("total"));
 
+        try {
         String code = String.valueOf(cmbSeaFoodItem.getValue());
         String desc = txtDescription.getText();
         double qty = Double.parseDouble(txtQTY.getText());
         double purchasedPrice = Double.parseDouble(txtPurchasedPrice.getText());
+
         if (!observableList.isEmpty()) { // check observableList is not empty
             for (int i = 0; i < tblPurchase.getItems().size(); i++) { // check all rows in table
                 if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
@@ -230,7 +243,16 @@ public class PurchaseFormController {
         observableList.add(new PurchaseTM(code, desc, qty, purchasedPrice, (qty * purchasedPrice)));
         tblPurchase.setItems(observableList); // if their is no list or, no matched itemcode
         getSubTotal();
-
+        }catch (NumberFormatException e){
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Adding UnSuccessful.!")
+                    .text("Item Not Added, Some fields have been empty ..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
+        }
     }
 
     private void getSubTotal(){
@@ -303,16 +325,17 @@ public class PurchaseFormController {
 
     public void btnClearOnAction(ActionEvent actionEvent) {
         cmbBoatId.setValue(null);
-        txtBoatName.setText(null);
-        txtOwnerName.setText(null);
-        txtOwnerContact.setText(null);
+        txtBoatName.clear();
+        txtOwnerName.clear();
+        txtOwnerContact.clear();
         cmbSeaFoodItem.setValue(null);
-        txtDescription.setText(null);
-        txtQtyOnHand.setText(null);
-        txtPurchasedPrice.setText(null);
-        txtSellingPrice.setText(null);
-        txtQTY.setText(null);
+        txtDescription.clear();
+        txtQtyOnHand.clear();
+        txtPurchasedPrice.clear();
+        txtSellingPrice.clear();
+        txtQTY.clear();
         tblPurchase.getItems().clear();
+        lblTotal.setText("0.00");
         try {
             loadId();
         } catch (Exception e) {

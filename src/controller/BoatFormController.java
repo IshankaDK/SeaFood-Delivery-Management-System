@@ -154,15 +154,10 @@ public class BoatFormController {
             btnDelete.setCursor(Cursor.HAND);
             btnDelete.setStyle("-fx-font-weight: bold ; -fx-background-color:  #D50000; ");
             btnDelete.setTextFill(Color.web("#FFFFFF"));
-            // btnDelete.setStyle("-fx-background-image: url('/assert/bin.png')");
-            // btnDelete.setStyle("-fx-font-size:20");
-            //btnDelete.setStyle("-fx-font-weight: bold;");
             Button btnUpdate = new Button("Update");
             btnUpdate.setMaxSize(100, 50);
             btnUpdate.setCursor(Cursor.HAND);
-            // btnUpdate.setStyle("-fx-background-color: #00BFA5");
             btnUpdate.setStyle("-fx-font-weight: bold ; -fx-background-color:  #00BFA5;");
-            //btnUpdate.setStyle();
             BoatTM tm = new BoatTM(dto.getBoatId(),dto.getName(), dto.getOwnerName(),dto.getOwnerContact(),
                     btnDelete,btnUpdate);
             tmList.add(tm);

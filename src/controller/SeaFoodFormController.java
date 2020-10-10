@@ -83,17 +83,14 @@ public class SeaFoodFormController {
 
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) throws Exception {
-        String code = txtCode.getText().trim();
-        String description = txtDescription.getText().trim();
-        double qtyOnHand = Double.parseDouble(txtQtyOnHand.getText().trim());
-        double purchasePrice = Double.parseDouble(txtPurchasePrice.getText().trim());
-        double sellingPrice = Double.parseDouble(txtSellPrice.getText().trim());
+    public void btnAddOnAction(ActionEvent actionEvent) {
 
         if(txtCode.getText().trim().length()>0 && txtDescription.getText().trim().length()>0 && txtQtyOnHand.getText().trim().length()>0 &&
                 txtPurchasePrice.getText().trim().length()>0 && txtSellPrice.getText().trim().length()>0){
             try {
-                boolean isAdded = bo.saveSeaFood(new SeaFoodDTO(code,description,qtyOnHand,purchasePrice,sellingPrice));
+                boolean isAdded = bo.saveSeaFood(new SeaFoodDTO(txtCode.getText().trim(),txtDescription.getText().trim(),
+                        Double.parseDouble(txtQtyOnHand.getText().trim()),Double.parseDouble(txtPurchasePrice.getText().trim()),
+                        Double.parseDouble(txtSellPrice.getText().trim())));
                 if (isAdded) {
                     Notifications notificationBuilder = Notifications.create()
                             .title("Saved Successfully.!")
@@ -117,7 +114,6 @@ public class SeaFoodFormController {
                     notificationBuilder.darkStyle();
                     notificationBuilder.show();
                     txtCode.requestFocus();
-                    loadCode();
                 }
             } catch (SQLException se){
                 Notifications notificationBuilder = Notifications.create()
@@ -129,7 +125,6 @@ public class SeaFoodFormController {
                 notificationBuilder.darkStyle();
                 notificationBuilder.show();
                 txtCode.requestFocus();
-                loadCode();
             } catch (Exception e) {
                 Notifications notificationBuilder = Notifications.create()
                         .title("Saving UnSuccessful.!")
@@ -140,7 +135,6 @@ public class SeaFoodFormController {
                 notificationBuilder.darkStyle();
                 notificationBuilder.show();
                 txtCode.requestFocus();
-                loadCode();
             }
         }else {
             Notifications notificationBuilder = Notifications.create()
@@ -152,7 +146,6 @@ public class SeaFoodFormController {
             notificationBuilder.darkStyle();
             notificationBuilder.show();
             txtCode.requestFocus();
-            loadCode();
         }
     }
 
@@ -298,12 +291,12 @@ public class SeaFoodFormController {
     }
 
     public void clear() {
-        txtCode.setText(null);
-        txtDescription.setText(null);
-        txtQtyOnHand.setText(null);
-        txtPurchasePrice.setText(null);
-        txtSellPrice.setText(null);
-        txtSearch.setText(null);
+        txtCode.clear();
+        txtDescription.clear();
+        txtQtyOnHand.clear();
+        txtPurchasePrice.clear();
+        txtSellPrice.clear();
+        txtSearch.clear();
 
     }
 

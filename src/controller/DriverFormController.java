@@ -48,7 +48,7 @@ public class DriverFormController {
     public JFXButton btnAdd;
     DriverBo bo;
 
-    public void initialize() throws Exception {
+    public void initialize() {
         bo = BoFactory.getInstance().getBo(BoFactory.BOType.DRIVER);
         loadAllDriver();
         loadID();
@@ -261,7 +261,6 @@ public class DriverFormController {
                     notificationBuilder.darkStyle();
                     notificationBuilder.show();
                     txtDriverId.requestFocus();
-                    loadID();
                 }
             } catch (SQLException se){
                 Notifications notificationBuilder = Notifications.create()
@@ -273,7 +272,6 @@ public class DriverFormController {
                 notificationBuilder.darkStyle();
                 notificationBuilder.show();
                 txtDriverId.requestFocus();
-                loadID();
             } catch (Exception e) {
                 Notifications notificationBuilder = Notifications.create()
                         .title("Saving UnSuccessful.!")
@@ -284,7 +282,6 @@ public class DriverFormController {
                 notificationBuilder.darkStyle();
                 notificationBuilder.show();
                 txtDriverId.requestFocus();
-                loadID();
             }
         }else {
             Notifications notificationBuilder = Notifications.create()
@@ -296,7 +293,6 @@ public class DriverFormController {
             notificationBuilder.darkStyle();
             notificationBuilder.show();
             txtDriverId.requestFocus();
-            loadID();
         }
     }
 
@@ -334,11 +330,11 @@ public class DriverFormController {
     }
 
     public void clear() {
-        txtDriverId.setText(null);
-        txtDriverName.setText(null);
-        txtDriverAddress.setText(null);
-        txtDriverContact.setText(null);
-        txtSearch.setText(null);
+        txtDriverId.clear();
+        txtDriverName.clear();
+        txtDriverAddress.clear();
+        txtDriverContact.clear();
+        txtSearch.clear();
     }
 
     public void txtDriverIdOnAction(ActionEvent actionEvent) {

@@ -67,9 +67,10 @@ public class DeliveryOrderFormController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String arrivalTime = ArrivalTimePicker.getValue().toString();
-        String status = "Done";
         try {
+            String arrivalTime = ArrivalTimePicker.getValue().toString();
+            String status = "Done";
+
             boolean isSaved = bo.updateDO(new DeliveryOrderDTO(txtDoId.getText().trim(),arrivalTime,status),
                     (txtOrderId.getText().trim()));
             if(isSaved){
@@ -84,7 +85,7 @@ public class DeliveryOrderFormController {
             }else {
                 Notifications notificationBuilder = Notifications.create()
                         .title("Update UnSuccessful.!")
-                        .text("Delivery Order Not Updated, Please try Again..!")
+                        .text("May be order was finished, or Please try Again.!")
                         .graphic(new ImageView(new Image("/assert/errorpng.png")))
                         .hideAfter(Duration.seconds(4))
                         .position(Pos.BOTTOM_RIGHT);
@@ -155,7 +156,7 @@ public class DeliveryOrderFormController {
             } else{
                 Notifications notificationBuilder = Notifications.create()
                         .title("No Order Found!")
-                        .text("No Order Found!, Check OrderId Again")
+                        .text("Order may be Done.!, If not Check OrderId Again")
                         .graphic(new ImageView(new Image("/assert/errorpng.png")))
                         .hideAfter(Duration.seconds(4))
                         .position(Pos.BOTTOM_RIGHT);
@@ -179,7 +180,7 @@ public class DeliveryOrderFormController {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-
+        try {
         String doId = txtDoId.getText().trim();
         String orId = txtOrderId.getText().trim();
         String driverId = String.valueOf(cmbDriverId.getValue());
@@ -188,7 +189,6 @@ public class DeliveryOrderFormController {
         String fee = txtDeliveryFee.getText().trim();
         String status = "On the Way";
 
-        try {
             boolean isSaved = bo.saveDO(new DeliveryOrderDTO(doId,orId,driverId,departure,arrival,fee,status));
             if(isSaved){
                 Notifications notificationBuilder = Notifications.create()
@@ -323,7 +323,7 @@ public class DeliveryOrderFormController {
         txtDriverName.setText(null);
         txtDriverAddress.setText(null);
         txtDriverContact.setText(null);
-        DepartureTimePicker.setValue(null);
+        DepartureTimePicker.setValue(LocalTime.now());
         txtDeliveryFee.setText("250.00");
         txtStatus.setText("In Progress");
         ArrivalTimePicker.setValue(null);

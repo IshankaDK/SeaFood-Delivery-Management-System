@@ -173,7 +173,7 @@ public class QueryDaoImpl implements QueryDAO {
 
     @Override
     public Client getMatchedClient(String id) throws Exception {
-        ResultSet set = CrudUtil.execute("SELECT * FROM Client c , _Order o WHERE (c.clientId = o.clientId) && orderId = ?",
+        ResultSet set = CrudUtil.execute("SELECT * FROM Client c , _Order o WHERE (c.clientId = o.clientId) && orderId = ? && paymentStatus='Pending'",
                 id);
         if(set.next()){
             return new Client(

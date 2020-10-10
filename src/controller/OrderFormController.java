@@ -115,42 +115,52 @@ public class OrderFormController {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory("price"));
         colDiscount.setCellValueFactory(new PropertyValueFactory("discount"));
         colTotal.setCellValueFactory(new PropertyValueFactory("total"));
-
+        try {
         String code = String.valueOf(cmbCode.getValue());
         String desc = txtDescription.getText();
         double qty =Double.parseDouble(txtQty.getText());
         double discount = Double.parseDouble(txtDiscount.getText());
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
 
-        if (!observableList.isEmpty()) { // check observableList is empty
-            for (int i = 0; i < tblOrder.getItems().size(); i++) { // check all rows in table
-                if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
-                    double temp = (double) colQty.getCellData(i); // get qty in table for temp
-                    temp += qty; // add new qty to old qty
-                    if(temp <= Double.parseDouble(txtQtyOnHand.getText())){
-                        double tot = (temp * unitPrice)-discount; // get new total
-                        observableList.get(i).setQty(temp); // set new qty to observableList
-                        observableList.get(i).setTotal(tot); // set new total to observableList
-                        getSubTotal();
-                        tblOrder.refresh(); // refresh table
-                        return;
-                    }else {
-                        Notifications notificationBuilder = Notifications.create()
-                                .title("Error..!")
-                                .text("No Sufficient Items in the Stock..!")
-                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
-                                .hideAfter(Duration.seconds(4))
-                                .position(Pos.BOTTOM_RIGHT);
-                        notificationBuilder.darkStyle();
-                        notificationBuilder.show();
-                        return;
+            if (!observableList.isEmpty()) { // check observableList is empty
+                for (int i = 0; i < tblOrder.getItems().size(); i++) { // check all rows in table
+                    if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
+                        double temp = (double) colQty.getCellData(i); // get qty in table for temp
+                        temp += qty; // add new qty to old qty
+                        if (temp <= Double.parseDouble(txtQtyOnHand.getText())) {
+                            double tot = (temp * unitPrice) - discount; // get new total
+                            observableList.get(i).setQty(temp); // set new qty to observableList
+                            observableList.get(i).setTotal(tot); // set new total to observableList
+                            getSubTotal();
+                            tblOrder.refresh(); // refresh table
+                            return;
+                        } else {
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Error..!")
+                                    .text("No Sufficient Items in the Stock..!")
+                                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
+                            return;
+                        }
                     }
                 }
             }
+            observableList.add(new OrderTM(code, desc, qty, unitPrice, discount, ((qty * unitPrice) - discount)));
+            tblOrder.setItems(observableList); // if their is no list or, no matched itemcode
+            getSubTotal();
+        }catch (NumberFormatException e){
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Adding UnSuccessful.!")
+                    .text("Item Not Added, Some fields have been empty ..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }
-        observableList.add(new OrderTM(code, desc, qty, unitPrice,discount, ((qty * unitPrice)-discount)));
-        tblOrder.setItems(observableList); // if their is no list or, no matched itemcode
-        getSubTotal();
     }
 
     private void getSubTotal() {
@@ -187,7 +197,7 @@ public class OrderFormController {
                 Notifications notificationBuilder = Notifications.create()
                         .title("No Item Selected.!")
                         .text("No Item Selected.!, Select Item and Try Again.")
-                        .graphic(new ImageView(new Image("/assert/done.png")))
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
                         .hideAfter(Duration.seconds(4))
                         .position(Pos.BOTTOM_RIGHT);
                 notificationBuilder.darkStyle();
@@ -349,14 +359,14 @@ public class OrderFormController {
 
     public void btnClearOnAction(ActionEvent actionEvent)  {
         cmbClientId.setValue(null);
-        txtClientName.setText(null);
-        txtClientAddress.setText(null);
+        txtClientName.clear();
+        txtClientAddress.clear();
         cmbCode.setValue(null);
-        txtDescription.setText(null);
-        txtQtyOnHand.setText(null);
-        txtUnitPrice.setText(null);
-        txtQty.setText(null);
-        txtDiscount.setText(null);
+        txtDescription.clear();
+        txtQtyOnHand.clear();
+        txtUnitPrice.clear();
+        txtQty.clear();
+        txtDiscount.clear();
         tblOrder.getItems().clear();
         lblTotal.setText("0.00");
         loadId();

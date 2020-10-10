@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ClientDaoImpl implements ClientDAO {
+
     @Override
     public boolean save(Client client) throws Exception {
         return CrudUtil.execute("INSERT INTO Client VALUES (?,?,?,?,?)",

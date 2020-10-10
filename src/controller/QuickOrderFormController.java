@@ -91,14 +91,46 @@ public class QuickOrderFormController {
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
         try {
-            boolean isSaved = bo.saveOrder(getOrder(),getOrderDetail());
-            if(isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Saved",ButtonType.OK).show();
-            }else {
-                new Alert(Alert.AlertType.CONFIRMATION,"Not Saved",ButtonType.OK).show();
+            if (tblQuickOrder.getItems().size() == 0) {
+                Notifications notificationBuilder = Notifications.create()
+                        .title("No Item Selected.!")
+                        .text("No Item Selected.!, Select Item and Try Again.")
+                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
+            } else {
+                boolean isSaved = bo.saveOrder(getOrder(), getOrderDetail());
+                if (isSaved) {
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saved Successfully.!")
+                            .text("Order Successfully saved to the System.")
+                            .graphic(new ImageView(new Image("/assert/done.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT);
+                    notificationBuilder.darkStyle();
+                    notificationBuilder.show();
+                } else {
+                    Notifications notificationBuilder = Notifications.create()
+                            .title("Saving UnSuccessful.!")
+                            .text("Order Not saved. Please try again..!")
+                            .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                            .hideAfter(Duration.seconds(4))
+                            .position(Pos.BOTTOM_RIGHT)
+                            .darkStyle();
+                    notificationBuilder.show();
+                }
             }
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.WARNING,"error",ButtonType.OK).show();
+        }catch(Exception e){
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Error, Saving UnSuccessful.!")
+                    .text("Order Not saved. Please try again..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .darkStyle();
+            notificationBuilder.show();
         }
     }
 
@@ -132,41 +164,52 @@ public class QuickOrderFormController {
         colDiscount.setCellValueFactory(new PropertyValueFactory("discount"));
         colTotal.setCellValueFactory(new PropertyValueFactory("total"));
 
-        String code = String.valueOf(cmbCode.getValue());
-        String desc = txtDescription.getText();
-        double qty =Double.parseDouble(txtQty.getText());
-        double discount = Double.parseDouble(txtDiscount.getText());
-        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        try {
+            String code = String.valueOf(cmbCode.getValue());
+            String desc = txtDescription.getText();
+            double qty = Double.parseDouble(txtQty.getText());
+            double discount = Double.parseDouble(txtDiscount.getText());
+            double unitPrice = Double.parseDouble(txtUnitPrice.getText());
 
-        if (!observableList.isEmpty()) { // check observableList is empty
-            for (int i = 0; i < tblQuickOrder.getItems().size(); i++) { // check all rows in table
-                if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
-                    double temp = (double) colQty.getCellData(i); // get qty in table for temp
-                    temp += qty; // add new qty to old qty
-                    if(temp <= Double.parseDouble(txtQtyOnHand.getText())){
-                        double tot = (temp * unitPrice)-discount; // get new total
-                        observableList.get(i).setQty(temp); // set new qty to observableList
-                        observableList.get(i).setTotal(tot); // set new total to observableList
-                        getSubTotal();
-                        tblQuickOrder.refresh(); // refresh table
-                        return;
-                    }else {
-                        Notifications notificationBuilder = Notifications.create()
-                                .title("Error..!")
-                                .text("No Sufficient Items in the Stock..!")
-                                .graphic(new ImageView(new Image("/assert/errorpng.png")))
-                                .hideAfter(Duration.seconds(4))
-                                .position(Pos.BOTTOM_RIGHT);
-                        notificationBuilder.darkStyle();
-                        notificationBuilder.show();
-                        return;
+            if (!observableList.isEmpty()) { // check observableList is empty
+                for (int i = 0; i < tblQuickOrder.getItems().size(); i++) { // check all rows in table
+                    if (colCode.getCellData(i).equals(code)) { // check  itemcode in table == itemcode we enter
+                        double temp = (double) colQty.getCellData(i); // get qty in table for temp
+                        temp += qty; // add new qty to old qty
+                        if (temp <= Double.parseDouble(txtQtyOnHand.getText())) {
+                            double tot = (temp * unitPrice) - discount; // get new total
+                            observableList.get(i).setQty(temp); // set new qty to observableList
+                            observableList.get(i).setTotal(tot); // set new total to observableList
+                            getSubTotal();
+                            tblQuickOrder.refresh(); // refresh table
+                            return;
+                        } else {
+                            Notifications notificationBuilder = Notifications.create()
+                                    .title("Error..!")
+                                    .text("No Sufficient Items in the Stock..!")
+                                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                                    .hideAfter(Duration.seconds(4))
+                                    .position(Pos.BOTTOM_RIGHT);
+                            notificationBuilder.darkStyle();
+                            notificationBuilder.show();
+                            return;
+                        }
                     }
                 }
             }
+            observableList.add(new QuickOrderTM(code, desc, qty, unitPrice, discount, ((qty * unitPrice) - discount)));
+            tblQuickOrder.setItems(observableList); // if their is no list or, no matched itemcode
+            getSubTotal();
+        }catch (NumberFormatException e){
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Adding UnSuccessful.!")
+                    .text("Item Not Added, Some fields have been empty ..!")
+                    .graphic(new ImageView(new Image("/assert/errorpng.png")))
+                    .hideAfter(Duration.seconds(4))
+                    .position(Pos.BOTTOM_RIGHT);
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }
-        observableList.add(new QuickOrderTM(code, desc, qty, unitPrice,discount, ((qty * unitPrice)-discount)));
-        tblQuickOrder.setItems(observableList); // if their is no list or, no matched itemcode
-        getSubTotal();
     }
 
     private void getSubTotal() {
@@ -266,12 +309,13 @@ public class QuickOrderFormController {
 
     public void btnClearOnAction(ActionEvent actionEvent) {
         cmbCode.setValue(null);
-        txtDescription.setText(null);
-        txtQtyOnHand.setText(null);
-        txtUnitPrice.setText(null);
-        txtQty.setText(null);
-        txtDiscount.setText(null);
+        txtDescription.clear();
+        txtQtyOnHand.clear();
+        txtUnitPrice.clear();
+        txtQty.clear();
+        txtDiscount.clear();
         tblQuickOrder.getItems().clear();
+        lblTotal.setText("0.00");
         loadID();
     }
 }

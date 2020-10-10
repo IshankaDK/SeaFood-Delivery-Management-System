@@ -23,7 +23,7 @@ public class DeliveryOrderDaoImpl implements DeliveryOrderDAO {
 
     @Override
     public boolean update(DeliveryOrder deliveryOrder) throws Exception {
-        return CrudUtil.execute("UPDATE DeliveryOrder SET arrivalTime = ?, status = ? WHERE doId =? ",
+        return CrudUtil.execute("UPDATE DeliveryOrder SET arrivalTime = ?, status = ? WHERE doId =? && Status = 'On the Way'",
                 deliveryOrder.getArrival(),deliveryOrder.getStatus(),deliveryOrder.getDoId());
     }
 

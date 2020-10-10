@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class OrderDetailBoImpl implements OrderDetailBo {
     OrderDetailDAO dao = DaoFactory.getInstance().getDao(DaoFactory.DAOType.ORDERDETAIL);
+
     @Override
     public boolean addOrderDetail(ArrayList<OrderDetailDTO> orderDetailDTOS) throws Exception {
         for (OrderDetailDTO orderDetailDTO : orderDetailDTOS) {
