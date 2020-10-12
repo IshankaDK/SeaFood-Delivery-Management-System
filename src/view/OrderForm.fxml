@@ -91,11 +91,6 @@
                   <Font size="25.0" />
                </font>
             </TextField>
-            <Label alignment="TOP_CENTER" layoutX="1205.0" layoutY="170.0" prefHeight="51.0" prefWidth="300.0" style="-fx-background-color: #263238;" text="Total" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="44.0" />
-               </font>
-            </Label>
             <Label fx:id="lblTotal" alignment="CENTER" layoutX="1205.0" layoutY="221.0" prefHeight="87.0" prefWidth="300.0" style="-fx-background-color: #222f3e;" text="0.00" textFill="#fffde7">
                <font>
                   <Font name="System Bold" size="56.0" />
@@ -170,6 +165,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <Label alignment="TOP_CENTER" layoutX="1205.0" layoutY="182.0" prefHeight="51.0" prefWidth="300.0" style="-fx-background-color: #c8d6e5;" text="Total" textFill="#dd0000">
+               <font>
+                  <Font name="System Bold" size="38.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="1362.0" layoutY="364.0" prefHeight="51.0" prefWidth="173.0" text="Discount">

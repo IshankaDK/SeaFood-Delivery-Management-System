@@ -14,12 +14,14 @@ public class LoginBoImpl implements LoginBo {
     }
 
     @Override
-    public LoginDTO checkLogin(String userName) throws Exception {
-        Login login = dao.get(userName);
+    public LoginDTO checkLogin(LoginDTO dto) throws Exception {
+        Login login = dao.getLogin(new Login(dto.getUserName(),dto.getPassword()));
         if(login!=null){
             return new LoginDTO(login.getName(),login.getName(),login.getPassword());
         }else {
             return null;
         }
     }
+
+
 }

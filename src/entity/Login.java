@@ -13,7 +13,10 @@ public class Login implements SuperEntity {
 
     public Login() {
     }
-
+    public Login(String userName, String password) {
+        this.setUserName(userName);
+        this.setPassword(password);
+    }
     public String getName() {
         return name;
     }

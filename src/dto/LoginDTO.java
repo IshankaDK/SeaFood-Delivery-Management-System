@@ -14,6 +14,11 @@ public class LoginDTO  {
     public LoginDTO() {
     }
 
+    public LoginDTO(String userName, String password) {
+        this.setUserName(userName);
+        this.setPassword(password);
+    }
+
     public String getName() {
         return name;
     }

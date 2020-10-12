@@ -47,10 +47,8 @@ public class LoginFormController {
     public void txtPasswordOnAction(ActionEvent actionEvent) throws Exception {
         if (Pattern.compile("^[A-z|0-9]{1,50}$").matcher(txtPassword.getText().trim()).matches()) {
             txtPassword.setStyle("-fx-border-color:  #45aaf2;");
-            LoginDTO dto = bo.checkLogin(txtUserName.getText().trim());
+            LoginDTO dto = bo.checkLogin(new LoginDTO(txtUserName.getText().trim(),txtPassword.getText().trim()));
             if(dto != null){
-                if(dto.getPassword().equalsIgnoreCase(txtPassword.getText().trim())){
-
                     Notifications notificationBuilder = Notifications.create()
                             .title("Login Successfully.!")
                             .text("You have Successfully login to the System.")
@@ -74,18 +72,6 @@ public class LoginFormController {
                     txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
                     txtPassword.requestFocus();
                 }
-            }else {
-                Notifications notificationBuilder = Notifications.create()
-                        .title("Login Error.!")
-                        .text("No User Found to this User Name.")
-                        .graphic(new ImageView(new Image("/assert/errorpng.png")))
-                        .hideAfter(Duration.seconds(4))
-                        .position(Pos.BOTTOM_RIGHT);
-                notificationBuilder.darkStyle();
-                notificationBuilder.show();
-                txtUserName.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
-                txtUserName.requestFocus();
-            }
         } else {
             txtPassword.setStyle("-fx-border-color:  #eb3b5a; -fx-border-width: 3;");
             txtPassword.requestFocus();

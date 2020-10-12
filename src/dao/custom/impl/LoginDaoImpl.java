@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class LoginDaoImpl implements LoginDAO {
     @Override
     public boolean save(Login login) throws Exception {
-        return CrudUtil.execute("INSERT INTO Login VALUES (?,?,?)",
+        return CrudUtil.execute("INSERT INTO Login VALUES (?,?,md5(?))",
                 login.getName(),login.getUserName(),login.getPassword());
 
     }
@@ -28,7 +28,18 @@ public class LoginDaoImpl implements LoginDAO {
 
     @Override
     public Login get(String s) throws Exception {
-        ResultSet set =  CrudUtil.execute("SELECT * FROM Login WHERE userName = ?",s);
+       return null;
+    }
+
+    @Override
+    public ArrayList<Login> getAll() throws Exception {
+        return null;
+    }
+
+    @Override
+    public Login getLogin(Login login) throws Exception {
+        ResultSet set =  CrudUtil.execute("SELECT * FROM Login WHERE userName = ? && password = md5(?)",login.getUserName(),
+                login.getPassword());
         if(set.next()){
             return new Login(
                     set.getString(1),
@@ -36,11 +47,6 @@ public class LoginDaoImpl implements LoginDAO {
                     set.getString(3)
             );
         }
-        return null;
-    }
-
-    @Override
-    public ArrayList<Login> getAll() throws Exception {
         return null;
     }
 }
